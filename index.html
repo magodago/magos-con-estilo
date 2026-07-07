@@ -3,221 +3,185 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Magos con Estilo — Merch Premium para Magia</title>
-  <meta name="description" content="Merch premium para magos. Camisetas, sudaderas y accesorios con diseños exclusivos. Hecho por magos, para magos.">
+  <title>MAGOS CON ESTILO — Merch para magos</title>
+  <meta name="description" content="Merch premium para magos. Camisetas, sudaderas y accesorios. Diseños con esencia del gremio.">
   <link rel="icon" type="image/png" href="assets/logo.png">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- ANNOUNCEMENT BAR -->
-  <div class="announcement">✨ Próximamente — Primeros diseños disponibles en Septiembre 2026</div>
+  <!-- TOP BAR -->
+  <div class="top-bar">Proximamente — Coleccion 2026</div>
 
-  <!-- NAVIGATION -->
-  <nav class="nav" id="nav">
-    <a href="#" class="nav-logo">
-      <img src="assets/logo.png" alt="Magos con Estilo" onerror="this.style.display='none'">
-      <span style="font-size:1.2rem;font-weight:800;letter-spacing:-0.02em;color:var(--gold);">MAGOS CON ESTILO</span>
+  <!-- HEADER -->
+  <header class="header">
+    <a href="#" class="header-logo">
+      <img src="assets/logo.png" alt="MAGOS CON ESTILO" onerror="this.style.display='none'">
+      <span class="header-logo-text" style="display:none;">MAGOS CON ESTILO</span>
     </a>
-    <ul class="nav-links">
-      <li><a href="#coleccion">Colección</a></li>
+    <ul class="header-nav">
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#coleccion">Coleccion</a></li>
       <li><a href="#nosotros">Nosotros</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
-    <button class="nav-cart" onclick="alert('Tienda próximamente — ¡Síguenos!')">Carrito (0)</button>
-  </nav>
+    <div class="header-actions">
+      <a href="#">Buscar</a>
+      <a href="#">Carrito (0)</a>
+    </div>
+  </header>
 
   <!-- HERO -->
   <section class="hero">
+    <img class="hero-image" src="assets/hero-magic.jpg" alt="MAGOS CON ESTILO" onerror="this.style.background='#111'">
+    <div class="hero-overlay"></div>
     <div class="hero-content">
-      <div class="hero-logo">
-        <img src="assets/logo.png" alt="Magos con Estilo" onerror="this.style.display='none'">
-      </div>
-      <h1>El truco está<br>en el estilo</h1>
-      <p>Merch premium para magos. Diseños creados por magos, para magos. Camisetas, sudaderas y accesorios que hablan el lenguaje del gremio.</p>
-      <a href="#coleccion" class="hero-cta">Ver colección</a>
+      <h1>Magos con Estilo</h1>
+      <p>Merch premium para magos. Disenos creados por magos, para magos. Cada prenda cuenta una historia del gremio.</p>
+      <a href="#coleccion" class="hero-cta">Ver coleccion</a>
     </div>
-    <div class="hero-scroll">Descubre</div>
   </section>
 
-  <!-- COLLECTION -->
+  <!-- FEATURED COLLECTION -->
   <section class="section" id="coleccion">
-    <div class="section-header fade-in">
-      <div class="section-label">Colección 2026</div>
-      <h2>Próximamente</h2>
-      <p>Estamos preparando los primeros diseños. Cada pieza está pensada para el mago que vive su arte dentro y fuera del escenario.</p>
+    <div class="section-header">
+      <h2>Coleccion 2026</h2>
+      <p>Proximamente. Los primeros disenos estan en camino.</p>
     </div>
-
     <div class="product-grid">
-      <!-- PLACEHOLDER PRODUCTS -->
-      <div class="product-card placeholder fade-in">
-        <div class="product-card-image" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;">
-          <span style="font-size:3rem;opacity:0.2;">🎩</span>
-          <span style="font-size:0.75rem;color:var(--gray-dark);letter-spacing:0.1em;">PRÓXIMAMENTE</span>
+      <div class="product-card">
+        <div class="product-card-image" style="background:#e8e4df;">
+          <img src="assets/placeholder-1.jpg" alt="" onerror="this.outerHTML='<span class=placeholder-icon>♠</span>'">
         </div>
-        <div class="product-card-overlay">
-          <div class="product-card-title">Diseño #001</div>
-          <div class="product-card-price">—</div>
+        <div class="product-card-info">
+          <div class="product-name">Proximamente</div>
+          <div class="product-price">—</div>
         </div>
       </div>
-
-      <div class="product-card placeholder fade-in">
-        <div class="product-card-image" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;">
-          <span style="font-size:3rem;opacity:0.2;">🃏</span>
-          <span style="font-size:0.75rem;color:var(--gray-dark);letter-spacing:0.1em;">PRÓXIMAMENTE</span>
+      <div class="product-card">
+        <div class="product-card-image" style="background:#dfe4e8;">
+          <img src="assets/placeholder-2.jpg" alt="" onerror="this.outerHTML='<span class=placeholder-icon>♣</span>'">
         </div>
-        <div class="product-card-overlay">
-          <div class="product-card-title">Diseño #002</div>
-          <div class="product-card-price">—</div>
+        <div class="product-card-info">
+          <div class="product-name">Proximamente</div>
+          <div class="product-price">—</div>
         </div>
       </div>
-
-      <div class="product-card placeholder fade-in">
-        <div class="product-card-image" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;">
-          <span style="font-size:3rem;opacity:0.2;">🐇</span>
-          <span style="font-size:0.75rem;color:var(--gray-dark);letter-spacing:0.1em;">PRÓXIMAMENTE</span>
+      <div class="product-card">
+        <div class="product-card-image" style="background:#e8dfe8;">
+          <img src="assets/placeholder-3.jpg" alt="" onerror="this.outerHTML='<span class=placeholder-icon>♥</span>'">
         </div>
-        <div class="product-card-overlay">
-          <div class="product-card-title">Diseño #003</div>
-          <div class="product-card-price">—</div>
+        <div class="product-card-info">
+          <div class="product-name">Proximamente</div>
+          <div class="product-price">—</div>
         </div>
       </div>
-
-      <div class="product-card placeholder fade-in">
-        <div class="product-card-image" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;">
-          <span style="font-size:3rem;opacity:0.2;">✨</span>
-          <span style="font-size:0.75rem;color:var(--gray-dark);letter-spacing:0.1em;">PRÓXIMAMENTE</span>
-        </div>
-        <div class="product-card-overlay">
-          <div class="product-card-title">Diseño #004</div>
-          <div class="product-card-price">—</div>
-        </div>
-      </div>
-
-      <div class="product-card placeholder fade-in">
-        <div class="product-card-image" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;">
-          <span style="font-size:3rem;opacity:0.2;">🎭</span>
-          <span style="font-size:0.75rem;color:var(--gray-dark);letter-spacing:0.1em;">PRÓXIMAMENTE</span>
-        </div>
-        <div class="product-card-overlay">
-          <div class="product-card-title">Diseño #005</div>
-          <div class="product-card-price">—</div>
-        </div>
-      </div>
-
-      <div class="product-card placeholder fade-in">
-        <div class="product-card-image" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;">
-          <span style="font-size:3rem;opacity:0.2;">🔮</span>
-          <span style="font-size:0.75rem;color:var(--gray-dark);letter-spacing:0.1em;">PRÓXIMAMENTE</span>
-        </div>
-        <div class="product-card-overlay">
-          <div class="product-card-title">Diseño #006</div>
-          <div class="product-card-price">—</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="coming-soon fade-in">
-      <div class="icon">🎪</div>
-      <p style="font-size:1.2rem;font-weight:300;">Los primeros diseños están en camino</p>
-      <p style="font-size:0.85rem;color:var(--gray-dark);margin-top:0.5rem;">¿Tienes una frase o idea? Escríbenos</p>
     </div>
   </section>
+
+  <!-- COLLECTION BANNER -->
+  <div class="collection-banner">
+    <img src="assets/banner-magic.jpg" alt="" onerror="this.style.background='#222'">
+    <div class="overlay"></div>
+    <div class="content">
+      <h2>El truco esta en el estilo</h2>
+      <p>Cada diseno esta pensado para el mago que vive su arte dentro y fuera del escenario.</p>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </div>
+
+  <!-- GRID 2 -->
+  <div class="product-grid">
+    <div class="product-card">
+      <div class="product-card-image" style="background:#dfe8e0;">
+        <img src="assets/placeholder-4.jpg" alt="" onerror="this.outerHTML='<span class=placeholder-icon>♦</span>'">
+      </div>
+      <div class="product-card-info">
+        <div class="product-name">Proximamente</div>
+        <div class="product-price">—</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-card-image" style="background:#e4dfe8;">
+        <img src="assets/placeholder-5.jpg" alt="" onerror="this.outerHTML='<span class=placeholder-icon>♠</span>'">
+      </div>
+      <div class="product-card-info">
+        <div class="product-name">Proximamente</div>
+        <div class="product-price">—</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-card-image" style="background:#e8e4df;">
+        <img src="assets/placeholder-6.jpg" alt="" onerror="this.outerHTML='<span class=placeholder-icon>♣</span>'">
+      </div>
+      <div class="product-card-info">
+        <div class="product-name">Proximamente</div>
+        <div class="product-price">—</div>
+      </div>
+    </div>
+  </div>
 
   <!-- ABOUT -->
-  <section class="about" id="nosotros">
-    <div class="about-image fade-in">
-      <div style="text-align:center;padding:2rem;">
-        <span style="font-size:4rem;opacity:0.15;">🎴</span>
-        <p style="font-size:0.75rem;color:var(--gray-dark);margin-top:1rem;letter-spacing:0.1em;">TU LOGO AQUÍ</p>
-      </div>
+  <section class="about-section" id="nosotros">
+    <div class="about-image" style="display:flex;align-items:center;justify-content:center;background:#f0f0f0;">
+      <img src="assets/about-magic.jpg" alt="" onerror="this.outerHTML='<span class=placeholder-icon style=font-size:4rem;color:#ccc;>♤</span>'">
     </div>
-    <div class="about-text fade-in">
-      <div class="section-label">La marca</div>
-      <h2>Para los que saben<br>que la magia es real</h2>
-      <p>
-        Magos con Estilo nace de una obsesión: la magia bien hecha. Cada diseño está inspirado en el 
-        lenguaje del gremio, en las frases que solo entendemos los que dedicamos horas a un solo movimiento, 
-        en el respeto por el arte y en el orgullo de pertenecer a esta comunidad.
-      </p>
-      <p>
-        Camisetas, sudaderas y accesorios con frases y símbolos que un mago lleva con orgullo. 
-        No es merch para fans de la magia. Es ropa para magos.
-      </p>
-      <p>
-        Cada prenda se imprime bajo demanda con materiales premium. Sin stock, sin desperdicio, 
-        con la calidad que exige quien sabe lo que es hacer bien las cosas.
-      </p>
-      <div class="signature">— El equipo</div>
+    <div class="about-text">
+      <h2>La marca</h2>
+      <p>Magos con Estilo nace de una obsesion: la magia bien hecha. Cada diseno esta inspirado en el lenguaje del gremio, en las frases que solo entendemos los que dedicamos horas a un solo movimiento.</p>
+      <p>Camisetas, sudaderas y accesorios con frases y simbolos que un mago lleva con orgullo. No es merch para fans de la magia. Es ropa para magos.</p>
+      <p>Cada prenda se imprime bajo demanda con materiales premium. Sin stock, sin desperdicio.</p>
     </div>
   </section>
+
+  <!-- NEWSLETTER -->
+  <div class="newsletter">
+    <h3>Enterate primero</h3>
+    <p>Recibe novedades cuando lancemos nuevos disenos.</p>
+    <form class="newsletter-form" onsubmit="alert('Gracias. Te avisaremos cuando lancemos.');return false;">
+      <input type="email" placeholder="Tu email" required>
+      <button type="submit">Suscribirse</button>
+    </form>
+  </div>
 
   <!-- FOOTER -->
   <footer class="footer" id="contacto">
     <div class="footer-grid">
-      <div class="footer-brand fade-in">
-        <img src="assets/logo.png" alt="Magos con Estilo" style="height:36px;" onerror="this.style.display='none'">
-        <p style="margin-top:0.5rem;">Merch premium para magos. Diseños con esencia del gremio, impresos bajo demanda con materiales de primera calidad.</p>
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="MAGOS CON ESTILO" style="height:28px;" onerror="this.style.display='none'">
+        <p>Merch premium para magos. Disenos con esencia del gremio, impresos bajo demanda.</p>
       </div>
-      <div class="fade-in">
-        <h4>Colección</h4>
+      <div>
+        <h4>Coleccion</h4>
         <a href="#">Camisetas</a>
         <a href="#">Sudaderas</a>
         <a href="#">Tazas</a>
         <a href="#">Accesorios</a>
       </div>
-      <div class="fade-in">
-        <h4>Información</h4>
-        <a href="#">Sobre nosotros</a>
-        <a href="#">Envíos</a>
+      <div>
+        <h4>Informacion</h4>
+        <a href="#">Envios</a>
         <a href="#">Devoluciones</a>
         <a href="#">Tallas</a>
       </div>
-      <div class="fade-in">
+      <div>
         <h4>Contacto</h4>
         <a href="mailto:magosconestilo@neolabs.me">magosconestilo@neolabs.me</a>
         <a href="#">Instagram</a>
-        <a href="#">TikTok</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2026 <a href="https://magosconestilo.neolabs.me" style="color:var(--gold);text-decoration:none;">Magos con Estilo</a> — parte de <span>NEO Labs</span></span>
-      <span>Hecho por magos &#8226; Impreso bajo demanda</span>
+      <span>&copy; 2026 MAGOS CON ESTILO — NEO Labs</span>
+      <span>Impreso bajo demanda</span>
     </div>
   </footer>
 
-  <!-- SCRIPTS -->
   <script>
-    // Nav scroll effect
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 50);
-    });
-
-    // Intersection Observer for fade-in animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    // Product detail modal (prepared for future use)
-    function openProduct(name, price, img, desc) {
-      // Will be implemented when products are added
-      alert(`🛒 "${name}" — Próximamente disponible`);
-    }
-
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
+        const el = document.querySelector(this.getAttribute('href'));
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
       });
     });
   </script>
