@@ -150,6 +150,13 @@
               <span>29.99 EUR</span>
             </div>
           </div>
+          <div class="carousel-slide">
+            <img src="assets/modelo-12.jpg" alt="Modelo Magia 12❖">
+            <div class="carousel-slide-info">
+              <span>Modelo Magia 12❖</span>
+              <span>29.99 EUR</span>
+            </div>
+          </div>
         </div>
       </div>
       <button class="carousel-arrow carousel-next" onclick="nextSlide()" aria-label="Siguiente">›</button>
@@ -457,6 +464,29 @@
           <button class="add-btn" onclick="addToCart(this, 'Modelo Magia 11♡', '29.99', '♡')">Añadir al carrito</button>
         </div>
       </div>
+
+      <!-- Modelo 12❖ -->
+      <div class="product-card">
+        <div class="product-card-image" onclick="openLightbox('assets/modelo-12.jpg', 'Modelo Magia 12❖')">
+          <img src="assets/modelo-12.jpg" alt="Modelo Magia 12❖">
+          <span class="badge">Nuevo</span>
+        </div>
+        <div class="product-card-info">
+          <div class="title">Modelo Magia 12❖</div>
+          <div class="price">29.99 EUR</div>
+          <div class="colors">
+            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
+          </div>
+          <div class="size-selector">
+            <span class="size-btn" onclick="selectSize(this)">S</span>
+            <span class="size-btn selected" onclick="selectSize(this)">M</span>
+            <span class="size-btn" onclick="selectSize(this)">L</span>
+            <span class="size-btn" onclick="selectSize(this)">XL</span>
+            <span class="size-btn" onclick="selectSize(this)">XXL</span>
+          </div>
+          <button class="add-btn" onclick="addToCart(this, 'Modelo Magia 12❖', '29.99', '❖')">Añadir al carrito</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -561,7 +591,7 @@
 
     let cart = [];
     let currentSlide = 0;
-    const totalSlides = 11;
+    const totalSlides = 12;
 
     function openCart() {
       document.getElementById('cartSidebar').classList.add('open');
@@ -676,6 +706,19 @@
       goToSlide((currentSlide - 1 + totalSlides) % totalSlides);
     }
 
+    // LIGHTBOX
+    function openLightbox(imgSrc, name) {
+      document.getElementById('lightboxImage').src = imgSrc;
+      document.getElementById('lightboxName').textContent = name;
+      document.getElementById('lightboxOverlay').classList.add('open');
+      document.getElementById('lightboxModal').classList.add('open');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightboxOverlay').classList.remove('open');
+      document.getElementById('lightboxModal').classList.remove('open');
+    }
+
     // Init carousel dots
     document.addEventListener('DOMContentLoaded', function() {
       const dotsContainer = document.getElementById('carouselDots');
@@ -688,6 +731,18 @@
 
       // Auto-advance every 4 seconds
       setInterval(nextSlide, 4000);
+
+      // LIGHTBOX — clic en cualquier imagen de producto
+      document.querySelectorAll('.product-card-image').forEach(el => {
+        el.addEventListener('click', function(e) {
+          if (e.target.closest('.add-btn') || e.target.closest('.size-btn') || e.target.closest('.color-dot')) return;
+          const img = this.querySelector('img');
+          if (img) {
+            const name = this.closest('.product-card').querySelector('.title');
+            openLightbox(img.src, name ? name.textContent : '');
+          }
+        });
+      });
     });
 
     // Smooth scroll for anchor links
@@ -699,6 +754,14 @@
       });
     });
   </script>
+
+  <!-- LIGHTBOX — IMAGEN GRANDE -->
+  <div class="lightbox-overlay" id="lightboxOverlay" onclick="closeLightbox()"></div>
+  <div class="lightbox-modal" id="lightboxModal">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <img id="lightboxImage" src="" alt="">
+    <div class="lightbox-name" id="lightboxName"></div>
+  </div>
 
   <!-- WHATSAPP BURBUJA FLOTANTE -->
   <a href="https://wa.me/34600000000" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Contactar por WhatsApp">
