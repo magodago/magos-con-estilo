@@ -303,6 +303,19 @@ body {
   background: #0d0d0d;
   padding: 4rem 2rem;
   margin: 2rem 0;
+  position: relative;
+}
+
+.exclusive-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid transparent;
+  background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .exclusive-container {
@@ -313,14 +326,14 @@ body {
 
 .exclusive-badge {
   display: inline-block;
-  background: #fff;
-  color: #000;
+  background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728);
+  color: #1a1a1a;
   font-size: 0.55rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   padding: 0.3rem 0.8rem;
   margin-bottom: 1.5rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .exclusive-grid {
@@ -335,6 +348,7 @@ body {
   aspect-ratio: 4 / 5;
   background: #1a1a1a;
   overflow: hidden;
+  box-shadow: 0 0 30px rgba(191,149,63,0.15), 0 0 60px rgba(191,149,63,0.08);
 }
 
 .exclusive-image img {
@@ -348,13 +362,45 @@ body {
   position: absolute;
   top: 0.75rem;
   right: 0.75rem;
-  background: #fff;
-  color: #000;
+  background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728);
+  color: #1a1a1a;
   font-size: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   padding: 0.25rem 0.6rem;
-  font-weight: 600;
+  font-weight: 700;
+}
+
+/* Overlay vendido */
+.exclusive-sold {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 3;
+  gap: 0.5rem;
+}
+
+.exclusive-sold.show { display: flex; }
+
+.exclusive-sold span:first-child {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #fff;
+  border: 2px solid #bf953f;
+  padding: 0.5rem 1.2rem;
+}
+
+.exclusive-sold span:last-child {
+  font-size: 0.65rem;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .exclusive-info {
@@ -366,9 +412,9 @@ body {
   font-size: 0.6rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: #888;
+  color: #bf953f;
   margin-bottom: 0.5rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .exclusive-info h2 {
@@ -409,8 +455,8 @@ body {
 }
 
 .detail-value {
-  color: #fff;
-  font-weight: 500;
+  color: #bf953f;
+  font-weight: 600;
 }
 
 .exclusive-price {
@@ -424,6 +470,10 @@ body {
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .exclusive-price-note {
@@ -436,19 +486,27 @@ body {
 .exclusive-btn {
   width: 100%;
   padding: 1rem;
-  background: #fff;
-  color: #000;
+  background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728);
+  color: #1a1a1a;
   border: none;
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   font-family: inherit;
   transition: opacity 0.2s;
 }
 
 .exclusive-btn:hover { opacity: 0.85; }
+
+.exclusive-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+  background: #333;
+  color: #666;
+  -webkit-text-fill-color: #666;
+}
 
 /* CARRUSEL */
 .carousel-section {

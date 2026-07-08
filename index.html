@@ -118,6 +118,10 @@
         <div class="exclusive-image">
           <img src="assets/placeholder-exclusive.jpg" alt="Edición Única">
           <div class="exclusive-image-badge">Exclusivo</div>
+          <div class="exclusive-sold" id="exclusiveSold">
+            <span>AGOTADO</span>
+            <span>Esta pieza única ya tiene dueño</span>
+          </div>
         </div>
         <div class="exclusive-info">
           <span class="exclusive-tag">Pieza Única</span>
@@ -133,15 +137,15 @@
               <span class="detail-value">Incluido</span>
             </div>
             <div class="exclusive-detail">
-              <span class="detail-label">Talla única</span>
-              <span class="detail-value">M (personalizable)</span>
+              <span class="detail-label">Talla</span>
+              <span class="detail-value">La que quieras</span>
             </div>
           </div>
           <div class="exclusive-price">
             <span class="exclusive-price-amount">89.99 EUR</span>
             <span class="exclusive-price-note">Envío incluido</span>
           </div>
-          <button class="exclusive-btn" onclick="alert('Próximamente — primera edición única en camino')">Reservar</button>
+          <button class="exclusive-btn" id="exclusiveBtn" onclick="buyExclusive()">Reservar</button>
         </div>
       </div>
     </div>
@@ -313,10 +317,9 @@
       </div>
       <div>
         <h4>Tienda</h4>
-        <a href="#">Camisetas</a>
+        <a href="#productos">Colección 2026</a>
+        <a href="#">Edición Única</a>
         <a href="#">Sudaderas</a>
-        <a href="#">Tazas</a>
-        <a href="#">Accesorios</a>
       </div>
       <div>
         <h4>Ayuda</h4>
@@ -440,6 +443,25 @@
     function removeFromCart(index) {
       cart.splice(index, 1);
       renderCart();
+    }
+
+    // EDICIÓN ÚNICA — compra y estado agotado
+    function buyExclusive() {
+      const sold = document.getElementById('exclusiveSold');
+      const btn = document.getElementById('exclusiveBtn');
+      sold.classList.add('show');
+      btn.disabled = true;
+      btn.textContent = 'Vendido';
+      localStorage.setItem('exclusiveSold', 'true');
+      alert('¡Enhorabuena! Eres el dueño de la única camiseta de este diseño en el mundo. Te contactaremos para la talla y el envío.');
+    }
+
+    // Comprobar si ya se vendió
+    if (localStorage.getItem('exclusiveSold') === 'true') {
+      document.getElementById('exclusiveSold').classList.add('show');
+      const btn = document.getElementById('exclusiveBtn');
+      btn.disabled = true;
+      btn.textContent = 'Vendido';
     }
 
     function selectColor(el) {
