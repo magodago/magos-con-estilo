@@ -2,7 +2,10 @@
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  touch-action: pan-y;
+}
 
 img, video, iframe { max-width: 100%; height: auto; }
 
@@ -41,7 +44,7 @@ body {
 .header-logo { text-decoration: none; }
 
 .header-logo img {
-  height: 42px;
+  height: 56px;
   width: auto;
   display: block;
 }
@@ -147,7 +150,7 @@ body {
 }
 
 .hero-logo img {
-  height: 140px;
+  height: 280px;
   width: auto;
 }
 
@@ -806,5 +809,5 @@ body {
   .add-btn { font-size: 0.6rem; padding: 0.5rem; }
   .product-card-image { aspect-ratio: 3 / 4; }
   .hero-content h1 { font-size: 2rem; }
-  .hero-logo img { height: 100px; }
+  .hero-logo img { height: 160px; }
 }
