@@ -976,6 +976,35 @@ body {
   font-size: 0.85rem;
 }
 
+/* WHATSAPP FLOTANTE */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 52px;
+  height: 52px;
+  background: #000;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 300;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.3);
+}
+
+.whatsapp-float svg {
+  width: 24px;
+  height: 24px;
+}
+
 /* BANNER */
 .banner {
   position: relative;
@@ -1218,7 +1247,6 @@ body {
 @media (max-width: 600px) {
   .header { padding: 0.5rem 1rem; }
   .header-nav { display: none; }
-  .header-wand { display: none; }
   .product-grid { grid-template-columns: repeat(2, 1fr); gap: 0.3rem; }
   .footer-grid { grid-template-columns: 1fr; }
   .hero { height: 70vh; min-height: 450px; }
