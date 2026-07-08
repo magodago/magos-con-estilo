@@ -345,7 +345,7 @@ body {
 
 .exclusive-image {
   position: relative;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1;
   background: #1a1a1a;
   overflow: hidden;
   box-shadow: 0 0 30px rgba(191,149,63,0.15), 0 0 60px rgba(191,149,63,0.08);
