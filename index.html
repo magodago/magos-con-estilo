@@ -719,31 +719,33 @@
       document.getElementById('lightboxModal').classList.remove('open');
     }
 
-    // Init carousel dots
-    document.addEventListener('DOMContentLoaded', function() {
+    // INIT — carrusel, dots y lightbox
+    (function init() {
       const dotsContainer = document.getElementById('carouselDots');
-      for (let i = 0; i < totalSlides; i++) {
-        const dot = document.createElement('span');
-        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-        dot.setAttribute('onclick', 'goToSlide(' + i + ')');
-        dotsContainer.appendChild(dot);
+      if (dotsContainer) {
+        for (let i = 0; i < totalSlides; i++) {
+          const dot = document.createElement('span');
+          dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+          dot.setAttribute('onclick', 'goToSlide(' + i + ')');
+          dotsContainer.appendChild(dot);
+        }
+        setInterval(nextSlide, 4000);
       }
 
-      // Auto-advance every 4 seconds
-      setInterval(nextSlide, 4000);
-
-      // LIGHTBOX — clic en cualquier imagen de producto
-      document.querySelectorAll('.product-card-image').forEach(el => {
+      // LIGHTBOX — clic en cualquier imagen de producto (incluye badge)
+      document.querySelectorAll('.product-card-image').forEach(function(el) {
         el.addEventListener('click', function(e) {
-          if (e.target.closest('.add-btn') || e.target.closest('.size-btn') || e.target.closest('.color-dot')) return;
+          const btn = e.target.closest('.add-btn, .size-btn, .color-dot');
+          if (btn) return;
           const img = this.querySelector('img');
           if (img) {
-            const name = this.closest('.product-card').querySelector('.title');
-            openLightbox(img.src, name ? name.textContent : '');
+            const card = this.closest('.product-card');
+            const title = card ? card.querySelector('.title') : null;
+            openLightbox(img.src, title ? title.textContent : '');
           }
         });
       });
-    });
+    })();
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(a => {
