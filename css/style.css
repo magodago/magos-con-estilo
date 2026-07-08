@@ -107,6 +107,15 @@ body {
   padding: 2rem;
 }
 
+.hero-logo {
+  margin-bottom: 1.5rem;
+}
+
+.hero-logo img {
+  height: 140px;
+  width: auto;
+}
+
 .hero-content h1 {
   font-size: clamp(2.5rem, 6vw, 5rem);
   font-weight: 700;
