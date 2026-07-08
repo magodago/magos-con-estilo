@@ -25,14 +25,13 @@
       <li><a href="#contacto">Contacto</a></li>
     </ul>
     <div class="header-actions">
-      <span>Buscar</span>
-      <span>Carrito (0)</span>
+      <span style="cursor:pointer;" onclick="openCart()">Carrito <span class="cart-count" id="cartCount">0</span></span>
     </div>
   </header>
 
   <!-- HERO -->
   <section class="hero">
-    <div style="background:#000;position:absolute;inset:0;"></div>
+    <div style="background:#1a1a1a;position:absolute;inset:0;"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <div class="hero-logo">
@@ -48,11 +47,10 @@
   <section class="section" id="productos">
     <div class="section-header">
       <h2>Coleccion 2026</h2>
-      <p>Proximamente. Los primeros disenos estan en camino.</p>
+      <p>Camisetas premium 100% algodon. Color blanco o negro. Tallas S a XXL. 29.90 EUR.</p>
     </div>
 
     <div class="product-grid">
-      <!-- Producto 1 -->
       <div class="product-card">
         <div class="product-card-image">
           <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#eee;color:#bbb;font-size:3rem;font-weight:100;">&spades;</div>
@@ -62,13 +60,20 @@
           <div class="title">El Secreto del Mago</div>
           <div class="price">29.90 EUR</div>
           <div class="colors">
-            <span class="color-dot white"></span>
-            <span class="color-dot black"></span>
+            <span class="color-dot white selected" data-color="Blanco" onclick="selectColor(this)"></span>
+            <span class="color-dot black" data-color="Negro" onclick="selectColor(this)"></span>
           </div>
+          <div class="size-selector">
+            <span class="size-btn" onclick="selectSize(this)">S</span>
+            <span class="size-btn selected" onclick="selectSize(this)">M</span>
+            <span class="size-btn" onclick="selectSize(this)">L</span>
+            <span class="size-btn" onclick="selectSize(this)">XL</span>
+            <span class="size-btn" onclick="selectSize(this)">XXL</span>
+          </div>
+          <button class="add-btn" onclick="addToCart(this, 'El Secreto del Mago', '29.90', '\u2660')">Anadir al carrito</button>
         </div>
       </div>
 
-      <!-- Producto 2 -->
       <div class="product-card">
         <div class="product-card-image">
           <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#eee;color:#bbb;font-size:3rem;font-weight:100;">&clubs;</div>
@@ -78,13 +83,20 @@
           <div class="title">Nunca Repitas el Truco</div>
           <div class="price">29.90 EUR</div>
           <div class="colors">
-            <span class="color-dot white"></span>
-            <span class="color-dot black"></span>
+            <span class="color-dot white selected" data-color="Blanco" onclick="selectColor(this)"></span>
+            <span class="color-dot black" data-color="Negro" onclick="selectColor(this)"></span>
           </div>
+          <div class="size-selector">
+            <span class="size-btn" onclick="selectSize(this)">S</span>
+            <span class="size-btn selected" onclick="selectSize(this)">M</span>
+            <span class="size-btn" onclick="selectSize(this)">L</span>
+            <span class="size-btn" onclick="selectSize(this)">XL</span>
+            <span class="size-btn" onclick="selectSize(this)">XXL</span>
+          </div>
+          <button class="add-btn" onclick="addToCart(this, 'Nunca Repitas el Truco', '29.90', '\u2663')">Anadir al carrito</button>
         </div>
       </div>
 
-      <!-- Producto 3 -->
       <div class="product-card">
         <div class="product-card-image">
           <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#eee;color:#bbb;font-size:3rem;font-weight:100;">&hearts;</div>
@@ -94,29 +106,43 @@
           <div class="title">El Show Debe Continuar</div>
           <div class="price">29.90 EUR</div>
           <div class="colors">
-            <span class="color-dot white"></span>
-            <span class="color-dot black"></span>
+            <span class="color-dot white selected" data-color="Blanco" onclick="selectColor(this)"></span>
+            <span class="color-dot black" data-color="Negro" onclick="selectColor(this)"></span>
           </div>
+          <div class="size-selector">
+            <span class="size-btn" onclick="selectSize(this)">S</span>
+            <span class="size-btn selected" onclick="selectSize(this)">M</span>
+            <span class="size-btn" onclick="selectSize(this)">L</span>
+            <span class="size-btn" onclick="selectSize(this)">XL</span>
+            <span class="size-btn" onclick="selectSize(this)">XXL</span>
+          </div>
+          <button class="add-btn" onclick="addToCart(this, 'El Show Debe Continuar', '29.90', '\u2665')">Anadir al carrito</button>
         </div>
       </div>
 
-      <!-- Producto 4 -->
       <div class="product-card">
         <div class="product-card-image">
-          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#eee;color:#bbb;font-size:3rem;font-weight:100;">&diams;</div>
+          <div style="width:100%;height:100%;display:align-items:center;justify-content:center;background:#eee;color:#bbb;font-size:3rem;font-weight:100;display:flex;">&diams;</div>
           <span class="badge">Proximamente</span>
         </div>
         <div class="product-card-info">
           <div class="title">Cree en la Magia</div>
           <div class="price">34.90 EUR</div>
           <div class="colors">
-            <span class="color-dot white"></span>
-            <span class="color-dot black"></span>
+            <span class="color-dot white selected" data-color="Blanco" onclick="selectColor(this)"></span>
+            <span class="color-dot black" data-color="Negro" onclick="selectColor(this)"></span>
           </div>
+          <div class="size-selector">
+            <span class="size-btn" onclick="selectSize(this)">S</span>
+            <span class="size-btn selected" onclick="selectSize(this)">M</span>
+            <span class="size-btn" onclick="selectSize(this)">L</span>
+            <span class="size-btn" onclick="selectSize(this)">XL</span>
+            <span class="size-btn" onclick="selectSize(this)">XXL</span>
+          </div>
+          <button class="add-btn" onclick="addToCart(this, 'Cree en la Magia', '34.90', '\u2666')">Anadir al carrito</button>
         </div>
       </div>
 
-      <!-- Producto 5 -->
       <div class="product-card">
         <div class="product-card-image">
           <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#eee;color:#bbb;font-size:3rem;font-weight:100;">&spades;</div>
@@ -126,13 +152,20 @@
           <div class="title">Cartomagia</div>
           <div class="price">29.90 EUR</div>
           <div class="colors">
-            <span class="color-dot white"></span>
-            <span class="color-dot black"></span>
+            <span class="color-dot white selected" data-color="Blanco" onclick="selectColor(this)"></span>
+            <span class="color-dot black" data-color="Negro" onclick="selectColor(this)"></span>
           </div>
+          <div class="size-selector">
+            <span class="size-btn" onclick="selectSize(this)">S</span>
+            <span class="size-btn selected" onclick="selectSize(this)">M</span>
+            <span class="size-btn" onclick="selectSize(this)">L</span>
+            <span class="size-btn" onclick="selectSize(this)">XL</span>
+            <span class="size-btn" onclick="selectSize(this)">XXL</span>
+          </div>
+          <button class="add-btn" onclick="addToCart(this, 'Cartomagia', '29.90', '\u2660')">Anadir al carrito</button>
         </div>
       </div>
 
-      <!-- Producto 6 -->
       <div class="product-card">
         <div class="product-card-image">
           <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#eee;color:#bbb;font-size:3rem;font-weight:100;">&clubs;</div>
@@ -142,9 +175,17 @@
           <div class="title">Magia es Trabajo</div>
           <div class="price">34.90 EUR</div>
           <div class="colors">
-            <span class="color-dot white"></span>
-            <span class="color-dot black"></span>
+            <span class="color-dot white selected" data-color="Blanco" onclick="selectColor(this)"></span>
+            <span class="color-dot black" data-color="Negro" onclick="selectColor(this)"></span>
           </div>
+          <div class="size-selector">
+            <span class="size-btn" onclick="selectSize(this)">S</span>
+            <span class="size-btn selected" onclick="selectSize(this)">M</span>
+            <span class="size-btn" onclick="selectSize(this)">L</span>
+            <span class="size-btn" onclick="selectSize(this)">XL</span>
+            <span class="size-btn" onclick="selectSize(this)">XXL</span>
+          </div>
+          <button class="add-btn" onclick="addToCart(this, 'Magia es Trabajo', '34.90', '\u2663')">Anadir al carrito</button>
         </div>
       </div>
     </div>
@@ -165,44 +206,68 @@
   <div class="product-grid" style="max-width:1200px;margin:0 auto;padding:0 2rem 4rem;">
     <div class="product-card">
       <div class="product-card-image">
-        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#2a2a3a,#1a1a2e);color:#555;font-size:3rem;font-weight:100;">&hearts;</div>
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#eee;color:#bbb;font-size:3rem;font-weight:100;">&hearts;</div>
         <span class="badge">Proximamente</span>
       </div>
       <div class="product-card-info">
         <div class="title">Mano mas Rapida que el Ojo</div>
         <div class="price">29.90 EUR</div>
         <div class="colors">
-          <span class="color-dot white"></span>
-          <span class="color-dot black"></span>
+          <span class="color-dot white selected" data-color="Blanco" onclick="selectColor(this)"></span>
+          <span class="color-dot black" data-color="Negro" onclick="selectColor(this)"></span>
         </div>
+        <div class="size-selector">
+          <span class="size-btn" onclick="selectSize(this)">S</span>
+          <span class="size-btn selected" onclick="selectSize(this)">M</span>
+          <span class="size-btn" onclick="selectSize(this)">L</span>
+          <span class="size-btn" onclick="selectSize(this)">XL</span>
+          <span class="size-btn" onclick="selectSize(this)">XXL</span>
+        </div>
+        <button class="add-btn" onclick="addToCart(this, 'Mano mas Rapida que el Ojo', '29.90', '\u2665')">Anadir al carrito</button>
       </div>
     </div>
     <div class="product-card">
       <div class="product-card-image">
-        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#2a2a3a,#1a1a2e);color:#555;font-size:3rem;font-weight:100;">&diams;</div>
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#eee;color:#bbb;font-size:3rem;font-weight:100;">&diams;</div>
         <span class="badge">Proximamente</span>
       </div>
       <div class="product-card-info">
         <div class="title">El Conejo y el Sombrero</div>
         <div class="price">34.90 EUR</div>
         <div class="colors">
-          <span class="color-dot white"></span>
-          <span class="color-dot black"></span>
+          <span class="color-dot white selected" data-color="Blanco" onclick="selectColor(this)"></span>
+          <span class="color-dot black" data-color="Negro" onclick="selectColor(this)"></span>
         </div>
+        <div class="size-selector">
+          <span class="size-btn" onclick="selectSize(this)">S</span>
+          <span class="size-btn selected" onclick="selectSize(this)">M</span>
+          <span class="size-btn" onclick="selectSize(this)">L</span>
+          <span class="size-btn" onclick="selectSize(this)">XL</span>
+          <span class="size-btn" onclick="selectSize(this)">XXL</span>
+        </div>
+        <button class="add-btn" onclick="addToCart(this, 'El Conejo y el Sombrero', '34.90', '\u2666')">Anadir al carrito</button>
       </div>
     </div>
     <div class="product-card">
       <div class="product-card-image">
-        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#2a2a3a,#1a1a2e);color:#555;font-size:3rem;font-weight:100;">&spades;</div>
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#eee;color:#bbb;font-size:3rem;font-weight:100;">&spades;</div>
         <span class="badge">Proximamente</span>
       </div>
       <div class="product-card-info">
         <div class="title">Silencio, se Magia</div>
         <div class="price">29.90 EUR</div>
         <div class="colors">
-          <span class="color-dot white"></span>
-          <span class="color-dot black"></span>
+          <span class="color-dot white selected" data-color="Blanco" onclick="selectColor(this)"></span>
+          <span class="color-dot black" data-color="Negro" onclick="selectColor(this)"></span>
         </div>
+        <div class="size-selector">
+          <span class="size-btn" onclick="selectSize(this)">S</span>
+          <span class="size-btn selected" onclick="selectSize(this)">M</span>
+          <span class="size-btn" onclick="selectSize(this)">L</span>
+          <span class="size-btn" onclick="selectSize(this)">XL</span>
+          <span class="size-btn" onclick="selectSize(this)">XXL</span>
+        </div>
+        <button class="add-btn" onclick="addToCart(this, 'Silencio, se Magia', '29.90', '\u2660')">Anadir al carrito</button>
       </div>
     </div>
   </div>
@@ -263,7 +328,116 @@
     </div>
   </footer>
 
+  <!-- CART OVERLAY -->
+  <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+
+  <!-- CART SIDEBAR -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Carrito</h3>
+      <button class="cart-close" onclick="closeCart()">&times;</button>
+    </div>
+    <div id="cartItems">
+      <div class="cart-empty">Tu carrito esta vacio</div>
+    </div>
+    <div id="cartFooter" style="display:none;">
+      <div class="cart-total">
+        <span>Total</span>
+        <span id="cartTotal">0.00 EUR</span>
+      </div>
+      <button class="cart-checkout" onclick="alert('Funcionalidad de pago proximamente. Total: '+document.getElementById('cartTotal').textContent)">Proceder al pago</button>
+    </div>
+  </div>
+
   <script>
+    // ===== CART =====
+    let cart = [];
+
+    function openCart() {
+      document.getElementById('cartSidebar').classList.add('open');
+      document.getElementById('cartOverlay').classList.add('open');
+    }
+
+    function closeCart() {
+      document.getElementById('cartSidebar').classList.remove('open');
+      document.getElementById('cartOverlay').classList.remove('open');
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cartItems');
+      const footer = document.getElementById('cartFooter');
+      const count = document.getElementById('cartCount');
+
+      count.textContent = cart.length;
+
+      if (cart.length === 0) {
+        container.innerHTML = '<div class="cart-empty">Tu carrito esta vacio</div>';
+        footer.style.display = 'none';
+        return;
+      }
+
+      footer.style.display = 'block';
+      let html = '';
+      let total = 0;
+
+      cart.forEach((item, i) => {
+        total += parseFloat(item.price);
+        html += '<div class="cart-item">' +
+          '<div class="cart-item-image">' + item.icon + '</div>' +
+          '<div class="cart-item-info">' +
+            '<div class="item-name">' + item.name + '</div>' +
+            '<div class="item-details">' + item.color + ' / Talla ' + item.size + '</div>' +
+            '<div class="item-price">' + item.price + ' EUR</div>' +
+          '</div>' +
+          '<button class="cart-item-remove" onclick="removeFromCart(' + i + ')">Eliminar</button>' +
+        '</div>';
+      });
+
+      container.innerHTML = html;
+      document.getElementById('cartTotal').textContent = total.toFixed(2) + ' EUR';
+    }
+
+    function addToCart(btn, name, price, icon) {
+      const card = btn.closest('.product-card-info') || btn.parentElement;
+      const selectedColor = card.querySelector('.color-dot.selected');
+      const selectedSize = card.querySelector('.size-btn.selected');
+
+      const color = selectedColor ? selectedColor.getAttribute('data-color') : 'Blanco';
+      const size = selectedSize ? selectedSize.textContent : 'M';
+
+      cart.push({ name, price, color, size, icon });
+      renderCart();
+      openCart();
+
+      // Button feedback
+      const orig = btn.textContent;
+      btn.textContent = '✔ Anadido';
+      btn.style.opacity = '0.7';
+      setTimeout(() => {
+        btn.textContent = orig;
+        btn.style.opacity = '1';
+      }, 1500);
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      renderCart();
+    }
+
+    // ===== SELECTORS =====
+    function selectColor(el) {
+      const parent = el.parentElement;
+      parent.querySelectorAll('.color-dot').forEach(d => d.classList.remove('selected'));
+      el.classList.add('selected');
+    }
+
+    function selectSize(el) {
+      const parent = el.parentElement;
+      parent.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
+      el.classList.add('selected');
+    }
+
+    // ===== SMOOTH SCROLL =====
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', function(e) {
         e.preventDefault();
