@@ -1,4 +1,4 @@
-/* MAGOS CON ESTILO — NEGRO & BLANCO */
+/* MAGOS CON ESTILO — COLD CULTURE INSPIRED */
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -6,16 +6,16 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: Helvetica, Arial, sans-serif;
-  background: #000;
-  color: #fff;
+  background: #fff;
+  color: #000;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
 
 /* TOP BAR */
 .top-bar {
-  background: #111;
-  color: #888;
+  background: #000;
+  color: #fff;
   text-align: center;
   padding: 0.5rem;
   font-size: 0.65rem;
@@ -31,8 +31,8 @@ body {
   padding: 1rem 2rem;
   position: sticky;
   top: 0;
-  background: #000;
-  border-bottom: 1px solid #1a1a1a;
+  background: #fff;
+  border-bottom: 1px solid #eee;
   z-index: 100;
 }
 
@@ -51,16 +51,16 @@ body {
 }
 
 .header-nav a {
-  color: #888;
+  color: #000;
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-weight: 500;
   text-decoration: none;
-  transition: color 0.2s;
+  transition: opacity 0.2s;
 }
 
-.header-nav a:hover { color: #fff; }
+.header-nav a:hover { opacity: 0.5; }
 
 .header-actions {
   display: flex;
@@ -68,7 +68,7 @@ body {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #888;
+  color: #000;
 }
 
 /* HERO */
@@ -81,7 +81,7 @@ body {
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  background: #0a0a0a;
+  background: #f5f5f5;
 }
 
 .hero-bg {
@@ -90,18 +90,18 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.4;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.7) 100%);
+  background: rgba(0,0,0,0.3);
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
+  color: #fff;
   padding: 2rem;
 }
 
@@ -115,27 +115,24 @@ body {
 }
 
 .hero-content h1 {
-  font-size: clamp(2rem, 5vw, 4rem);
+  font-size: clamp(2.5rem, 6vw, 5rem);
   font-weight: 700;
   letter-spacing: -0.02em;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.5rem;
   text-transform: uppercase;
 }
 
 .hero-content p {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 300;
-  color: #888;
   margin-bottom: 2rem;
-  max-width: 450px;
-  margin-left: auto;
-  margin-right: auto;
+  opacity: 0.8;
 }
 
 .hero-cta {
   display: inline-block;
   padding: 0.9rem 2.8rem;
-  border: 1px solid rgba(255,255,255,0.3);
+  border: 2px solid #fff;
   color: #fff;
   font-size: 0.7rem;
   text-transform: uppercase;
@@ -148,7 +145,6 @@ body {
 .hero-cta:hover {
   background: #fff;
   color: #000;
-  border-color: #fff;
 }
 
 /* SECTION */
@@ -163,14 +159,14 @@ body {
 }
 
 .section-header h2 {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .section-header p {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: #666;
   margin-top: 0.5rem;
 }
@@ -187,7 +183,7 @@ body {
 .product-card-image {
   width: 100%;
   aspect-ratio: 1;
-  background: #111;
+  background: #f5f5f5;
   overflow: hidden;
   position: relative;
 }
@@ -208,13 +204,12 @@ body {
   position: absolute;
   top: 0.5rem;
   left: 0.5rem;
-  background: #fff;
-  color: #000;
+  background: #000;
+  color: #fff;
   font-size: 0.55rem;
   padding: 0.2rem 0.5rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  font-weight: 600;
 }
 
 .product-card-info {
@@ -231,7 +226,7 @@ body {
 
 .product-card-info .price {
   font-size: 0.8rem;
-  color: #888;
+  color: #666;
 }
 
 .product-card-info .colors {
@@ -244,7 +239,7 @@ body {
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  border: 1px solid #333;
+  border: 1px solid #ddd;
 }
 
 .product-card-info .color-dot.white { background: #f0f0f0; }
@@ -268,13 +263,12 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.4;
 }
 
 .banner-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.35);
 }
 
 .banner-content {
@@ -285,7 +279,7 @@ body {
 }
 
 .banner-content h2 {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -293,15 +287,15 @@ body {
 }
 
 .banner-content p {
-  font-size: 0.8rem;
-  opacity: 0.7;
+  font-size: 0.85rem;
+  opacity: 0.8;
   margin-bottom: 1.5rem;
 }
 
 .banner-content a {
   color: #fff;
   text-decoration: none;
-  border-bottom: 1px solid rgba(255,255,255,0.3);
+  border-bottom: 1px solid rgba(255,255,255,0.5);
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -322,7 +316,7 @@ body {
 .about-image {
   width: 100%;
   aspect-ratio: 1;
-  background: #111;
+  background: #f5f5f5;
   overflow: hidden;
 }
 
@@ -333,7 +327,7 @@ body {
 }
 
 .about-text h2 {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -341,8 +335,8 @@ body {
 }
 
 .about-text p {
-  font-size: 0.8rem;
-  color: #888;
+  font-size: 0.85rem;
+  color: #555;
   line-height: 1.7;
   margin-bottom: 0.8rem;
 }
@@ -351,13 +345,11 @@ body {
 .newsletter {
   padding: 4rem 2rem;
   text-align: center;
-  background: #0a0a0a;
-  border-top: 1px solid #1a1a1a;
-  border-bottom: 1px solid #1a1a1a;
+  background: #f9f9f9;
 }
 
 .newsletter h3 {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -365,7 +357,7 @@ body {
 }
 
 .newsletter p {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: #666;
   margin-bottom: 1.5rem;
 }
@@ -379,22 +371,20 @@ body {
 .newsletter-form input {
   flex: 1;
   padding: 0.8rem 1rem;
-  background: #111;
-  border: 1px solid #222;
+  border: 1px solid #ddd;
   border-right: none;
-  color: #fff;
   font-size: 0.8rem;
   font-family: inherit;
   outline: none;
 }
 
-.newsletter-form input::placeholder { color: #555; }
+.newsletter-form input::placeholder { color: #999; }
 
 .newsletter-form button {
   padding: 0.8rem 1.5rem;
-  background: #fff;
-  color: #000;
-  border: 1px solid #fff;
+  background: #000;
+  color: #fff;
+  border: 1px solid #000;
   font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -402,6 +392,8 @@ body {
   cursor: pointer;
   font-family: inherit;
 }
+
+.newsletter-form button:hover { opacity: 0.85; }
 
 /* FOOTER */
 .footer {
@@ -420,38 +412,37 @@ body {
 .footer-brand img { height: 32px; margin-bottom: 0.5rem; }
 
 .footer-brand p {
-  font-size: 0.75rem;
-  color: #555;
+  font-size: 0.8rem;
+  color: #888;
   max-width: 280px;
   line-height: 1.6;
 }
 
 .footer h4 {
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 1rem;
   font-weight: 700;
-  color: #fff;
 }
 
 .footer a {
   display: block;
-  color: #555;
-  font-size: 0.75rem;
+  color: #888;
+  font-size: 0.8rem;
   margin-bottom: 0.5rem;
   text-decoration: none;
 }
 
-.footer a:hover { color: #ccc; }
+.footer a:hover { color: #000; }
 
 .footer-bottom {
-  border-top: 1px solid #1a1a1a;
+  border-top: 1px solid #eee;
   padding-top: 1.5rem;
   display: flex;
   justify-content: space-between;
-  font-size: 0.65rem;
-  color: #444;
+  font-size: 0.7rem;
+  color: #aaa;
 }
 
 /* RESPONSIVE */
