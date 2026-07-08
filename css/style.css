@@ -298,6 +298,158 @@ body {
   color: #000;
 }
 
+/* EXCLUSIVE — EDICIÓN ÚNICA */
+.exclusive-section {
+  background: #0d0d0d;
+  padding: 4rem 2rem;
+  margin: 2rem 0;
+}
+
+.exclusive-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.exclusive-badge {
+  display: inline-block;
+  background: #fff;
+  color: #000;
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 0.3rem 0.8rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.exclusive-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.exclusive-image {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: #1a1a1a;
+  overflow: hidden;
+}
+
+.exclusive-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.exclusive-image-badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: #fff;
+  color: #000;
+  font-size: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.25rem 0.6rem;
+  font-weight: 600;
+}
+
+.exclusive-info {
+  color: #fff;
+}
+
+.exclusive-tag {
+  display: inline-block;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #888;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.exclusive-info h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 1rem;
+}
+
+.exclusive-desc {
+  font-size: 0.85rem;
+  color: #aaa;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.exclusive-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem 0;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
+}
+
+.exclusive-detail {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+}
+
+.detail-label {
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.detail-value {
+  color: #fff;
+  font-weight: 500;
+}
+
+.exclusive-price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.exclusive-price-amount {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.exclusive-price-note {
+  font-size: 0.7rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.exclusive-btn {
+  width: 100%;
+  padding: 1rem;
+  background: #fff;
+  color: #000;
+  border: none;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.2s;
+}
+
+.exclusive-btn:hover { opacity: 0.85; }
+
 /* CARRUSEL */
 .carousel-section {
   padding-top: 2rem;
@@ -929,6 +1081,8 @@ body {
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .carousel-arrow { display: none; }
   .section { padding: 2rem 1rem; }
+  .exclusive-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .exclusive-section { padding: 3rem 1.5rem; }
 }
 
 @media (max-width: 600px) {
