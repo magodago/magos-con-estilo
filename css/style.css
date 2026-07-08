@@ -44,7 +44,7 @@ body {
 .header-logo { text-decoration: none; }
 
 .header-logo img {
-  height: 112px;
+  height: 52px;
   width: auto;
   display: block;
 }
@@ -147,11 +147,123 @@ body {
 
 .hero-logo {
   margin-bottom: 1.5rem;
+  display: inline-block;
 }
 
-.hero-logo img {
+.hero-logo-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.hero-logo-wrap img {
   height: 560px;
   width: auto;
+  display: block;
+  position: relative;
+  z-index: 2;
+}
+
+/* HUMO MÁGICO — haz de luz blanca que emana del logo */
+.smoke {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.1) 40%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+  filter: blur(8px);
+  animation: smokeFloat 4s ease-in-out infinite;
+}
+
+.smoke-1 {
+  width: 180%;
+  height: 100px;
+  bottom: -40px;
+  left: -40%;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.3) 0%, transparent 65%);
+  filter: blur(15px);
+  animation-delay: 0s;
+}
+
+.smoke-2 {
+  width: 100px;
+  height: 180%;
+  right: -35px;
+  top: -40%;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.2) 0%, transparent 65%);
+  filter: blur(18px);
+  animation-delay: 0.8s;
+}
+
+.smoke-3 {
+  width: 100px;
+  height: 180%;
+  left: -35px;
+  top: -40%;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.2) 0%, transparent 65%);
+  filter: blur(18px);
+  animation-delay: 1.6s;
+}
+
+.smoke-4 {
+  width: 180%;
+  height: 100px;
+  top: -40px;
+  left: -40%;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.25) 0%, transparent 65%);
+  filter: blur(15px);
+  animation-delay: 2.4s;
+}
+
+.smoke-5 {
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.08) 0%, transparent 50%);
+  filter: blur(25px);
+  animation: smokePulse 6s ease-in-out infinite;
+  animation-delay: 0.3s;
+}
+
+.smoke-6 {
+  width: 160%;
+  height: 160%;
+  top: -30%;
+  left: -30%;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.06) 0%, transparent 50%);
+  filter: blur(30px);
+  animation: smokePulse 6s ease-in-out infinite;
+  animation-delay: 2.1s;
+}
+
+@keyframes smokeFloat {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1) translateY(0);
+  }
+  25% {
+    opacity: 0.8;
+    transform: scale(1.1) translateY(-5px);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.95) translateY(3px);
+  }
+  75% {
+    opacity: 0.7;
+    transform: scale(1.05) translateY(-2px);
+  }
+}
+
+@keyframes smokePulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.15);
+  }
 }
 
 .hero-content h1 {
@@ -697,9 +809,11 @@ body {
 }
 
 .about-signature {
-  font-size: 0.85rem !important;
-  color: #888 !important;
-  font-style: italic;
+  font-family: 'Caveat', cursive !important;
+  font-size: 1.3rem !important;
+  font-weight: 600 !important;
+  color: #000 !important;
+  font-style: normal !important;
   margin-top: 1.5rem !important;
   border-top: 1px solid #eee;
   padding-top: 1.2rem;
@@ -835,5 +949,8 @@ body {
   .add-btn { font-size: 0.6rem; padding: 0.5rem; }
   .product-card-image { aspect-ratio: 3 / 4; }
   .hero-content h1 { font-size: 2rem; }
-  .hero-logo img { height: 320px; }
+  .hero-logo-wrap img { height: 320px; }
+  .smoke-1, .smoke-4 { height: 50px; }
+  .smoke-2, .smoke-3 { width: 50px; }
+  .smoke-5, .smoke-6 { display: none; }
 }
