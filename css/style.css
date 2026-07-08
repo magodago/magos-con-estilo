@@ -77,6 +77,78 @@ body {
   align-items: center;
 }
 
+/* VARITA MÁGICA — animación flotante entre logo y carrito */
+.header-wand {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  position: relative;
+  height: 20px;
+  animation: wandFloat 3s ease-in-out infinite;
+}
+
+.wand-body {
+  width: 48px;
+  height: 2.5px;
+  background: #000;
+  border-radius: 2px;
+  position: relative;
+}
+
+.wand-tip {
+  width: 6px;
+  height: 6px;
+  background: #000;
+  border-radius: 50%;
+  margin-left: -1px;
+  position: relative;
+}
+
+.wand-sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #000;
+  border-radius: 50%;
+  top: -6px;
+  right: -2px;
+  opacity: 0;
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+.wand-sparkle::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 8px;
+  background: #000;
+  top: -2px;
+  left: 1px;
+  border-radius: 1px;
+}
+
+.wand-sparkle::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 2px;
+  background: #000;
+  top: 1px;
+  left: -2px;
+  border-radius: 1px;
+}
+
+@keyframes wandFloat {
+  0%, 100% { transform: translateX(-8px) rotate(-3deg); }
+  50% { transform: translateX(8px) rotate(3deg); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  30% { opacity: 1; transform: scale(1); }
+  60% { opacity: 0.8; transform: scale(0.8); }
+}
+
 /* CART BUTTON (icono en la barra) */
 .cart-btn {
   background: none;
@@ -1146,6 +1218,7 @@ body {
 @media (max-width: 600px) {
   .header { padding: 0.5rem 1rem; }
   .header-nav { display: none; }
+  .header-wand { display: none; }
   .product-grid { grid-template-columns: repeat(2, 1fr); gap: 0.3rem; }
   .footer-grid { grid-template-columns: 1fr; }
   .hero { height: 70vh; min-height: 450px; }
