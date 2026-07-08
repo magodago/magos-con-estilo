@@ -33,7 +33,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 0.8rem 2rem;
   position: sticky;
   top: 0;
   background: #fff;
@@ -44,7 +44,7 @@ body {
 .header-logo { text-decoration: none; }
 
 .header-logo img {
-  height: 56px;
+  height: 112px;
   width: auto;
   display: block;
 }
@@ -150,7 +150,7 @@ body {
 }
 
 .hero-logo img {
-  height: 280px;
+  height: 560px;
   width: auto;
 }
 
@@ -640,12 +640,12 @@ body {
   padding-bottom: 0.15rem;
 }
 
-/* ABOUT */
+/* ABOUT — PREMIUM */
 .about {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  padding: 4rem 2rem;
+  gap: 4rem;
+  padding: 5rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
   align-items: center;
@@ -664,19 +664,45 @@ body {
   object-fit: cover;
 }
 
+.about-tag {
+  display: inline-block;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #999;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
 .about-text h2 {
-  font-size: 1.3rem;
+  font-size: 1.8rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 1rem;
+  letter-spacing: 0.03em;
+  margin-bottom: 1.5rem;
+}
+
+.about-intro {
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  color: #222 !important;
+  line-height: 1.8 !important;
 }
 
 .about-text p {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: #555;
-  line-height: 1.7;
-  margin-bottom: 0.8rem;
+  line-height: 1.9;
+  margin-bottom: 1.2rem;
+}
+
+.about-signature {
+  font-size: 0.85rem !important;
+  color: #888 !important;
+  font-style: italic;
+  margin-top: 1.5rem !important;
+  border-top: 1px solid #eee;
+  padding-top: 1.2rem;
 }
 
 /* NEWSLETTER */
@@ -793,7 +819,7 @@ body {
 }
 
 @media (max-width: 600px) {
-  .header { padding: 0.8rem 1rem; }
+  .header { padding: 0.5rem 1rem; }
   .header-nav { display: none; }
   .product-grid { grid-template-columns: repeat(2, 1fr); gap: 0.3rem; }
   .footer-grid { grid-template-columns: 1fr; }
@@ -809,5 +835,5 @@ body {
   .add-btn { font-size: 0.6rem; padding: 0.5rem; }
   .product-card-image { aspect-ratio: 3 / 4; }
   .hero-content h1 { font-size: 2rem; }
-  .hero-logo img { height: 160px; }
+  .hero-logo img { height: 320px; }
 }
