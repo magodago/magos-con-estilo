@@ -10,7 +10,7 @@
 </head>
 <body>
 
-  <div class="top-bar">Coleccion 2026 — 5 modelos disponibles</div>
+  <div class="top-bar">Colección 2026 — 5 modelos disponibles</div>
 
   <header class="header">
     <a href="/" class="header-logo">
@@ -23,7 +23,14 @@
       <li><a href="#contacto">Contacto</a></li>
     </ul>
     <div class="header-actions">
-      <span style="cursor:pointer;" onclick="openCart()">Carrito <span class="cart-count" id="cartCount">0</span></span>
+      <button class="cart-btn" onclick="openCart()" aria-label="Abrir carrito">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
     </div>
   </header>
 
@@ -35,30 +42,81 @@
         <img src="assets/logo.png" alt="MAGOS CON ESTILO">
       </div>
       <h1>Magos con Estilo</h1>
-      <p>Merch premium para magos. Disenos con la esencia del gremio.</p>
-      <a href="#productos" class="hero-cta">Ver Coleccion</a>
+      <p>Merch premium para magos. Diseños con la esencia del gremio.</p>
+      <a href="#productos" class="hero-cta">Ver Colección</a>
     </div>
+  </section>
+
+  <!-- CARRUSEL MÁS VENDIDOS -->
+  <section class="section carousel-section">
+    <div class="section-header">
+      <h2>Más Vendidos</h2>
+      <p>Los diseños que más gustan</p>
+    </div>
+    <div class="carousel-container">
+      <button class="carousel-arrow carousel-prev" onclick="prevSlide()" aria-label="Anterior">‹</button>
+      <div class="carousel-track-wrapper">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-slide">
+            <img src="assets/modelo-1.jpg" alt="Modelo Magia 1♠">
+            <div class="carousel-slide-info">
+              <span>Modelo Magia 1♠</span>
+              <span>29.99 EUR</span>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="assets/modelo-2.jpg" alt="Modelo Magia 2♣">
+            <div class="carousel-slide-info">
+              <span>Modelo Magia 2♣</span>
+              <span>29.99 EUR</span>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="assets/modelo-3.jpg" alt="Modelo Magia 3♥">
+            <div class="carousel-slide-info">
+              <span>Modelo Magia 3♥</span>
+              <span>29.99 EUR</span>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="assets/modelo-4.jpg" alt="Modelo Magia 4♦">
+            <div class="carousel-slide-info">
+              <span>Modelo Magia 4♦</span>
+              <span>29.99 EUR</span>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="assets/modelo-5.jpg" alt="Modelo Magia 5★">
+            <div class="carousel-slide-info">
+              <span>Modelo Magia 5★</span>
+              <span>29.99 EUR</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-arrow carousel-next" onclick="nextSlide()" aria-label="Siguiente">›</button>
+    </div>
+    <div class="carousel-dots" id="carouselDots"></div>
   </section>
 
   <section class="section" id="productos">
     <div class="section-header">
-      <h2>Coleccion 2026</h2>
-      <p>5 modelos. Camisetas premium 100% algodon. Blanco o negro. Tallas S a XXL. 29.99 EUR.</p>
+      <h2>Colección 2026</h2>
+      <p>5 modelos. Camisetas premium 100% algodón. Solo color negro. Tallas S a XXL. 29.99 EUR.</p>
     </div>
 
     <div class="product-grid">
-      <!-- Modelo 1 -->
+      <!-- Modelo 1♠ -->
       <div class="product-card">
         <div class="product-card-image">
-          <img src="assets/modelo-1.jpg" alt="Modelo Magia 1">
+          <img src="assets/modelo-1.jpg" alt="Modelo Magia 1♠">
           <span class="badge">Nuevo</span>
         </div>
         <div class="product-card-info">
-          <div class="title">Modelo Magia 1</div>
+          <div class="title">Modelo Magia 1♠</div>
           <div class="price">29.99 EUR</div>
           <div class="colors">
-            <span class="color-dot white selected" data-color="Blanco" onclick="selectColor(this)"></span>
-            <span class="color-dot black" data-color="Negro" onclick="selectColor(this)"></span>
+            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
           </div>
           <div class="size-selector">
             <span class="size-btn" onclick="selectSize(this)">S</span>
@@ -67,22 +125,21 @@
             <span class="size-btn" onclick="selectSize(this)">XL</span>
             <span class="size-btn" onclick="selectSize(this)">XXL</span>
           </div>
-          <button class="add-btn" onclick="addToCart(this, 'Modelo Magia 1', '29.99', '1')">Anadir al carrito</button>
+          <button class="add-btn" onclick="addToCart(this, 'Modelo Magia 1♠', '29.99', '♠')">Añadir al carrito</button>
         </div>
       </div>
 
-      <!-- Modelo 2 -->
+      <!-- Modelo 2♣ -->
       <div class="product-card">
         <div class="product-card-image">
-          <img src="assets/modelo-2.jpg" alt="Modelo Magia 2">
+          <img src="assets/modelo-2.jpg" alt="Modelo Magia 2♣">
           <span class="badge">Nuevo</span>
         </div>
         <div class="product-card-info">
-          <div class="title">Modelo Magia 2</div>
+          <div class="title">Modelo Magia 2♣</div>
           <div class="price">29.99 EUR</div>
           <div class="colors">
-            <span class="color-dot white selected" data-color="Blanco" onclick="selectColor(this)"></span>
-            <span class="color-dot black" data-color="Negro" onclick="selectColor(this)"></span>
+            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
           </div>
           <div class="size-selector">
             <span class="size-btn" onclick="selectSize(this)">S</span>
@@ -91,22 +148,21 @@
             <span class="size-btn" onclick="selectSize(this)">XL</span>
             <span class="size-btn" onclick="selectSize(this)">XXL</span>
           </div>
-          <button class="add-btn" onclick="addToCart(this, 'Modelo Magia 2', '29.99', '2')">Anadir al carrito</button>
+          <button class="add-btn" onclick="addToCart(this, 'Modelo Magia 2♣', '29.99', '♣')">Añadir al carrito</button>
         </div>
       </div>
 
-      <!-- Modelo 3 -->
+      <!-- Modelo 3♥ -->
       <div class="product-card">
         <div class="product-card-image">
-          <img src="assets/modelo-3.jpg" alt="Modelo Magia 3">
+          <img src="assets/modelo-3.jpg" alt="Modelo Magia 3♥">
           <span class="badge">Nuevo</span>
         </div>
         <div class="product-card-info">
-          <div class="title">Modelo Magia 3</div>
+          <div class="title">Modelo Magia 3♥</div>
           <div class="price">29.99 EUR</div>
           <div class="colors">
-            <span class="color-dot white selected" data-color="Blanco" onclick="selectColor(this)"></span>
-            <span class="color-dot black" data-color="Negro" onclick="selectColor(this)"></span>
+            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
           </div>
           <div class="size-selector">
             <span class="size-btn" onclick="selectSize(this)">S</span>
@@ -115,22 +171,21 @@
             <span class="size-btn" onclick="selectSize(this)">XL</span>
             <span class="size-btn" onclick="selectSize(this)">XXL</span>
           </div>
-          <button class="add-btn" onclick="addToCart(this, 'Modelo Magia 3', '29.99', '3')">Anadir al carrito</button>
+          <button class="add-btn" onclick="addToCart(this, 'Modelo Magia 3♥', '29.99', '♥')">Añadir al carrito</button>
         </div>
       </div>
 
-      <!-- Modelo 4 -->
+      <!-- Modelo 4♦ -->
       <div class="product-card">
         <div class="product-card-image">
-          <img src="assets/modelo-4.jpg" alt="Modelo Magia 4">
+          <img src="assets/modelo-4.jpg" alt="Modelo Magia 4♦">
           <span class="badge">Nuevo</span>
         </div>
         <div class="product-card-info">
-          <div class="title">Modelo Magia 4</div>
+          <div class="title">Modelo Magia 4♦</div>
           <div class="price">29.99 EUR</div>
           <div class="colors">
-            <span class="color-dot white selected" data-color="Blanco" onclick="selectColor(this)"></span>
-            <span class="color-dot black" data-color="Negro" onclick="selectColor(this)"></span>
+            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
           </div>
           <div class="size-selector">
             <span class="size-btn" onclick="selectSize(this)">S</span>
@@ -139,22 +194,21 @@
             <span class="size-btn" onclick="selectSize(this)">XL</span>
             <span class="size-btn" onclick="selectSize(this)">XXL</span>
           </div>
-          <button class="add-btn" onclick="addToCart(this, 'Modelo Magia 4', '29.99', '4')">Anadir al carrito</button>
+          <button class="add-btn" onclick="addToCart(this, 'Modelo Magia 4♦', '29.99', '♦')">Añadir al carrito</button>
         </div>
       </div>
 
-      <!-- Modelo 5 -->
+      <!-- Modelo 5★ -->
       <div class="product-card">
         <div class="product-card-image">
-          <img src="assets/modelo-5.jpg" alt="Modelo Magia 5">
+          <img src="assets/modelo-5.jpg" alt="Modelo Magia 5★">
           <span class="badge">Nuevo</span>
         </div>
         <div class="product-card-info">
-          <div class="title">Modelo Magia 5</div>
+          <div class="title">Modelo Magia 5★</div>
           <div class="price">29.99 EUR</div>
           <div class="colors">
-            <span class="color-dot white selected" data-color="Blanco" onclick="selectColor(this)"></span>
-            <span class="color-dot black" data-color="Negro" onclick="selectColor(this)"></span>
+            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
           </div>
           <div class="size-selector">
             <span class="size-btn" onclick="selectSize(this)">S</span>
@@ -163,7 +217,7 @@
             <span class="size-btn" onclick="selectSize(this)">XL</span>
             <span class="size-btn" onclick="selectSize(this)">XXL</span>
           </div>
-          <button class="add-btn" onclick="addToCart(this, 'Modelo Magia 5', '29.99', '5')">Anadir al carrito</button>
+          <button class="add-btn" onclick="addToCart(this, 'Modelo Magia 5★', '29.99', '★')">Añadir al carrito</button>
         </div>
       </div>
     </div>
@@ -173,27 +227,27 @@
     <div style="position:absolute;inset:0;background:#222;"></div>
     <div class="banner-overlay"></div>
     <div class="banner-content">
-      <h2>El truco esta en el estilo</h2>
-      <p>Cada diseno esta pensado para el mago que vive su arte.</p>
+      <h2>El truco está en el estilo</h2>
+      <p>Cada diseño está pensado para el mago que vive su arte.</p>
       <a href="#contacto">Contacto</a>
     </div>
   </div>
 
   <div class="about" id="nosotros">
     <div class="about-image">
-      <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#f0f0f0;color:#ccc;font-size:4rem;">&spades;</div>
+      <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#f0f0f0;color:#ccc;font-size:4rem;">♠</div>
     </div>
     <div class="about-text">
       <h2>La Marca</h2>
-      <p>Magos con Estilo nace de una obsesion: la magia bien hecha. Cada diseno esta inspirado en el lenguaje del gremio, en las frases que solo entendemos los que dedicamos horas a un solo movimiento.</p>
+      <p>Magos con Estilo nace de una obsesión: la magia bien hecha. Cada diseño está inspirado en el lenguaje del gremio, en las frases que solo entendemos los que dedicamos horas a un solo movimiento.</p>
       <p>No es merch para fans de la magia. Es ropa para magos. Cada prenda se imprime bajo demanda con materiales premium. Sin stock, sin desperdicio.</p>
-      <p>Blanco o negro. Tallas S a XXL. Hecho por magos, para magos.</p>
+      <p>Solo color negro. Tallas S a XXL. Hecho por magos, para magos.</p>
     </div>
   </div>
 
   <div class="newsletter">
-    <h3>Enterate Primero</h3>
-    <p>Recibe novedades cuando lancemos nuevos disenos.</p>
+    <h3>Entérate Primero</h3>
+    <p>Recibe novedades cuando lancemos nuevos diseños.</p>
     <form class="newsletter-form" onsubmit="alert('Gracias. Te avisaremos cuando lancemos.');return false;">
       <input type="email" placeholder="Tu email" required>
       <button type="submit">Suscribirse</button>
@@ -204,7 +258,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <img src="assets/logo.png" alt="MAGOS CON ESTILO">
-        <p>Merch premium para magos. Disenos con esencia del gremio, impresos bajo demanda.</p>
+        <p>Merch premium para magos. Diseños con esencia del gremio, impresos bajo demanda.</p>
       </div>
       <div>
         <h4>Tienda</h4>
@@ -215,7 +269,7 @@
       </div>
       <div>
         <h4>Ayuda</h4>
-        <a href="#">Envios</a>
+        <a href="#">Envíos</a>
         <a href="#">Devoluciones</a>
         <a href="#">Tallas</a>
       </div>
@@ -240,19 +294,21 @@
       <button class="cart-close" onclick="closeCart()">&times;</button>
     </div>
     <div id="cartItems">
-      <div class="cart-empty">Tu carrito esta vacio</div>
+      <div class="cart-empty">Tu carrito está vacío</div>
     </div>
     <div id="cartFooter" style="display:none;">
       <div class="cart-total">
         <span>Total</span>
         <span id="cartTotal">0.00 EUR</span>
       </div>
-      <button class="cart-checkout" onclick="alert('Funcionalidad de pago proximamente. Total: '+document.getElementById('cartTotal').textContent)">Proceder al pago</button>
+      <button class="cart-checkout" onclick="alert('Funcionalidad de pago próximamente. Total: '+document.getElementById('cartTotal').textContent)">Proceder al pago</button>
     </div>
   </div>
 
   <script>
     let cart = [];
+    let currentSlide = 0;
+    const totalSlides = 5;
 
     function openCart() {
       document.getElementById('cartSidebar').classList.add('open');
@@ -272,7 +328,7 @@
       count.textContent = cart.length;
 
       if (cart.length === 0) {
-        container.innerHTML = '<div class="cart-empty">Tu carrito esta vacio</div>';
+        container.innerHTML = '<div class="cart-empty">Tu carrito está vacío</div>';
         footer.style.display = 'none';
         return;
       }
@@ -284,7 +340,7 @@
       cart.forEach((item, i) => {
         total += parseFloat(item.price);
         html += '<div class="cart-item">' +
-          '<div class="cart-item-image" style="font-size:1rem;font-weight:600;">M' + item.icon + '</div>' +
+          '<div class="cart-item-icon">' + item.icon + '</div>' +
           '<div class="cart-item-info">' +
             '<div class="item-name">' + item.name + '</div>' +
             '<div class="item-details">' + item.color + ' / Talla ' + item.size + '</div>' +
@@ -300,17 +356,15 @@
 
     function addToCart(btn, name, price, icon) {
       const card = btn.closest('.product-card-info');
-      const selectedColor = card.querySelector('.color-dot.selected');
       const selectedSize = card.querySelector('.size-btn.selected');
-      const color = selectedColor ? selectedColor.getAttribute('data-color') : 'Blanco';
       const size = selectedSize ? selectedSize.textContent : 'M';
 
-      cart.push({ name, price, color, size, icon });
+      cart.push({ name, price, color: 'Negro', size, icon });
       renderCart();
       openCart();
 
       const orig = btn.textContent;
-      btn.textContent = 'Anadido';
+      btn.textContent = 'Añadido';
       btn.style.opacity = '0.6';
       setTimeout(() => {
         btn.textContent = orig;
@@ -333,6 +387,38 @@
       el.classList.add('selected');
     }
 
+    // CARRUSEL
+    function goToSlide(index) {
+      const track = document.getElementById('carouselTrack');
+      const dots = document.querySelectorAll('.carousel-dot');
+      currentSlide = index;
+      track.style.transform = 'translateX(-' + (index * 100) + '%)';
+      dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    }
+
+    function nextSlide() {
+      goToSlide((currentSlide + 1) % totalSlides);
+    }
+
+    function prevSlide() {
+      goToSlide((currentSlide - 1 + totalSlides) % totalSlides);
+    }
+
+    // Init carousel dots
+    document.addEventListener('DOMContentLoaded', function() {
+      const dotsContainer = document.getElementById('carouselDots');
+      for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('span');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('onclick', 'goToSlide(' + i + ')');
+        dotsContainer.appendChild(dot);
+      }
+
+      // Auto-advance every 4 seconds
+      setInterval(nextSlide, 4000);
+    });
+
+    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', function(e) {
         e.preventDefault();
