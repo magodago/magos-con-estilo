@@ -773,6 +773,13 @@ body {
   color: #666;
 }
 
+.price-shipping {
+  display: block;
+  font-size: 0.65rem;
+  color: #999;
+  margin-top: 0.1rem;
+}
+
 .product-card-info .colors {
   display: flex;
   gap: 0.4rem;
