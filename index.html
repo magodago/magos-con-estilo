@@ -1,32 +1,1437 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>MAGOS CON ESTILO — Merch para magos</title>
-  <meta name="description" content="Merch premium para magos. Camisetas, sudaderas y accesorios.">
+  <title>MAGOS CON ESTILO — Artwork Collections</title>
+  <meta name="description" content="Where art meets fashion. Premium wearable artworks for magicians.">
   <link rel="icon" type="image/png" href="assets/logo-inverted.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* =============================================
+       MAGOS CON ESTILO — HOME PAGE
+       Luxury Art Gallery Experience
+       ============================================= */
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #000000;
+      --near-black: #0B0B0B;
+      --white: #FFFFFF;
+      --gray-100: #F5F5F5;
+      --gray-200: #E0E0E0;
+      --gray-400: #999999;
+      --gray-500: #777777;
+      --gray-600: #555555;
+      --gray-700: #333333;
+      --gray-800: #1A1A1A;
+      --gray-900: #111111;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --transition-slow: 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+      --transition-med: 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+      --transition-fast: 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* =============================================
+       ANIMATIONS
+       ============================================= */
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 0.8s var(--transition-slow) forwards;
+    }
+
+    .fade-in-1 { animation-delay: 0.1s; }
+    .fade-in-2 { animation-delay: 0.3s; }
+    .fade-in-3 { animation-delay: 0.5s; }
+    .fade-in-4 { animation-delay: 0.7s; }
+    .fade-in-5 { animation-delay: 0.9s; }
+    .fade-in-6 { animation-delay: 1.1s; }
+
+    /* =============================================
+       TOP BAR
+       ============================================= */
+
+    .top-bar {
+      background: var(--gray-900);
+      color: var(--gray-500);
+      text-align: center;
+      padding: 0.6rem;
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    /* =============================================
+       HEADER
+       ============================================= */
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2.5rem;
+      background: transparent;
+      transition: background 0.4s ease;
+    }
+
+    .header.scrolled {
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .header-logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .header-logo img {
+      height: 26px;
+      width: auto;
+      display: block;
+      opacity: 0.85;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      list-style: none;
+    }
+
+    .header-nav > ul {
+      display: flex;
+      list-style: none;
+      gap: 0;
+      align-items: center;
+    }
+
+    .header-nav > ul > li { position: relative; }
+
+    .header-nav > ul > li > a {
+      display: block;
+      color: var(--white);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 400;
+      text-decoration: none;
+      padding: 0.5rem 1.2rem;
+      transition: opacity var(--transition-fast);
+      opacity: 0.7;
+    }
+
+    .header-nav > ul > li > a:hover { opacity: 1; }
+
+    /* Dropdowns */
+    .dropdown { position: relative; }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--near-black);
+      border: 1px solid var(--gray-800);
+      min-width: 220px;
+      padding: 0.5rem 0;
+      z-index: 150;
+    }
+
+    .dropdown-menu.open { display: block; }
+
+    .dropdown-menu li { list-style: none; }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 0.5rem 1.2rem;
+      color: var(--gray-400);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      transition: all var(--transition-fast);
+    }
+
+    .dropdown-menu li a:hover { color: var(--white); background: var(--gray-900); }
+
+    .dropdown-sub { position: relative; }
+
+    .dropdown-sub > .dropdown-menu {
+      top: -0.5rem;
+      left: 100%;
+      margin-left: 1px;
+    }
+
+    .dropdown-toggle::after {
+      content: '▾';
+      display: inline-block;
+      margin-left: 4px;
+      font-size: 0.45rem;
+      vertical-align: middle;
+      opacity: 0.5;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .header-actions a {
+      color: var(--white);
+      opacity: 0.7;
+      transition: opacity var(--transition-fast);
+    }
+
+    .header-actions a:hover { opacity: 1; }
+
+    .cart-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      padding: 0.3rem;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      transition: opacity var(--transition-fast);
+      opacity: 0.7;
+    }
+
+    .cart-btn:hover { opacity: 1; }
+
+    .cart-btn .cart-count {
+      position: absolute;
+      top: -4px;
+      right: -8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--white);
+      color: var(--black);
+      font-size: 0.5rem;
+      width: 14px;
+      height: 14px;
+      line-height: 14px;
+      text-align: center;
+      border-radius: 50%;
+      font-weight: 600;
+      font-family: var(--font-body);
+    }
+
+    /* Hamburger mobile */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 110;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 20px;
+      height: 1.5px;
+      background: var(--white);
+      border-radius: 1px;
+      transition: all 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 90;
+    }
+
+    .nav-overlay.open { display: block; }
+
+    /* =============================================
+       HERO
+       ============================================= */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--black);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, #111 0%, #000 70%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 2rem;
+      max-width: 700px;
+    }
+
+    .hero-logo {
+      margin-bottom: 2rem;
+      display: inline-block;
+    }
+
+    .hero-logo-wrap {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-logo-wrap img {
+      height: 480px;
+      width: auto;
+      display: block;
+      position: relative;
+      z-index: 2;
+      opacity: 0.9;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 3.2rem);
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+      color: var(--white);
+    }
+
+    .hero p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      margin-bottom: 2rem;
+      opacity: 0.6;
+      color: var(--gray-400);
+    }
+
+    .hero-cta {
+      display: inline-block;
+      padding: 0.9rem 2.8rem;
+      border: 1px solid var(--gray-600);
+      color: var(--white);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 400;
+      text-decoration: none;
+      transition: all var(--transition-fast);
+      background: transparent;
+    }
+
+    .hero-cta:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.05);
+      transform: translateY(-1px);
+    }
+
+    /* =============================================
+       SECTION COMMON
+       ============================================= */
+
+    .section {
+      padding: 6rem 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      margin-bottom: 3rem;
+      max-width: 600px;
+    }
+
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
+      color: var(--white);
+    }
+
+    .section-header p {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+      font-weight: 300;
+      margin-top: 0.5rem;
+    }
+
+    /* =============================================
+       PRODUCT GRID
+       ============================================= */
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .product-card {
+      text-decoration: none;
+      display: block;
+      transition: all var(--transition-med);
+    }
+
+    .product-card-image {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      background: var(--near-black);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--gray-900);
+      transition: border-color var(--transition-fast);
+    }
+
+    .product-card:hover .product-card-image {
+      border-color: var(--gray-700);
+    }
+
+    .product-card-image .placeholder-number {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      color: var(--gray-800);
+      font-weight: 400;
+      transition: color var(--transition-fast);
+    }
+
+    .product-card:hover .placeholder-number {
+      color: var(--gray-600);
+    }
+
+    .product-card-image .badge {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      font-size: 0.5rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      font-weight: 400;
+      padding: 0.2rem 0.6rem;
+      border: 1px solid var(--gray-800);
+    }
+
+    .badge-gold {
+      color: var(--gray-400) !important;
+      border-color: var(--gray-700) !important;
+    }
+
+    .product-card-info {
+      padding: 0.8rem 0;
+    }
+
+    .product-card-info .title {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 0.15rem;
+    }
+
+    .product-card-info .price {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+      font-weight: 300;
+    }
+
+    .price-shipping {
+      display: block;
+      font-size: 0.6rem;
+      color: var(--gray-700);
+      margin-top: 0.1rem;
+    }
+
+    /* =============================================
+       CARRUSEL
+       ============================================= */
+
+    .carousel-section {
+      padding-top: 3rem;
+      padding-bottom: 5rem;
+    }
+
+    .carousel-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .carousel-track-wrapper {
+      flex: 1;
+      overflow: hidden;
+      border-radius: 0;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      position: relative;
+      aspect-ratio: 3 / 4;
+      background: var(--near-black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-slide .placeholder-number {
+      font-family: var(--font-display);
+      font-size: 5rem;
+      color: var(--gray-800);
+    }
+
+    .carousel-slide-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem 1rem 1rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.9));
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    .carousel-slide-info span:first-child {
+      font-family: var(--font-display);
+      font-weight: 400;
+      color: var(--white);
+    }
+
+    .carousel-slide-info span:last-child {
+      opacity: 0.6;
+      font-size: 0.7rem;
+      color: var(--gray-400);
+    }
+
+    .carousel-arrow {
+      background: none;
+      border: 1px solid var(--gray-700);
+      color: var(--gray-400);
+      width: 44px;
+      height: 44px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-fast);
+      font-family: inherit;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .carousel-arrow:hover {
+      border-color: var(--white);
+      color: var(--white);
+    }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gray-800);
+      cursor: pointer;
+      transition: background var(--transition-fast);
+    }
+
+    .carousel-dot.active {
+      background: var(--gray-400);
+    }
+
+    /* =============================================
+       EXCLUSIVE (ONE OF ONE)
+       ============================================= */
+
+    .exclusive-section {
+      background: var(--near-black);
+      padding: 5rem 2.5rem;
+      margin: 0;
+      position: relative;
+    }
+
+    .exclusive-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .exclusive-badge {
+      display: inline-block;
+      font-size: 0.5rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      border: 1px solid var(--gray-700);
+      padding: 0.3rem 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .exclusive-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .exclusive-image {
+      position: relative;
+      aspect-ratio: 1;
+      background: var(--black);
+      overflow: hidden;
+      border: 1px solid var(--gray-800);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .exclusive-image .placeholder-number {
+      font-family: var(--font-display);
+      font-size: 6rem;
+      color: var(--gray-800);
+    }
+
+    .exclusive-image-badge {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      font-size: 0.45rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-600);
+      border: 1px solid var(--gray-800);
+      padding: 0.2rem 0.6rem;
+    }
+
+    .exclusive-sold {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 3;
+      gap: 0.5rem;
+    }
+
+    .exclusive-sold.show { display: flex; }
+
+    .exclusive-sold span:first-child {
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      border: 1px solid var(--gray-600);
+      padding: 0.5rem 1.2rem;
+      font-family: var(--font-display);
+    }
+
+    .exclusive-sold span:last-child {
+      font-size: 0.6rem;
+      color: var(--gray-600);
+      letter-spacing: 0.05em;
+    }
+
+    .exclusive-info { color: var(--white); }
+
+    .exclusive-tag {
+      display: inline-block;
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 0.5rem;
+      font-weight: 400;
+    }
+
+    .exclusive-info h2 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+    }
+
+    .exclusive-desc {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+
+    .exclusive-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      padding: 1rem 0;
+      border-top: 1px solid var(--gray-800);
+      border-bottom: 1px solid var(--gray-800);
+    }
+
+    .exclusive-detail {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.7rem;
+    }
+
+    .detail-label { color: var(--gray-600); letter-spacing: 0.05em; text-transform: uppercase; }
+    .detail-value { color: var(--gray-300); font-weight: 400; }
+
+    .exclusive-price {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .exclusive-price-amount {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+
+    .exclusive-price-note {
+      font-size: 0.65rem;
+      color: var(--gray-600);
+      letter-spacing: 0.05em;
+    }
+
+    .exclusive-btn {
+      width: 100%;
+      padding: 1rem;
+      background: var(--white);
+      color: var(--black);
+      border: none;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: var(--font-body);
+      transition: all var(--transition-fast);
+    }
+
+    .exclusive-btn:hover { background: var(--gray-200); transform: translateY(-1px); }
+
+    .exclusive-btn:disabled {
+      opacity: 0.3;
+      cursor: default;
+      background: var(--gray-800);
+      color: var(--gray-600);
+      transform: none;
+    }
+
+    /* =============================================
+       BANNER DIVIDER
+       ============================================= */
+
+    .banner {
+      position: relative;
+      height: 50vh;
+      min-height: 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .banner-bg {
+      position: absolute;
+      inset: 0;
+      background: var(--near-black);
+    }
+
+    .banner-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+    }
+
+    .banner-content {
+      position: relative;
+      z-index: 2;
+      color: var(--white);
+      padding: 2rem;
+    }
+
+    .banner-content h2 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
+    }
+
+    .banner-content p {
+      font-size: 0.85rem;
+      opacity: 0.6;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+
+    .banner-content a {
+      color: var(--white);
+      text-decoration: none;
+      border-bottom: 1px solid var(--gray-600);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding-bottom: 0.15rem;
+      transition: all var(--transition-fast);
+    }
+
+    .banner-content a:hover {
+      border-color: var(--white);
+    }
+
+    /* =============================================
+       PHILOSOPHY
+       ============================================= */
+
+    .philosophy-section {
+      padding: 6rem 2.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .philosophy-section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .philosophy-section p {
+      font-size: 0.9rem;
+      color: var(--gray-500);
+      line-height: 2;
+      margin-bottom: 1.2rem;
+      font-weight: 300;
+    }
+
+    .philosophy-section .about-photo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1.5rem;
+      display: block;
+      opacity: 0.7;
+    }
+
+    .about-signature {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--gray-500);
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--gray-800);
+      display: inline-block;
+    }
+
+    /* =============================================
+       JOURNAL
+       ============================================= */
+
+    .journal-section {
+      padding: 6rem 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .journal-section .section-header {
+      max-width: none;
+      text-align: center;
+    }
+
+    .journal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .journal-card {
+      border: 1px solid var(--gray-900);
+      transition: all var(--transition-med);
+      background: var(--near-black);
+    }
+
+    .journal-card:hover {
+      border-color: var(--gray-700);
+    }
+
+    .journal-card-image {
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .journal-card-image span {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      color: var(--gray-800);
+    }
+
+    .journal-card-content {
+      padding: 1.5rem;
+    }
+
+    .journal-date {
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-600);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .journal-card-content h3 {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+      color: var(--white);
+    }
+
+    .journal-card-content p {
+      font-size: 0.8rem;
+      color: var(--gray-500);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+
+    .journal-read {
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      text-decoration: none;
+      border-bottom: 1px solid var(--gray-700);
+      padding-bottom: 2px;
+      font-weight: 400;
+      transition: all var(--transition-fast);
+    }
+
+    .journal-read:hover { color: var(--white); border-color: var(--white); }
+
+    /* =============================================
+       CONTACT
+       ============================================= */
+
+    .contact-section {
+      padding: 5rem 2.5rem;
+      text-align: center;
+      border-top: 1px solid var(--gray-900);
+    }
+
+    .contact-section h2 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-section p {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+
+    .contact-btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      border: 1px solid var(--gray-700);
+      color: var(--gray-400);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      transition: all var(--transition-fast);
+    }
+
+    .contact-btn:hover {
+      border-color: var(--white);
+      color: var(--white);
+    }
+
+    /* =============================================
+       FOOTER
+       ============================================= */
+
+    .footer {
+      padding: 4rem 2.5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-legal a {
+      color: var(--gray-600);
+      text-decoration: none;
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+      transition: color var(--transition-fast);
+      font-weight: 300;
+    }
+
+    .footer-legal a:hover { color: var(--white); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--gray-900);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.6rem;
+      color: var(--gray-700);
+      font-weight: 300;
+    }
+
+    /* =============================================
+       CART SIDEBAR (kept functional)
+       ============================================= */
+
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 380px;
+      height: 100%;
+      background: var(--near-black);
+      border-left: 1px solid var(--gray-800);
+      z-index: 200;
+      transition: right 0.3s ease;
+      padding: 2rem;
+      overflow-y: auto;
+    }
+
+    .cart-sidebar.open { right: 0; }
+
+    .cart-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 199;
+      display: none;
+    }
+
+    .cart-overlay.open { display: block; }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--gray-800);
+    }
+
+    .cart-header h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      color: var(--white);
+    }
+
+    .cart-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--gray-600);
+      font-family: inherit;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--gray-800);
+    }
+
+    .cart-item-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--gray-900);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--gray-500);
+    }
+
+    .cart-item-info { flex: 1; }
+
+    .item-name {
+      font-size: 0.75rem;
+      font-weight: 400;
+      margin-bottom: 0.2rem;
+      color: var(--white);
+    }
+
+    .item-details {
+      font-size: 0.7rem;
+      color: var(--gray-600);
+      margin-bottom: 0.3rem;
+    }
+
+    .item-price {
+      font-size: 0.75rem;
+      color: var(--gray-400);
+    }
+
+    .cart-item-remove {
+      background: none;
+      border: none;
+      color: var(--gray-700);
+      font-size: 0.65rem;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .cart-footer {
+      position: sticky;
+      bottom: 0;
+      background: var(--near-black);
+      padding-top: 1rem;
+    }
+
+    .cart-total {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--gray-800);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      color: var(--white);
+    }
+
+    .checkout-btn {
+      width: 100%;
+      padding: 1rem;
+      background: var(--white);
+      color: var(--black);
+      border: none;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: var(--font-body);
+      margin-top: 1rem;
+      transition: all var(--transition-fast);
+    }
+
+    .checkout-btn:hover { background: var(--gray-200); }
+    .checkout-btn:disabled { opacity: 0.3; cursor: default; }
+
+    .cart-empty {
+      text-align: center;
+      padding: 3rem 0;
+      color: var(--gray-600);
+      font-size: 0.8rem;
+    }
+
+    .checkout-info {
+      font-size: 0.6rem;
+      color: var(--gray-700);
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+
+    /* =============================================
+       WHATSAPP FLOAT
+       ============================================= */
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 48px;
+      height: 48px;
+      background: var(--gray-900);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 300;
+      transition: all var(--transition-fast);
+      text-decoration: none;
+      border: 1px solid var(--gray-800);
+    }
+
+    .whatsapp-float:hover {
+      background: var(--gray-800);
+      transform: scale(1.05);
+    }
+
+    .whatsapp-float svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* =============================================
+       LIGHTBOX
+       ============================================= */
+
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      z-index: 500;
+      display: none;
+    }
+
+    .lightbox-overlay.open { display: block; }
+
+    .lightbox-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 501;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+
+    .lightbox-modal.open { display: flex; }
+
+    .lightbox-modal img {
+      max-width: 90vw;
+      max-height: 80vh;
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 2rem;
+      cursor: pointer;
+      font-family: inherit;
+      opacity: 0.5;
+    }
+
+    .lightbox-name {
+      margin-top: 1rem;
+      color: var(--gray-400);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+    }
+
+    /* =============================================
+       MOBILE RESPONSIVE
+       ============================================= */
+
+    @media (max-width: 1024px) {
+      .header { padding: 1rem 1.5rem; }
+    }
+
+    @media (max-width: 900px) {
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      .exclusive-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .journal-grid { grid-template-columns: 1fr 1fr; }
+      .section { padding: 4rem 1.5rem; }
+      .philosophy-section { padding: 4rem 1.5rem; }
+      .journal-section { padding: 4rem 1.5rem; }
+      .exclusive-section { padding: 4rem 1.5rem; }
+      .carousel-arrow { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .header { padding: 0.8rem 1rem; }
+
+      .hamburger { display: flex; }
+
+      .header-nav {
+        display: block;
+        position: fixed;
+        top: 0;
+        right: -280px;
+        width: 260px;
+        height: 100%;
+        background: var(--near-black);
+        z-index: 100;
+        padding: 5rem 1.5rem 2rem;
+        transition: right 0.3s ease;
+        border-left: 1px solid var(--gray-800);
+      }
+
+      .header-nav.open { right: 0; }
+
+      .header-nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+      }
+
+      .header-nav > ul > li > a {
+        padding: 0.7rem 0;
+        font-size: 0.7rem;
+        width: 100%;
+      }
+
+      .dropdown-menu {
+        position: static;
+        border: none;
+        box-shadow: none;
+        padding-left: 1rem;
+        min-width: auto;
+        background: transparent;
+      }
+
+      .dropdown-sub > .dropdown-menu {
+        top: auto;
+        left: auto;
+        margin-left: 0;
+      }
+
+      .dropdown-toggle::after { float: right; }
+
+      .product-grid { grid-template-columns: repeat(2, 1fr); gap: 0.4rem; }
+      .journal-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .section { padding: 3rem 1rem; }
+      .philosophy-section { padding: 3rem 1rem; }
+      .journal-section { padding: 3rem 1rem; }
+      .exclusive-section { padding: 3rem 1rem; }
+
+      .hero-logo-wrap img { height: 300px; }
+      .hero-content { padding: 1rem; }
+      .hero { min-height: 90vh; }
+
+      .cart-sidebar { width: 100%; right: -100%; }
+      .footer-bottom { flex-direction: column; gap: 0.3rem; text-align: center; }
+      .footer { padding: 3rem 1rem 1.5rem; }
+      .footer-legal { gap: 1rem; }
+    }
+  </style>
 </head>
 <body>
 
   <!-- TOP BAR -->
-  <div class="top-bar">Colección 2026 — Envío incluido</div>
+  <div class="top-bar">Collection I — The Art of Wonder</div>
 
   <!-- HEADER -->
-  <header class="header">
-    <a href="/" class="header-logo">
+  <header class="header" id="header">
+    <a href="/" class="header-logo fade-in fade-in-1">
       <img src="assets/logo-inverted.png" alt="MAGOS CON ESTILO">
     </a>
 
-    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menú">
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
       <span></span>
       <span></span>
       <span></span>
     </button>
+
+    <div class="nav-overlay" id="navOverlay" onclick="closeMenu()"></div>
 
     <nav class="header-nav" id="headerNav">
       <ul>
@@ -54,174 +1459,98 @@
       </ul>
     </nav>
 
-    <div class="header-actions">
-      <button class="cart-btn" onclick="openCart()" aria-label="Abrir carrito">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="9" cy="21" r="1"></circle>
-          <circle cx="20" cy="21" r="1"></circle>
-          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+    <div class="header-actions fade-in fade-in-1">
+      <button class="cart-btn" onclick="openCart()" aria-label="Shopping bag">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
         </svg>
         <span class="cart-count" id="cartCount">0</span>
       </button>
     </div>
   </header>
 
-  <!-- OVERLAY PARA MENÚ MÓVIL -->
-  <div class="nav-overlay" id="navOverlay" onclick="closeMenu()"></div>
-
   <!-- HERO -->
   <section class="hero">
-    <div style="background:#1a1a1a;position:absolute;inset:0;"></div>
-    <div class="hero-overlay"></div>
+    <div class="hero-bg"></div>
     <div class="hero-content">
-      <div class="hero-logo">
+      <div class="hero-logo fade-in fade-in-2">
         <div class="hero-logo-wrap">
           <img src="assets/logo-transparent.png" alt="MAGOS CON ESTILO">
-          <div class="smoke smoke-1"></div>
-          <div class="smoke smoke-2"></div>
-          <div class="smoke smoke-3"></div>
-          <div class="smoke smoke-4"></div>
-          <div class="smoke smoke-5"></div>
-          <div class="smoke smoke-6"></div>
         </div>
       </div>
-      <h1>Magos con Estilo</h1>
-      <p>Merch premium para magos y magas. Diseños con la esencia del gremio.</p>
-      <a href="#essential" class="hero-cta">Ver Colección</a>
+      <h1 class="fade-in fade-in-3">Artwork Collections</h1>
+      <p class="fade-in fade-in-4">Where art meets fashion. Every artwork tells a story.</p>
+      <a href="#essential" class="hero-cta fade-in fade-in-5">Explore Collections</a>
     </div>
   </section>
 
-  <!-- SHOP: ESSENTIAL -->
+  <!-- ESSENTIAL -->
   <section class="section" id="essential">
-    <div class="section-header">
+    <div class="section-header fade-in">
       <h2>Essential</h2>
-      <p>Los imprescindibles. Diseños esenciales para el día a día del mago.</p>
+      <p>The Art of Wonder — Collection I</p>
     </div>
     <div class="product-grid">
-      <!-- Modelo 1♠ -->
-      <div class="product-card">
+      <a href="artwork-the-secret.html" class="product-card fade-in fade-in-1">
         <div class="product-card-image">
-          <img src="assets/modelo-1.jpg" alt="Modelo Magia 1♠">
-          <span class="badge">Essential</span>
+          <span class="placeholder-number">01</span>
+          <span class="badge">The Secret</span>
         </div>
         <div class="product-card-info">
-          <div class="title">Modelo Magia 1♠</div>
-          <div class="price">29.99 EUR <span class="price-shipping">Envío incluido</span></div>
-          <div class="colors">
-            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
-          </div>
-          <div class="size-selector">
-            <span class="size-btn" onclick="selectSize(this)">S</span>
-            <span class="size-btn selected" onclick="selectSize(this)">M</span>
-            <span class="size-btn" onclick="selectSize(this)">L</span>
-            <span class="size-btn" onclick="selectSize(this)">XL</span>
-          </div>
-          <button class="add-btn" data-diseno="diseno-01" onclick="addToCart(this, 'Modelo Magia 1♠', '29.99', '♠')">Añadir al carrito</button>
+          <div class="title">The Secret</div>
+          <div class="price">59€ <span class="price-shipping">Collection I</span></div>
+        </div>
+      </a>
+      <div class="product-card">
+        <div class="product-card-image">
+          <span class="placeholder-number">02</span>
+          <span class="badge">Coming Soon</span>
+        </div>
+        <div class="product-card-info">
+          <div class="title">Artwork 02</div>
+          <div class="price">— <span class="price-shipping">Collection I</span></div>
         </div>
       </div>
-      <!-- Modelo 2♣ -->
       <div class="product-card">
         <div class="product-card-image">
-          <img src="assets/modelo-2.jpg" alt="Modelo Magia 2♣">
-          <span class="badge">Essential</span>
+          <span class="placeholder-number">03</span>
+          <span class="badge">Coming Soon</span>
         </div>
         <div class="product-card-info">
-          <div class="title">Modelo Magia 2♣</div>
-          <div class="price">29.99 EUR <span class="price-shipping">Envío incluido</span></div>
-          <div class="colors">
-            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
-          </div>
-          <div class="size-selector">
-            <span class="size-btn" onclick="selectSize(this)">S</span>
-            <span class="size-btn selected" onclick="selectSize(this)">M</span>
-            <span class="size-btn" onclick="selectSize(this)">L</span>
-            <span class="size-btn" onclick="selectSize(this)">XL</span>
-          </div>
-          <button class="add-btn" data-diseno="diseno-02" onclick="addToCart(this, 'Modelo Magia 2♣', '29.99', '♣')">Añadir al carrito</button>
+          <div class="title">Artwork 03</div>
+          <div class="price">— <span class="price-shipping">Collection I</span></div>
         </div>
       </div>
-      <!-- Modelo 3♥ -->
       <div class="product-card">
         <div class="product-card-image">
-          <img src="assets/modelo-3.jpg" alt="Modelo Magia 3♥">
-          <span class="badge">Essential</span>
+          <span class="placeholder-number">04</span>
+          <span class="badge">Coming Soon</span>
         </div>
         <div class="product-card-info">
-          <div class="title">Modelo Magia 3♥</div>
-          <div class="price">29.99 EUR <span class="price-shipping">Envío incluido</span></div>
-          <div class="colors">
-            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
-          </div>
-          <div class="size-selector">
-            <span class="size-btn" onclick="selectSize(this)">S</span>
-            <span class="size-btn selected" onclick="selectSize(this)">M</span>
-            <span class="size-btn" onclick="selectSize(this)">L</span>
-            <span class="size-btn" onclick="selectSize(this)">XL</span>
-          </div>
-          <button class="add-btn" data-diseno="diseno-03" onclick="addToCart(this, 'Modelo Magia 3♥', '29.99', '♥')">Añadir al carrito</button>
+          <div class="title">Artwork 04</div>
+          <div class="price">— <span class="price-shipping">Collection I</span></div>
         </div>
       </div>
-      <!-- Modelo 4♦ -->
       <div class="product-card">
         <div class="product-card-image">
-          <img src="assets/modelo-4.jpg" alt="Modelo Magia 4♦">
-          <span class="badge">Essential</span>
+          <span class="placeholder-number">05</span>
+          <span class="badge">Coming Soon</span>
         </div>
         <div class="product-card-info">
-          <div class="title">Modelo Magia 4♦</div>
-          <div class="price">29.99 EUR <span class="price-shipping">Envío incluido</span></div>
-          <div class="colors">
-            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
-          </div>
-          <div class="size-selector">
-            <span class="size-btn" onclick="selectSize(this)">S</span>
-            <span class="size-btn selected" onclick="selectSize(this)">M</span>
-            <span class="size-btn" onclick="selectSize(this)">L</span>
-            <span class="size-btn" onclick="selectSize(this)">XL</span>
-          </div>
-          <button class="add-btn" data-diseno="diseno-04" onclick="addToCart(this, 'Modelo Magia 4♦', '29.99', '♦')">Añadir al carrito</button>
+          <div class="title">Artwork 05</div>
+          <div class="price">— <span class="price-shipping">Collection I</span></div>
         </div>
       </div>
-      <!-- Modelo 5★ -->
       <div class="product-card">
         <div class="product-card-image">
-          <img src="assets/modelo-5.jpg" alt="Modelo Magia 5★">
-          <span class="badge">Essential</span>
+          <span class="placeholder-number">06</span>
+          <span class="badge">Coming Soon</span>
         </div>
         <div class="product-card-info">
-          <div class="title">Modelo Magia 5★</div>
-          <div class="price">29.99 EUR <span class="price-shipping">Envío incluido</span></div>
-          <div class="colors">
-            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
-          </div>
-          <div class="size-selector">
-            <span class="size-btn" onclick="selectSize(this)">S</span>
-            <span class="size-btn selected" onclick="selectSize(this)">M</span>
-            <span class="size-btn" onclick="selectSize(this)">L</span>
-            <span class="size-btn" onclick="selectSize(this)">XL</span>
-          </div>
-          <button class="add-btn" data-diseno="diseno-05" onclick="addToCart(this, 'Modelo Magia 5★', '29.99', '★')">Añadir al carrito</button>
-        </div>
-      </div>
-      <!-- Modelo 6🃏 -->
-      <div class="product-card">
-        <div class="product-card-image">
-          <img src="assets/modelo-6.jpg" alt="Modelo Magia 6🃏">
-          <span class="badge">Essential</span>
-        </div>
-        <div class="product-card-info">
-          <div class="title">Modelo Magia 6🃏</div>
-          <div class="price">29.99 EUR <span class="price-shipping">Envío incluido</span></div>
-          <div class="colors">
-            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
-          </div>
-          <div class="size-selector">
-            <span class="size-btn" onclick="selectSize(this)">S</span>
-            <span class="size-btn selected" onclick="selectSize(this)">M</span>
-            <span class="size-btn" onclick="selectSize(this)">L</span>
-            <span class="size-btn" onclick="selectSize(this)">XL</span>
-          </div>
-          <button class="add-btn" data-diseno="diseno-06" onclick="addToCart(this, 'Modelo Magia 6🃏', '29.99', '🃏')">Añadir al carrito</button>
+          <div class="title">Artwork 06</div>
+          <div class="price">— <span class="price-shipping">Collection I</span></div>
         </div>
       </div>
     </div>
@@ -230,381 +1559,179 @@
   <!-- CARRUSEL MÁS VENDIDOS -->
   <section class="section carousel-section">
     <div class="section-header">
-      <h2>Los más vendidos</h2>
-      <p>Los diseños favoritos de la comunidad</p>
+      <h2>Most Anticipated</h2>
+      <p>Collection I — The Art of Wonder</p>
     </div>
     <div class="carousel-container">
-      <button class="carousel-arrow carousel-prev" onclick="prevSlide()" aria-label="Anterior">‹</button>
+      <button class="carousel-arrow carousel-prev" onclick="prevSlide()" aria-label="Previous">‹</button>
       <div class="carousel-track-wrapper">
         <div class="carousel-track" id="carouselTrack">
-          <div class="carousel-slide">
-            <img src="assets/modelo-1.jpg" alt="Modelo Magia 1♠">
-            <div class="carousel-slide-info">
-              <span>Modelo Magia 1♠</span>
-              <span>29.99 EUR</span>
-            </div>
-          </div>
-          <div class="carousel-slide">
-            <img src="assets/modelo-2.jpg" alt="Modelo Magia 2♣">
-            <div class="carousel-slide-info">
-              <span>Modelo Magia 2♣</span>
-              <span>29.99 EUR</span>
-            </div>
-          </div>
-          <div class="carousel-slide">
-            <img src="assets/modelo-3.jpg" alt="Modelo Magia 3♥">
-            <div class="carousel-slide-info">
-              <span>Modelo Magia 3♥</span>
-              <span>29.99 EUR</span>
-            </div>
-          </div>
-          <div class="carousel-slide">
-            <img src="assets/modelo-4.jpg" alt="Modelo Magia 4♦">
-            <div class="carousel-slide-info">
-              <span>Modelo Magia 4♦</span>
-              <span>29.99 EUR</span>
-            </div>
-          </div>
-          <div class="carousel-slide">
-            <img src="assets/modelo-5.jpg" alt="Modelo Magia 5★">
-            <div class="carousel-slide-info">
-              <span>Modelo Magia 5★</span>
-              <span>29.99 EUR</span>
-            </div>
-          </div>
-          <div class="carousel-slide">
-            <img src="assets/modelo-6.jpg" alt="Modelo Magia 6🃏">
-            <div class="carousel-slide-info">
-              <span>Modelo Magia 6🃏</span>
-              <span>29.99 EUR</span>
-            </div>
-          </div>
-          <div class="carousel-slide">
-            <img src="assets/modelo-7.jpg" alt="Modelo Magia 7✦">
-            <div class="carousel-slide-info">
-              <span>Modelo Magia 7✦</span>
-              <span>29.99 EUR</span>
-            </div>
-          </div>
-          <div class="carousel-slide">
-            <img src="assets/modelo-8.jpg" alt="Modelo Magia 8✧">
-            <div class="carousel-slide-info">
-              <span>Modelo Magia 8✧</span>
-              <span>29.99 EUR</span>
-            </div>
-          </div>
-          <div class="carousel-slide">
-            <img src="assets/modelo-9.jpg" alt="Modelo Magia 9♤">
-            <div class="carousel-slide-info">
-              <span>Modelo Magia 9♤</span>
-              <span>29.99 EUR</span>
-            </div>
-          </div>
-          <div class="carousel-slide">
-            <img src="assets/modelo-10.jpg" alt="Modelo Magia 10♧">
-            <div class="carousel-slide-info">
-              <span>Modelo Magia 10♧</span>
-              <span>29.99 EUR</span>
-            </div>
-          </div>
-          <div class="carousel-slide">
-            <img src="assets/modelo-11.jpg" alt="Modelo Magia 11♡">
-            <div class="carousel-slide-info">
-              <span>Modelo Magia 11♡</span>
-              <span>29.99 EUR</span>
-            </div>
-          </div>
-          <div class="carousel-slide">
-            <img src="assets/modelo-12.jpg" alt="Modelo Magia 12❖">
-            <div class="carousel-slide-info">
-              <span>Modelo Magia 12❖</span>
-              <span>29.99 EUR</span>
-            </div>
-          </div>
+          <div class="carousel-slide"><span class="placeholder-number">01</span><div class="carousel-slide-info"><span>The Secret</span><span>59€</span></div></div>
+          <div class="carousel-slide"><span class="placeholder-number">02</span><div class="carousel-slide-info"><span>Artwork 02</span><span>—</span></div></div>
+          <div class="carousel-slide"><span class="placeholder-number">03</span><div class="carousel-slide-info"><span>Artwork 03</span><span>—</span></div></div>
+          <div class="carousel-slide"><span class="placeholder-number">04</span><div class="carousel-slide-info"><span>Artwork 04</span><span>—</span></div></div>
+          <div class="carousel-slide"><span class="placeholder-number">05</span><div class="carousel-slide-info"><span>Artwork 05</span><span>—</span></div></div>
+          <div class="carousel-slide"><span class="placeholder-number">06</span><div class="carousel-slide-info"><span>Artwork 06</span><span>—</span></div></div>
         </div>
       </div>
-      <button class="carousel-arrow carousel-next" onclick="nextSlide()" aria-label="Siguiente">›</button>
+      <button class="carousel-arrow carousel-next" onclick="nextSlide()" aria-label="Next">›</button>
     </div>
     <div class="carousel-dots" id="carouselDots"></div>
   </section>
 
-  <!-- SHOP: SIGNATURE -->
-  <section class="section signature-section" id="signature">
-    <div class="section-header">
+  <!-- SIGNATURE -->
+  <section class="section" id="signature">
+    <div class="section-header fade-in">
       <h2>Signature</h2>
-      <p>Diseños de edición especial. Para el mago que deja huella.</p>
+      <p>Limited edition artworks</p>
     </div>
     <div class="product-grid">
-      <!-- Modelo 7✦ -->
       <div class="product-card">
         <div class="product-card-image">
-          <img src="assets/modelo-7.jpg" alt="Modelo Magia 7✦">
-          <span class="badge badge-gold">Signature</span>
+          <span class="placeholder-number">07</span>
+          <span class="badge badge-gold">Coming Soon</span>
         </div>
         <div class="product-card-info">
-          <div class="title">Modelo Magia 7✦</div>
-          <div class="price">39.99 EUR <span class="price-shipping">Envío incluido</span></div>
-          <div class="colors">
-            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
-          </div>
-          <div class="size-selector">
-            <span class="size-btn" onclick="selectSize(this)">S</span>
-            <span class="size-btn selected" onclick="selectSize(this)">M</span>
-            <span class="size-btn" onclick="selectSize(this)">L</span>
-            <span class="size-btn" onclick="selectSize(this)">XL</span>
-          </div>
-          <button class="add-btn" data-diseno="diseno-07" onclick="addToCart(this, 'Modelo Magia 7✦', '39.99', '✦')">Añadir al carrito</button>
+          <div class="title">Artwork 07</div>
+          <div class="price">— <span class="price-shipping">Signature</span></div>
         </div>
       </div>
-      <!-- Modelo 8✧ -->
       <div class="product-card">
         <div class="product-card-image">
-          <img src="assets/modelo-8.jpg" alt="Modelo Magia 8✧">
-          <span class="badge badge-gold">Signature</span>
+          <span class="placeholder-number">08</span>
+          <span class="badge badge-gold">Coming Soon</span>
         </div>
         <div class="product-card-info">
-          <div class="title">Modelo Magia 8✧</div>
-          <div class="price">39.99 EUR <span class="price-shipping">Envío incluido</span></div>
-          <div class="colors">
-            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
-          </div>
-          <div class="size-selector">
-            <span class="size-btn" onclick="selectSize(this)">S</span>
-            <span class="size-btn selected" onclick="selectSize(this)">M</span>
-            <span class="size-btn" onclick="selectSize(this)">L</span>
-            <span class="size-btn" onclick="selectSize(this)">XL</span>
-          </div>
-          <button class="add-btn" data-diseno="diseno-08" onclick="addToCart(this, 'Modelo Magia 8✧', '39.99', '✧')">Añadir al carrito</button>
+          <div class="title">Artwork 08</div>
+          <div class="price">— <span class="price-shipping">Signature</span></div>
         </div>
       </div>
-      <!-- Modelo 9♤ -->
       <div class="product-card">
         <div class="product-card-image">
-          <img src="assets/modelo-9.jpg" alt="Modelo Magia 9♤">
-          <span class="badge badge-gold">Signature</span>
+          <span class="placeholder-number">✦</span>
+          <span class="badge badge-gold">Coming Soon</span>
         </div>
         <div class="product-card-info">
-          <div class="title">Modelo Magia 9♤</div>
-          <div class="price">39.99 EUR <span class="price-shipping">Envío incluido</span></div>
-          <div class="colors">
-            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
-          </div>
-          <div class="size-selector">
-            <span class="size-btn" onclick="selectSize(this)">S</span>
-            <span class="size-btn selected" onclick="selectSize(this)">M</span>
-            <span class="size-btn" onclick="selectSize(this)">L</span>
-            <span class="size-btn" onclick="selectSize(this)">XL</span>
-          </div>
-          <button class="add-btn" data-diseno="diseno-09" onclick="addToCart(this, 'Modelo Magia 9♤', '39.99', '♤')">Añadir al carrito</button>
+          <div class="title">Artwork 09</div>
+          <div class="price">— <span class="price-shipping">Signature</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- EDICIÓN ÚNICA (ONE OF ONE) -->
+  <!-- ONE OF ONE -->
   <section class="exclusive-section" id="oneofone">
     <div class="exclusive-container">
-      <div class="exclusive-badge">One of One</div>
+      <div class="exclusive-badge fade-in">One of One</div>
       <div class="exclusive-grid">
         <div class="exclusive-image">
-          <img src="assets/placeholder-exclusive.jpg" alt="Edición Única">
-          <div class="exclusive-image-badge">Exclusivo</div>
+          <span class="placeholder-number">1/1</span>
+          <div class="exclusive-image-badge">Exclusive</div>
           <div class="exclusive-sold" id="exclusiveSold">
-            <span>AGOTADO</span>
-            <span>Esta pieza única ya tiene dueño</span>
+            <span>SOLD</span>
+            <span>This unique piece has found its owner</span>
           </div>
         </div>
-        <div class="exclusive-info">
-          <span class="exclusive-tag">Pieza Única</span>
+        <div class="exclusive-info fade-in fade-in-2">
+          <span class="exclusive-tag">Unique Piece</span>
           <h2>One of One</h2>
-          <p class="exclusive-desc">Una sola camiseta de este diseño existirá en el mundo. Cuando se vaya, no habrá otra. Numerada, certificada, única.</p>
+          <p class="exclusive-desc">Only one piece of this design will ever exist in the world. Once it's gone, there will never be another. Numbered, certified, unique.</p>
           <div class="exclusive-details">
             <div class="exclusive-detail">
-              <span class="detail-label">Edición</span>
-              <span class="detail-value">1/1 — Única</span>
+              <span class="detail-label">Edition</span>
+              <span class="detail-value">1/1 — Unique</span>
             </div>
             <div class="exclusive-detail">
-              <span class="detail-label">Certificado</span>
-              <span class="detail-value">Incluido</span>
+              <span class="detail-label">Certificate</span>
+              <span class="detail-value">Included</span>
             </div>
             <div class="exclusive-detail">
-              <span class="detail-label">Talla</span>
-              <span class="detail-value">La que quieras</span>
+              <span class="detail-label">Size</span>
+              <span class="detail-value">Any size</span>
             </div>
           </div>
           <div class="exclusive-price">
-            <span class="exclusive-price-amount">89.99 EUR</span>
-            <span class="exclusive-price-note">Envío incluido</span>
+            <span class="exclusive-price-amount">89,99€</span>
+            <span class="exclusive-price-note">Shipping included</span>
           </div>
-          <button class="exclusive-btn" id="exclusiveBtn" onclick="buyExclusive()">Reservar</button>
+          <button class="exclusive-btn" id="exclusiveBtn" onclick="buyExclusive()">Inquire</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SHOP: REMAINING ITEMS (Colección) -->
-  <section class="section" id="shop-full">
-    <div class="section-header">
-      <h2>Colección 2026</h2>
-      <p>Camisetas unisex 100% algodón premium. Corte cómodo para magos y magas. Solo color negro. Tallas S a XL. <strong>29.99 EUR</strong> · Envío incluido · 7-9 días laborables.</p>
-    </div>
-    <div class="product-grid">
-      <!-- Modelo 10♧ -->
-      <div class="product-card">
-        <div class="product-card-image">
-          <img src="assets/modelo-10.jpg" alt="Modelo Magia 10♧">
-          <span class="badge">Nuevo</span>
-        </div>
-        <div class="product-card-info">
-          <div class="title">Modelo Magia 10♧</div>
-          <div class="price">29.99 EUR <span class="price-shipping">Envío incluido</span></div>
-          <div class="colors">
-            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
-          </div>
-          <div class="size-selector">
-            <span class="size-btn" onclick="selectSize(this)">S</span>
-            <span class="size-btn selected" onclick="selectSize(this)">M</span>
-            <span class="size-btn" onclick="selectSize(this)">L</span>
-            <span class="size-btn" onclick="selectSize(this)">XL</span>
-          </div>
-          <button class="add-btn" data-diseno="diseno-10" onclick="addToCart(this, 'Modelo Magia 10♧', '29.99', '♧')">Añadir al carrito</button>
-        </div>
-      </div>
-      <!-- Modelo 11♡ -->
-      <div class="product-card">
-        <div class="product-card-image">
-          <img src="assets/modelo-11.jpg" alt="Modelo Magia 11♡">
-          <span class="badge">Nuevo</span>
-        </div>
-        <div class="product-card-info">
-          <div class="title">Modelo Magia 11♡</div>
-          <div class="price">29.99 EUR <span class="price-shipping">Envío incluido</span></div>
-          <div class="colors">
-            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
-          </div>
-          <div class="size-selector">
-            <span class="size-btn" onclick="selectSize(this)">S</span>
-            <span class="size-btn selected" onclick="selectSize(this)">M</span>
-            <span class="size-btn" onclick="selectSize(this)">L</span>
-            <span class="size-btn" onclick="selectSize(this)">XL</span>
-          </div>
-          <button class="add-btn" data-diseno="diseno-11" onclick="addToCart(this, 'Modelo Magia 11♡', '29.99', '♡')">Añadir al carrito</button>
-        </div>
-      </div>
-      <!-- Modelo 12❖ -->
-      <div class="product-card">
-        <div class="product-card-image">
-          <img src="assets/modelo-12.jpg" alt="Modelo Magia 12❖">
-          <span class="badge">Nuevo</span>
-        </div>
-        <div class="product-card-info">
-          <div class="title">Modelo Magia 12❖</div>
-          <div class="price">29.99 EUR <span class="price-shipping">Envío incluido</span></div>
-          <div class="colors">
-            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
-          </div>
-          <div class="size-selector">
-            <span class="size-btn" onclick="selectSize(this)">S</span>
-            <span class="size-btn selected" onclick="selectSize(this)">M</span>
-            <span class="size-btn" onclick="selectSize(this)">L</span>
-            <span class="size-btn" onclick="selectSize(this)">XL</span>
-          </div>
-          <button class="add-btn" data-diseno="diseno-12" onclick="addToCart(this, 'Modelo Magia 12❖', '29.99', '❖')">Añadir al carrito</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BANNER DIVIDER -->
+  <!-- BANNER -->
   <div class="banner">
-    <div style="position:absolute;inset:0;background:#222;"></div>
+    <div class="banner-bg"></div>
     <div class="banner-overlay"></div>
     <div class="banner-content">
-      <h2>El truco está en el estilo</h2>
-      <p>Cada diseño está pensado para el mago que vive su arte.</p>
+      <h2>The secret was never the trick</h2>
+      <p>It was the feeling.</p>
       <a href="#philosophy">The Philosophy</a>
     </div>
   </div>
 
-  <!-- ABOUT: THE PHILOSOPHY -->
-  <section class="section philosophy-section" id="philosophy">
-    <div class="section-header">
-      <h2>The Philosophy</h2>
-      <p>Más que ropa. Una forma de entender la magia.</p>
-    </div>
-    <div class="about-grid">
-      <div class="about-card">
-        <img src="assets/about-magic.jpg" alt="Magia" class="about-photo">
-        <h3>La esencia</h3>
-        <p class="about-intro">La magia no es un truco. Es una forma de ver el mundo.</p>
-        <p>En Magos con Estilo creemos que el verdadero secreto no está en la mano, sino en la mirada. Cada diseño que creamos nace de esa filosofía: la ropa que llevas dice algo de ti antes de que abras la boca.</p>
-        <p>Trabajamos con algodón premium, cortes cómodos, y diseños que hablan el lenguaje del gremio. Sin estridencias. Sin logos enormes. Solo magos que se reconocen entre sí.</p>
-      </div>
-    </div>
+  <!-- THE PHILOSOPHY -->
+  <section class="philosophy-section" id="philosophy">
+    <img src="assets/david-foto.jpg" alt="David Ortiz" class="about-photo">
+    <h2>The Philosophy</h2>
+    <p>Magic is not a trick. It is a way of seeing the world.</p>
+    <p>At Magos con Estilo, every artwork begins with a feeling. The moment when reality stops making sense. That instant of pure wonder — that is what we capture in every design.</p>
+    <p>This is not merchandise. This is wearable art. Each piece is crafted for those who understand that the true secret was never the method. It was the emotion.</p>
+    <p>We work with premium heavyweight cotton, digital hand-drawn illustrations, and a commitment to quality that honors the craft of magic itself.</p>
+    <div class="about-signature">— David Ortiz</div>
   </section>
 
-  <!-- ABOUT: LA MARCA (About original) -->
-  <section class="section about-section" id="about-brand">
-    <div class="about-grid">
-      <div class="about-card" style="grid-column:1/-1;">
-        <img src="assets/david-foto.jpg" alt="David Ortiz" class="about-photo">
-        <h3>La Marca</h3>
-        <p class="about-intro">Soy mago desde pequeño. Crecí en Madrid con una baraja en las manos, viendo a los grandes — Juan Tamariz, Arturo de Ascanio, Woody Aragón — y entendí que la magia no es un truco: es una forma de ver el mundo.</p>
-        <p>He aprendido de los mejores, he viajado, he fallado delante de cien personas y he sentido ese momento en que el público olvida respirar. Eso no se enseña en un tutorial. Se vive.</p>
-        <p>Si tengo que nombrar a quien más me ha influenciado, ese es <strong>Dani DaOrtiz</strong>. De él he aprendido más que de nadie. Es amigo, es maestro, y le tengo un cariño inmenso. También <strong>Gabi Pareras</strong>, y otros muchos que no cabrían aquí pero que llevo conmigo en cada juego.</p>
-        <p>Para mí la magia es una forma de vida. No es lo que hago, es lo que soy. Y esta colección refleja eso: cada diseño es un guiño a quienes entienden que el verdadero secreto no está en la mano, sino en la mirada.</p>
-        <p class="about-signature">— David Ortiz, Madrid</p>
-      </div>
-    </div>
+  <!-- ABOUT: LA MARCA -->
+  <section class="philosophy-section" id="about-brand" style="border-top:1px solid var(--gray-900);padding-top:5rem;">
+    <h2>About</h2>
+    <p>I've been a magician since childhood. Growing up in Madrid with a deck of cards in my hands, watching the greats — Juan Tamariz, Arturo de Ascanio, Woody Aragón — I understood that magic isn't a trick: it's a way of seeing the world.</p>
+    <p>If I have to name the one who influenced me most, it's <strong>Dani DaOrtiz</strong>. He's a friend, a master, and I have immense affection for him. Also <strong>Gabi Pareras</strong>, and many others who don't fit here but whom I carry with me in every performance.</p>
+    <p>For me, magic is a way of life. It's not what I do, it's what I am. This collection reflects that: every artwork is a nod to those who understand that the true secret is not in the hand, but in the gaze.</p>
+    <div class="about-signature">— David Ortiz, Madrid</div>
   </section>
 
   <!-- JOURNAL -->
-  <section class="section journal-section" id="journal">
+  <section class="journal-section" id="journal">
     <div class="section-header">
       <h2>Journal</h2>
-      <p>Reflexiones, historias y novedades del mundo de la magia y el estilo.</p>
+      <p>Stories, reflections, and news from the world of magic and style.</p>
     </div>
     <div class="journal-grid">
       <article class="journal-card">
-        <div class="journal-card-image">
-          <div style="background:#f5f5f5;width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#ccc;">♠</div>
-        </div>
+        <div class="journal-card-image"><span>01</span></div>
         <div class="journal-card-content">
-          <span class="journal-date">Julio 2026</span>
-          <h3>El estilo del mago moderno</h3>
-          <p>La ropa que llevamos habla antes de que hagamos el primer movimiento. ¿Qué dice la tuya?</p>
-          <a href="#" class="journal-read">Leer más</a>
+          <span class="journal-date">July 2026</span>
+          <h3>The Modern Magician's Style</h3>
+          <p>The clothes we wear speak before we make the first move. What does yours say?</p>
+          <a href="#" class="journal-read">Read more</a>
         </div>
       </article>
       <article class="journal-card">
-        <div class="journal-card-image">
-          <div style="background:#1a1a1a;width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#555;">♣</div>
-        </div>
+        <div class="journal-card-image"><span>02</span></div>
         <div class="journal-card-content">
-          <span class="journal-date">Junio 2026</span>
-          <h3>Detrás del diseño: Essential</h3>
-          <p>Cómo nace cada diseño de nuestra colección Essential. El proceso, la inspiración y los detalles.</p>
-          <a href="#" class="journal-read">Leer más</a>
+          <span class="journal-date">June 2026</span>
+          <h3>Behind the Design: The Secret</h3>
+          <p>How the first artwork of Collection I came to life. The process, the inspiration, the details.</p>
+          <a href="#" class="journal-read">Read more</a>
         </div>
       </article>
       <article class="journal-card">
-        <div class="journal-card-image">
-          <div style="background:#f5f5f5;width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#ccc;">♥</div>
-        </div>
+        <div class="journal-card-image"><span>03</span></div>
         <div class="journal-card-content">
-          <span class="journal-date">Mayo 2026</span>
-          <h3>Por qué One of One</h3>
-          <p>La historia detrás de nuestra edición más exclusiva: una camiseta, un diseño, un único dueño.</p>
-          <a href="#" class="journal-read">Leer más</a>
+          <span class="journal-date">May 2026</span>
+          <h3>Why One of One</h3>
+          <p>The story behind our most exclusive edition: one t-shirt, one design, one owner.</p>
+          <a href="#" class="journal-read">Read more</a>
         </div>
       </article>
     </div>
   </section>
 
-  <!-- CONTACTO -->
-  <section class="section contact-section" id="contacto">
-    <h2>Contacto</h2>
-    <p>¿Preguntas? Escríbenos:</p>
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <h2>Contact</h2>
+    <p>Questions? Write to us:</p>
     <a href="mailto:magosconestilo@neolabs.me" class="contact-btn">magosconestilo@neolabs.me</a>
   </section>
 
@@ -613,13 +1740,14 @@
     <div class="footer-top">
       <div class="footer-legal">
         <a href="aviso-legal.html">Aviso Legal</a>
-        <a href="privacidad.html">Política de Privacidad</a>
-        <a href="terminos.html">Términos y Condiciones</a>
-        <a href="cookies.html">Política de Cookies</a>
+        <a href="privacidad.html">Privacy Policy</a>
+        <a href="terminos.html">Terms &amp; Conditions</a>
+        <a href="cookies.html">Cookies</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 Magos con Estilo. Todos los derechos reservados.</p>
+      <span>&copy; 2026 MAGOS CON ESTILO. All rights reserved.</span>
+      <span>Where art meets fashion.</span>
     </div>
   </footer>
 
@@ -627,16 +1755,16 @@
   <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
   <div class="cart-sidebar" id="cartSidebar">
     <div class="cart-header">
-      <h3>Carrito</h3>
+      <h3>Cart</h3>
       <button class="cart-close" onclick="closeCart()">&times;</button>
     </div>
     <div class="cart-items" id="cartItems">
-      <div class="cart-empty">Tu carrito está vacío</div>
+      <div class="cart-empty">Your cart is empty</div>
     </div>
-    <div class="cart-footer" id="cartFooter">
-      <div class="cart-total" id="cartTotal">0.00 EUR</div>
-      <button class="checkout-btn" id="checkoutBtn" onclick="checkout()">Pagar con Stripe</button>
-      <p class="checkout-info">Envío incluido. Pago seguro con tarjeta.</p>
+    <div class="cart-footer" id="cartFooter" style="display:none;">
+      <div class="cart-total" id="cartTotal">0,00€</div>
+      <button class="checkout-btn" id="checkoutBtn" onclick="checkout()">Pay with Stripe</button>
+      <p class="checkout-info">Shipping included. Secure payment.</p>
     </div>
   </div>
 
@@ -644,7 +1772,13 @@
     let cart = [];
     const API_URL = 'https://magos-pedidos.dortizs76.workers.dev';
 
-    // MENÚ MÓVIL
+    // Header scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', function() {
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile menu
     function toggleMenu() {
       document.getElementById('headerNav').classList.toggle('open');
       document.getElementById('navOverlay').classList.toggle('open');
@@ -655,23 +1789,20 @@
       document.getElementById('headerNav').classList.remove('open');
       document.getElementById('navOverlay').classList.remove('open');
       document.getElementById('hamburger').classList.remove('active');
-      // Close all dropdowns
-      document.querySelectorAll('.dropdown-menu.open').forEach(m => m.classList.remove('open'));
+      document.querySelectorAll('.dropdown-menu.open').forEach(function(m) { m.classList.remove('open'); });
     }
 
-    // DROPDOWNS
     function toggleDropdown(e, id) {
       e.preventDefault();
       e.stopPropagation();
-      const menu = document.getElementById(id);
+      var menu = document.getElementById(id);
       menu.classList.toggle('open');
-      // Close sibling dropdowns
-      menu.parentElement.parentElement.querySelectorAll('.dropdown-menu').forEach(m => {
+      menu.parentElement.parentElement.querySelectorAll('.dropdown-menu').forEach(function(m) {
         if (m.id !== id) m.classList.remove('open');
       });
     }
 
-    // CART
+    // Cart
     function openCart() {
       document.getElementById('cartSidebar').classList.add('open');
       document.getElementById('cartOverlay').classList.add('open');
@@ -683,50 +1814,50 @@
     }
 
     function renderCart() {
-      const container = document.getElementById('cartItems');
-      const footer = document.getElementById('cartFooter');
-      const count = document.getElementById('cartCount');
+      var container = document.getElementById('cartItems');
+      var footer = document.getElementById('cartFooter');
+      var count = document.getElementById('cartCount');
       count.textContent = cart.length;
 
       if (cart.length === 0) {
-        container.innerHTML = '<div class="cart-empty">Tu carrito está vacío</div>';
+        container.innerHTML = '<div class="cart-empty">Your cart is empty</div>';
         footer.style.display = 'none';
         return;
       }
       footer.style.display = 'block';
-      let html = '';
-      let total = 0;
-      cart.forEach((item, i) => {
+      var html = '';
+      var total = 0;
+      cart.forEach(function(item, i) {
         total += parseFloat(item.price);
         html += '<div class="cart-item">' +
           '<div class="cart-item-icon">' + item.icon + '</div>' +
           '<div class="cart-item-info">' +
             '<div class="item-name">' + item.name + '</div>' +
-            '<div class="item-details">' + item.color + ' / Talla ' + item.size + '</div>' +
-            '<div class="item-price">' + item.price + ' EUR</div>' +
+            '<div class="item-details">Black / Size ' + item.size + '</div>' +
+            '<div class="item-price">' + item.price + '€</div>' +
           '</div>' +
-          '<button class="cart-item-remove" onclick="removeFromCart(' + i + ')">Eliminar</button>' +
+          '<button class="cart-item-remove" onclick="removeFromCart(' + i + ')">Remove</button>' +
         '</div>';
       });
       container.innerHTML = html;
-      document.getElementById('cartTotal').textContent = total.toFixed(2) + ' EUR';
+      document.getElementById('cartTotal').textContent = total.toFixed(2).replace('.', ',') + '€';
       document.getElementById('checkoutBtn').disabled = false;
-      document.getElementById('checkoutBtn').textContent = 'Pagar con Stripe';
+      document.getElementById('checkoutBtn').textContent = 'Pay with Stripe';
     }
 
     function addToCart(btn, name, price, icon) {
-      const card = btn.closest('.product-card-info');
-      const selectedSize = card.querySelector('.size-btn.selected');
-      const size = selectedSize ? selectedSize.textContent : 'M';
-      const diseno = btn.getAttribute('data-diseno') || 'diseno-01';
+      var card = btn.closest('.product-card-info');
+      var selectedSize = card ? card.querySelector('.size-btn.selected') : null;
+      var size = selectedSize ? selectedSize.textContent : 'M';
+      var diseno = btn.getAttribute('data-diseno') || 'diseno-01';
 
-      cart.push({ name, price, color: 'Negro', size, icon, diseno });
+      cart.push({ name: name, price: price.toString(), color: 'Black', size: size, icon: icon, diseno: diseno });
       renderCart();
       openCart();
-      const orig = btn.textContent;
-      btn.textContent = 'Añadido';
+      var orig = btn.textContent;
+      btn.textContent = 'Added';
       btn.style.opacity = '0.6';
-      setTimeout(() => {
+      setTimeout(function() {
         btn.textContent = orig;
         btn.style.opacity = '1';
       }, 1200);
@@ -739,13 +1870,13 @@
 
     async function checkout() {
       if (cart.length === 0) return;
-      const btn = document.getElementById('checkoutBtn');
+      var btn = document.getElementById('checkoutBtn');
       btn.disabled = true;
-      btn.textContent = 'Procesando...';
+      btn.textContent = 'Processing...';
 
       try {
-        const item = cart[0];
-        const resp = await fetch(API_URL + '/create-checkout', {
+        var item = cart[0];
+        var resp = await fetch(API_URL + '/create-checkout', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -754,119 +1885,72 @@
             cantidad: '1'
           })
         });
-        const data = await resp.json();
+        var data = await resp.json();
         if (data.url) {
           window.location.href = data.url;
         } else {
-          alert('Error al crear el pago: ' + (data.error || 'Error desconocido'));
+          alert('Error: ' + (data.error || 'Unknown error'));
           btn.disabled = false;
-          btn.textContent = 'Pagar con Stripe';
+          btn.textContent = 'Pay with Stripe';
         }
       } catch (e) {
-        alert('Error de conexión. Inténtalo de nuevo.');
+        alert('Connection error. Try again.');
         btn.disabled = false;
-        btn.textContent = 'Pagar con Stripe';
+        btn.textContent = 'Pay with Stripe';
       }
     }
 
-    // EDICIÓN ÚNICA
+    // Exclusive
     function buyExclusive() {
-      const sold = document.getElementById('exclusiveSold');
-      const btn = document.getElementById('exclusiveBtn');
+      var sold = document.getElementById('exclusiveSold');
+      var btn = document.getElementById('exclusiveBtn');
       sold.classList.add('show');
       btn.disabled = true;
-      btn.textContent = 'Vendido';
+      btn.textContent = 'Sold';
       localStorage.setItem('exclusiveSold', 'true');
-      alert('¡Enhorabuena! Eres el dueño de la única camiseta de este diseño en el mundo. Te contactaremos para la talla y el envío.');
+      alert('Congratulations! You are the owner of the only t-shirt of this design in the world. We will contact you for size and shipping.');
     }
 
     if (localStorage.getItem('exclusiveSold') === 'true') {
       document.getElementById('exclusiveSold').classList.add('show');
-      const btn = document.getElementById('exclusiveBtn');
-      btn.disabled = true;
-      btn.textContent = 'Vendido';
+      document.getElementById('exclusiveBtn').disabled = true;
+      document.getElementById('exclusiveBtn').textContent = 'Sold';
     }
 
-    function selectColor(el) {
-      el.parentElement.querySelectorAll('.color-dot').forEach(d => d.classList.remove('selected'));
-      el.classList.add('selected');
-    }
-
-    function selectSize(el) {
-      el.parentElement.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
-      el.classList.add('selected');
-    }
-
-    // CARRUSEL
-    let currentSlide = 0;
-    const totalSlides = 12;
+    // Carousel
+    var currentSlide = 0;
+    var totalSlides = 6;
 
     function goToSlide(index) {
-      const track = document.getElementById('carouselTrack');
-      const dots = document.querySelectorAll('.carousel-dot');
+      var track = document.getElementById('carouselTrack');
+      var dots = document.querySelectorAll('.carousel-dot');
       currentSlide = index;
       track.style.transform = 'translateX(-' + (index * 100) + '%)';
-      dots.forEach((d, i) => d.classList.toggle('active', i === index));
+      dots.forEach(function(d, i) { d.classList.toggle('active', i === index); });
     }
 
     function nextSlide() { goToSlide((currentSlide + 1) % totalSlides); }
     function prevSlide() { goToSlide((currentSlide - 1 + totalSlides) % totalSlides); }
 
-    // LIGHTBOX
-    function openLightbox(imgSrc, name) {
-      document.getElementById('lightboxImage').src = imgSrc;
-      document.getElementById('lightboxName').textContent = name;
-      document.getElementById('lightboxOverlay').classList.add('open');
-      document.getElementById('lightboxModal').classList.add('open');
-    }
-
-    function closeLightbox() {
-      document.getElementById('lightboxOverlay').classList.remove('open');
-      document.getElementById('lightboxModal').classList.remove('open');
-    }
-
-    // Mostrar mensaje si volvemos de Stripe
-    (function() {
-      const params = new URLSearchParams(window.location.search);
-      if (params.get('success') === 'true') {
-        alert('¡Pago completado con éxito! Recibirás tu pedido en los próximos días.');
-      }
-      if (params.get('canceled') === 'true') {
-        alert('Pago cancelado. Puedes intentarlo de nuevo cuando quieras.');
-      }
-    })();
-
-    // INIT
+    // Dots init
     (function init() {
-      const dotsContainer = document.getElementById('carouselDots');
+      var dotsContainer = document.getElementById('carouselDots');
       if (dotsContainer) {
-        for (let i = 0; i < totalSlides; i++) {
-          const dot = document.createElement('span');
+        for (var i = 0; i < totalSlides; i++) {
+          var dot = document.createElement('span');
           dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
           dot.setAttribute('onclick', 'goToSlide(' + i + ')');
           dotsContainer.appendChild(dot);
         }
         setInterval(nextSlide, 4000);
       }
-      document.querySelectorAll('.product-card-image').forEach(function(el) {
-        el.addEventListener('click', function(e) {
-          const btn = e.target.closest('.add-btn, .size-btn, .color-dot');
-          if (btn) return;
-          const img = this.querySelector('img');
-          if (img) {
-            const card = this.closest('.product-card');
-            const title = card ? card.querySelector('.title') : null;
-            openLightbox(img.src, title ? title.textContent : '');
-          }
-        });
-      });
     })();
 
-    // Smooth scroll for hash links
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
       a.addEventListener('click', function(e) {
         e.preventDefault();
-        const el = document.querySelector(this.getAttribute('href'));
+        var el = document.querySelector(this.getAttribute('href'));
         if (el) el.scrollIntoView({ behavior: 'smooth' });
       });
     });
@@ -881,7 +1965,7 @@
   </div>
 
   <!-- WHATSAPP -->
-  <a href="https://wa.me/34600000000" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Contactar por WhatsApp">
+  <a href="https://wa.me/34600000000" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Contact by WhatsApp">
     <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
     </svg>
