@@ -219,6 +219,26 @@
 
     .header-actions a:hover { opacity: 1; }
 
+    /* Language toggle */
+    .lang-btn {
+      background: none;
+      border: 1px solid var(--gray-600);
+      color: var(--gray-400);
+      font-family: var(--font-body);
+      font-size: 0.55rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.5rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      line-height: 1.2;
+    }
+
+    .lang-btn:hover {
+      border-color: var(--white);
+      color: var(--white);
+    }
+
     .cart-btn {
       background: none;
       border: none;
@@ -1450,6 +1470,7 @@
     </nav>
 
     <div class="header-actions fade-in fade-in-1">
+      <button class="lang-btn" id="langToggle" onclick="toggleLang()" aria-label="Toggle language">ES</button>
       <button class="cart-btn" onclick="openCart()" aria-label="Shopping bag">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
@@ -1852,6 +1873,133 @@
   </div>
 
   <script>
+    /* =============================================
+       BILINGUAL ENGINE (ES / EN)
+       ============================================= */
+
+    const langData = {
+      'Home': { en: 'Home', es: 'Inicio' },
+      'Shop': { en: 'Shop', es: 'Tienda' },
+      'Collections': { en: 'Collections', es: 'Colecciones' },
+      'About': { en: 'About', es: 'Nosotros' },
+      'The Philosophy': { en: 'The Philosophy', es: 'La Filosofía' },
+      'Journal': { en: 'Journal', es: 'Revista' },
+      'Essential': { en: 'Essential', es: 'Essential' },
+      'Artwork': { en: 'Artwork', es: 'Artwork' },
+      'One of One': { en: 'One of One', es: 'One of One' },
+      'Essential_sub': { en: 'The essential pieces for the modern magician', es: 'Las piezas esenciales para el mago moderno' },
+      'Most Anticipated': { en: 'Most Anticipated', es: 'Más Esperados' },
+      'Artwork_sub': { en: 'Collection I — The Art of Wonder · 8 editions', es: 'Colección I — The Art of Wonder · 8 ediciones' },
+      'One of One_sub': { en: 'Unique pieces. Only one will ever exist.', es: 'Piezas únicas. Solo existirá una.' },
+      'Artwork Collections': { en: 'Artwork Collections', es: 'Colecciones de Arte' },
+      'hero_sub': { en: 'Where art meets fashion. Every artwork tells a story.', es: 'Donde el arte se encuentra con la moda. Cada obra cuenta una historia.' },
+      'Explore Collections': { en: 'Explore Collections', es: 'Explorar Colecciones' },
+      'New': { en: 'New', es: 'Nuevo' },
+      'Coming Soon': { en: 'Coming Soon', es: 'Próximamente' },
+      'Envío incluido': { en: 'Shipping included', es: 'Envío incluido' },
+      'The Secret': { en: 'The Secret', es: 'The Secret' },
+      'Available now': { en: 'Available now', es: 'Disponible ahora' },
+      'Inquire': { en: 'Inquire', es: 'Consultar' },
+      'Coming': { en: 'Coming', es: 'Próximo' },
+      'banner_title': { en: 'The secret was never the trick', es: 'El secreto nunca fue el truco' },
+      'banner_sub': { en: 'It was the feeling.', es: 'Era el sentimiento.' },
+      'The Philosophy_title': { en: 'The Philosophy', es: 'La Filosofía' },
+      'phil_p1': { en: 'Magic is not a trick. It is a way of seeing the world.', es: 'La magia no es un truco. Es una forma de ver el mundo.' },
+      'phil_p2': { en: 'At Magos con Estilo, every artwork begins with a feeling. The moment when reality stops making sense. That instant of pure wonder — that is what we capture in every design.', es: 'En Magos con Estilo, cada obra comienza con un sentimiento. El momento en que la realidad deja de tener sentido. Ese instante de asombro puro — eso es lo que capturamos en cada diseño.' },
+      'phil_p3': { en: 'This is not merchandise. This is wearable art. Each piece is crafted for those who understand that the true secret was never the method. It was the emotion.', es: 'Esto no es mercancía. Esto es arte vestible. Cada pieza está creada para quienes entienden que el verdadero secreto nunca fue el método. Fue la emoción.' },
+      'phil_p4': { en: 'We work with premium heavyweight cotton, digital hand-drawn illustrations, and a commitment to quality that honors the craft of magic itself.', es: 'Trabajamos con algodón premium de alto gramaje, ilustraciones digitales hechas a mano y un compromiso con la calidad que honra el arte de la magia.' },
+      'about_title': { en: 'About', es: 'Sobre nosotros' },
+      'about_p1': { en: `I've been a magician since childhood. Growing up in Madrid with a deck of cards in my hands, watching the greats — Juan Tamariz, Arturo de Ascanio, Woody Aragón — I understood that magic isn't a trick: it's a way of seeing the world.`, es: 'Soy mago desde pequeño. Crecí en Madrid con una baraja en las manos, viendo a los grandes — Juan Tamariz, Arturo de Ascanio, Woody Aragón — y entendí que la magia no es un truco: es una forma de ver el mundo.' },
+      'about_p2': { en: `If I have to name the one who influenced me most, it's Dani DaOrtiz. He's a friend, a master, and I have immense affection for him. Also Gabi Pareras, and many others who don't fit here but whom I carry with me in every performance.`, es: 'Si tengo que nombrar a quien más me ha influenciado, ese es Dani DaOrtiz. Es amigo, es maestro, y le tengo un cariño inmenso. También Gabi Pareras, y otros muchos que no cabrían aquí pero que llevo conmigo en cada actuación.' },
+      'about_p3': { en: 'For me, magic is a way of life. It is not what I do, it is what I am. This collection reflects that: every artwork is a nod to those who understand that the true secret is not in the hand, but in the gaze.', es: 'Para mí la magia es una forma de vida. No es lo que hago, es lo que soy. Esta colección refleja eso: cada diseño es un guiño a quienes entienden que el verdadero secreto no está en la mano, sino en la mirada.' },
+      'Journal_title': { en: 'Journal', es: 'Revista' },
+      'journal_sub': { en: 'Stories, reflections, and news from the world of magic and style.', es: 'Historias, reflexiones y novedades del mundo de la magia y el estilo.' },
+      'j1_title': { en: `The Modern Magician's Style`, es: 'El Estilo del Mago Moderno' },
+      'j1_text': { en: 'The clothes we wear speak before we make the first move. What does yours say?', es: 'La ropa que llevamos habla antes de que hagamos el primer movimiento. ¿Qué dice la tuya?' },
+      'j2_title': { en: 'Behind the Design: The Secret', es: 'Detrás del Diseño: The Secret' },
+      'j2_text': { en: 'How the first artwork of Collection I came to life. The process, the inspiration, the details.', es: 'Cómo cobró vida la primera obra de la Colección I. El proceso, la inspiración, los detalles.' },
+      'j3_title': { en: 'Why One of One', es: 'Por qué One of One' },
+      'j3_text': { en: 'The story behind our most exclusive edition: one t-shirt, one design, one owner.', es: 'La historia detrás de nuestra edición más exclusiva: una camiseta, un diseño, un dueño.' },
+      'Read more': { en: 'Read more', es: 'Leer más' },
+      'Contact': { en: 'Contact', es: 'Contacto' },
+      'contact_sub': { en: 'Questions? Write to us:', es: '¿Preguntas? Escríbenos:' },
+      'contact_btn': { en: 'magosconestilo@neolabs.me', es: 'magosconestilo@neolabs.me' },
+      'footer_rights': { en: 'All rights reserved.', es: 'Todos los derechos reservados.' },
+      'footer_tagline': { en: 'Where art meets fashion.', es: 'Donde el arte se encuentra con la moda.' },
+      'Cart': { en: 'Cart', es: 'Carrito' },
+      'Your cart is empty': { en: 'Your cart is empty', es: 'Tu carrito está vacío' },
+      'Pay with Stripe': { en: 'Pay with Stripe', es: 'Pagar con Stripe' },
+      'Shipping included': { en: 'Shipping included. Secure payment.', es: 'Envío incluido. Pago seguro.' },
+      'Remove': { en: 'Remove', es: 'Eliminar' },
+      'Added': { en: 'Added', es: 'Añadido' },
+      'Processing': { en: 'Processing...', es: 'Procesando...' },
+      'Sold': { en: 'Sold', es: 'Vendido' },
+      'Wear the Impossible': { en: 'Wear the Impossible', es: 'Wear the Impossible' },
+      'Misdirection.': { en: 'Misdirection.', es: 'Misdirection.' },
+      'Trust Your Hands.': { en: 'Trust Your Hands.', es: 'Trust Your Hands.' },
+      'Magic is an Art.': { en: 'Magic is an Art.', es: 'Magic is an Art.' },
+      'Nothing Happened.': { en: 'Nothing Happened.', es: 'Nothing Happened.' },
+      'Practice Creates Miracles.': { en: 'Practice Creates Miracles.', es: 'Practice Creates Miracles.' },
+      'Think Impossible.': { en: 'Think Impossible.', es: 'Think Impossible.' },
+      'Less Method. More Wonder.': { en: 'Less Method. More Wonder.', es: 'Less Method. More Wonder.' },
+      'The Audience Matters.': { en: 'The Audience Matters.', es: 'The Audience Matters.' },
+      'Invisible.': { en: 'Invisible.', es: 'Invisible.' },
+      'Artwork 02': { en: 'Artwork 02', es: 'Artwork 02' },
+      'Artwork 03': { en: 'Artwork 03', es: 'Artwork 03' },
+      'Artwork 04': { en: 'Artwork 04', es: 'Artwork 04' },
+      'Artwork 05': { en: 'Artwork 05', es: 'Artwork 05' },
+      'Artwork 06': { en: 'Artwork 06', es: 'Artwork 06' },
+      'Artwork 07': { en: 'Artwork 07', es: 'Artwork 07' },
+      'Artwork 08': { en: 'Artwork 08', es: 'Artwork 08' },
+      'One of One I': { en: 'One of One I', es: 'One of One I' },
+      'One of One II': { en: 'One of One II', es: 'One of One II' },
+      'One of One III': { en: 'One of One III', es: 'One of One III' },
+      'Aviso Legal': { en: 'Legal Notice', es: 'Aviso Legal' },
+      'Privacy Policy': { en: 'Privacy Policy', es: 'Política de Privacidad' },
+      'Terms &amp; Conditions': { en: 'Terms &amp; Conditions', es: 'Términos y Condiciones' },
+      'Cookies': { en: 'Cookies', es: 'Cookies' },
+      'j1_date': { en: 'July 2026', es: 'Julio 2026' },
+      'j2_date': { en: 'June 2026', es: 'Junio 2026' },
+      'j3_date': { en: 'May 2026', es: 'Mayo 2026' },
+    };
+
+    let currentLang = localStorage.getItem('mce_lang') || 'es';
+
+    function translatePage(lang) {
+      currentLang = lang;
+      localStorage.setItem('mce_lang', lang);
+      document.documentElement.lang = lang === 'es' ? 'es' : 'en';
+      document.getElementById('langToggle').textContent = lang === 'es' ? 'EN' : 'ES';
+
+      // Walk all text nodes and translate
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+      const nodesToReplace = [];
+      while (walker.nextNode()) {
+        const node = walker.currentNode;
+        const text = node.textContent.trim();
+        if (text && langData[text] && langData[text][lang]) {
+          nodesToReplace.push({ node, text: langData[text][lang] });
+        }
+      }
+      nodesToReplace.forEach(({ node, text }) => { node.textContent = text; });
+
+      // Also update aria-labels and placeholders
+      document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+        const key = el.getAttribute('data-i18n-alt');
+        if (langData[key] && langData[key][lang]) {
+          el.setAttribute('alt', langData[key][lang]);
+        }
+      });
+    }
+
+    function toggleLang() {
+      const newLang = currentLang === 'es' ? 'en' : 'es';
+      translatePage(newLang);
+    }
+
+    // Init language on load
+    translatePage(currentLang);
+
     let cart = [];
     const API_URL = 'https://magos-pedidos.dortizs76.workers.dev';
 
