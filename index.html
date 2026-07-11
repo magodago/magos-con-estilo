@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>MAGOS CON ESTILO — Artwork Collections</title>
-  <meta name="description" content="Where art meets fashion. Premium wearable artworks for magicians.">
+  <title>MAGOS CON ESTILO — The Gallery</title>
+  <meta name="description" content="Where art meets fashion. A curated space of wearable artworks for magicians.">
   <link rel="icon" type="image/png" href="assets/logo-transparent.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1445,27 +1445,16 @@
 
     <nav class="header-nav" id="headerNav">
       <ul>
-        <li><a href="#" onclick="closeMenu()">Home</a></li>
+        <li><a href="#essential" onclick="closeMenu()">Essentials</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event, 'shopDropdown')">Shop</a>
-          <ul class="dropdown-menu" id="shopDropdown">
-            <li class="dropdown-sub">
-              <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event, 'collectionsDropdown')">Collections</a>
-              <ul class="dropdown-menu" id="collectionsDropdown">
-                <li><a href="#essential" onclick="closeMenu()">Essential</a></li>
-                <li><a href="#artwork" onclick="closeMenu()">Artwork</a></li>
-                <li><a href="#oneofone" onclick="closeMenu()">One of One</a></li>
-              </ul>
-            </li>
+          <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event, 'galleryDropdown')">The Gallery</a>
+          <ul class="dropdown-menu" id="galleryDropdown">
+            <li><a href="#gallery" onclick="closeMenu()">Collection I — The Art of Wonder</a></li>
           </ul>
         </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event, 'aboutDropdown')">About</a>
-          <ul class="dropdown-menu" id="aboutDropdown">
-            <li><a href="#philosophy" onclick="closeMenu()">The Philosophy</a></li>
-            <li><a href="#journal" onclick="closeMenu()">Journal</a></li>
-          </ul>
-        </li>
+        <li><a href="#oneofone" onclick="closeMenu()">One of One</a></li>
+        <li><a href="#journal" onclick="closeMenu()">Journal</a></li>
+        <li><a href="#about-brand" onclick="closeMenu()">About</a></li>
       </ul>
     </nav>
 
@@ -1491,9 +1480,9 @@
           <img src="assets/logo-transparent.png" alt="MAGOS CON ESTILO">
         </div>
       </div>
-      <h1 class="fade-in fade-in-3">Artwork Collections</h1>
-      <p class="fade-in fade-in-4" data-i18n="hero_sub">Where art meets fashion. Every artwork tells a story.</p>
-      <a href="#essential" class="hero-cta fade-in fade-in-5">Explore Collections</a>
+      <h1 class="fade-in fade-in-3" data-i18n="hero_title">The Gallery</h1>
+      <p class="fade-in fade-in-4" data-i18n="hero_sub">Where art meets fashion. A curated space of wearable artworks.</p>
+      <a href="#essential" class="hero-cta fade-in fade-in-5">Explore Essentials</a>
     </div>
   </section>
 
@@ -1634,11 +1623,11 @@
     <div class="carousel-dots" id="carouselDots"></div>
   </section>
 
-  <!-- ARTWORK -->
-  <section class="section" id="artwork">
+  <!-- THE GALLERY -->
+  <section class="section" id="gallery">
     <div class="section-header fade-in">
-      <h2>Artwork</h2>
-      <p data-i18n="artwork_sub">Collection I — The Art of Wonder · 8 editions</p>
+      <h2>The Gallery</h2>
+      <p data-i18n="gallery_sub">Collection I — The Art of Wonder · 8 editions</p>
     </div>
     <div class="product-grid">
       <a href="artwork-the-secret.html" class="product-card fade-in fade-in-1">
@@ -1878,22 +1867,22 @@
        ============================================= */
 
     const langData = {
-      // Nav
-      'Home': { en: 'Home', es: 'Inicio' },
-      'Shop': { en: 'Shop', es: 'Tienda' },
-      'Collections': { en: 'Collections', es: 'Colecciones' },
-      'About': { en: 'About', es: 'Nosotros' },
-      'The Philosophy': { en: 'The Philosophy', es: 'La Filosofía' },
+      // Nav (collection names stay untranslated)
+      'Essentials': { en: 'Essentials', es: 'Essentials' },
+      'The Gallery': { en: 'The Gallery', es: 'The Gallery' },
+      'Collection I — The Art of Wonder': { en: 'Collection I — The Art of Wonder', es: 'Colección I — The Art of Wonder' },
+      'One of One': { en: 'One of One', es: 'One of One' },
       'Journal': { en: 'Journal', es: 'Revista' },
+      'About': { en: 'About', es: 'Sobre nosotros' },
       // Hero
-      'Artwork Collections': { en: 'Artwork Collections', es: 'Colecciones de Arte' },
-      'hero_sub': { en: 'Where art meets fashion. Every artwork tells a story.', es: 'Donde el arte se encuentra con la moda. Cada obra cuenta una historia.' },
-      'Explore Collections': { en: 'Explore Collections', es: 'Explorar Colecciones' },
+      'hero_title': { en: 'The Gallery', es: 'La Galería' },
+      'hero_sub': { en: 'Where art meets fashion. A curated space of wearable artworks.', es: 'Donde el arte se encuentra con la moda. Un espacio curado de obras de arte vestibles.' },
+      'Explore Essentials': { en: 'Explore Essentials', es: 'Explorar Essentials' },
       // Section subtitles
       'essential_sub': { en: 'The essential pieces for your daily craft', es: 'Las piezas esenciales para tu arte diario' },
       'most_anticipated': { en: 'Most Anticipated', es: 'Más Esperados' },
       'most_anticipated_sub': { en: 'Collection I — The Art of Wonder', es: 'Colección I — The Art of Wonder' },
-      'artwork_sub': { en: 'Collection I — The Art of Wonder · 8 editions', es: 'Colección I — The Art of Wonder · 8 ediciones' },
+      'gallery_sub': { en: 'Collection I — The Art of Wonder · 8 editions', es: 'Colección I — The Art of Wonder · 8 ediciones' },
       'oneofone_sub': { en: 'Unique pieces. Only one will ever exist.', es: 'Piezas únicas. Solo existirá una.' },
       // Badges
       'New': { en: 'New', es: 'Nuevo' },
