@@ -49,11 +49,7 @@ body {
   display: block;
 }
 
-.header-nav {
-  display: flex;
-  gap: 1.5rem;
-  list-style: none;
-}
+.header-nav { }
 
 .header-nav a {
   color: #000;
@@ -1309,7 +1305,261 @@ body {
   color: #aaa;
 }
 
-/* RESPONSIVE */
+/* =============================================
+   NUEVA NAVEGACIÓN — DROPDOWNS + HAMBURGER
+   ============================================= */
+
+.header-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 0;
+  align-items: center;
+}
+
+.header-nav > ul > li {
+  position: relative;
+}
+
+.header-nav > ul > li > a {
+  display: block;
+  color: #000;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0.6rem 1rem;
+  transition: opacity 0.2s;
+}
+
+.header-nav > ul > li > a:hover { opacity: 0.5; }
+
+/* Dropdown menus */
+.dropdown { position: relative; }
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border: 1px solid #eee;
+  min-width: 200px;
+  padding: 0.5rem 0;
+  z-index: 150;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.dropdown-menu.open { display: block; }
+
+.dropdown-menu li { list-style: none; }
+
+.dropdown-menu li a {
+  display: block;
+  padding: 0.5rem 1.2rem;
+  color: #000;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.dropdown-menu li a:hover { opacity: 0.5; }
+
+/* Sub-dropdown (Collections > Essential/Signature/One of One) */
+.dropdown-sub { position: relative; }
+
+.dropdown-sub > .dropdown-menu {
+  top: -0.5rem;
+  left: 100%;
+  margin-left: 1px;
+}
+
+/* Dropdown toggle arrow */
+.dropdown-toggle::after {
+  content: '▾';
+  display: inline-block;
+  margin-left: 4px;
+  font-size: 0.5rem;
+  vertical-align: middle;
+}
+
+/* Hamburger menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 110;
+}
+
+.hamburger span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #000;
+  border-radius: 1px;
+  transition: all 0.3s;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(4px, 4px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(4px, -4px);
+}
+
+/* Nav overlay (mobile) */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 90;
+}
+
+.nav-overlay.open { display: block; }
+
+/* =============================================
+   NEW SECTIONS
+   ============================================= */
+
+/* Signature section */
+.signature-section {
+  border-top: 1px solid #eee;
+  padding-top: 3rem;
+}
+
+.badge-gold {
+  background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728) !important;
+  color: #1a1a1a !important;
+}
+
+/* Philosophy section */
+.philosophy-section {
+  background: #fafafa;
+  padding: 5rem 2rem;
+}
+
+.philosophy-section .about-card {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.philosophy-section .about-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1.5rem;
+  display: block;
+}
+
+.about-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.8rem;
+}
+
+.about-card p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.9;
+  margin-bottom: 1.2rem;
+}
+
+/* Journal section */
+.journal-section {
+  background: #fff;
+}
+
+.journal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.journal-card {
+  border: 1px solid #eee;
+  transition: box-shadow 0.3s;
+}
+
+.journal-card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+.journal-card-image {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.journal-card-content {
+  padding: 1.5rem;
+}
+
+.journal-date {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #999;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.journal-card-content h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.5rem;
+}
+
+.journal-card-content p {
+  font-size: 0.8rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.journal-read {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #000;
+  text-decoration: none;
+  border-bottom: 1px solid #000;
+  padding-bottom: 2px;
+  font-weight: 600;
+}
+
+.journal-read:hover { opacity: 0.6; }
+
+/* About grid (generic) */
+.about-grid {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-card {
+  margin-bottom: 2rem;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
 @media (max-width: 900px) {
   .product-grid { grid-template-columns: repeat(2, 1fr); }
   .about { grid-template-columns: 1fr; }
@@ -1322,7 +1572,56 @@ body {
 
 @media (max-width: 600px) {
   .header { padding: 0.5rem 1rem; }
-  .header-nav { display: none; }
+  
+  /* Mobile nav */
+  .hamburger { display: flex; }
+  .header-nav {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: -280px;
+    width: 260px;
+    height: 100%;
+    background: #fff;
+    z-index: 100;
+    padding: 5rem 1.5rem 2rem;
+    transition: right 0.3s ease;
+    border-left: 1px solid #eee;
+  }
+  .header-nav.open { right: 0; }
+  
+  .header-nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+  
+  .header-nav > ul > li > a {
+    padding: 0.8rem 0;
+    font-size: 0.75rem;
+    width: 100%;
+  }
+  
+  /* Mobile dropdowns */
+  .dropdown-menu {
+    position: static;
+    border: none;
+    box-shadow: none;
+    padding-left: 1rem;
+    min-width: auto;
+    background: transparent;
+  }
+  
+  .dropdown-sub > .dropdown-menu {
+    top: auto;
+    left: auto;
+    margin-left: 0;
+  }
+  
+  .dropdown-toggle::after {
+    float: right;
+  }
+  
   .product-grid { grid-template-columns: repeat(2, 1fr); gap: 0.3rem; }
   .footer-grid { grid-template-columns: 1fr; }
   .hero { height: 70vh; min-height: 450px; }
@@ -1341,4 +1640,9 @@ body {
   .smoke-1, .smoke-4 { height: 70px; }
   .smoke-2, .smoke-3 { width: 70px; }
   .smoke-5, .smoke-6 { display: none; }
+  
+  /* Journal mobile */
+  .journal-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .journal-card-content { padding: 1rem; }
+  .philosophy-section { padding: 3rem 1.5rem; }
 }

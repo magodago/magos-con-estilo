@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>MAGOS CON ESTILO — Merch para magos</title>
   <meta name="description" content="Merch premium para magos. Camisetas, sudaderas y accesorios.">
-  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="icon" type="image/png" href="assets/logo-inverted.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap" rel="stylesheet">
@@ -13,23 +13,47 @@
 </head>
 <body>
 
-  <div class="top-bar">Colección 2026</div>
+  <!-- TOP BAR -->
+  <div class="top-bar">Colección 2026 — Envío incluido</div>
 
+  <!-- HEADER -->
   <header class="header">
     <a href="/" class="header-logo">
-      <img src="assets/logo.png" alt="MAGOS CON ESTILO">
+      <img src="assets/logo-inverted.png" alt="MAGOS CON ESTILO">
     </a>
-    <ul class="header-nav">
-      <li><a href="#">Inicio</a></li>
-      <li><a href="#productos">Tienda</a></li>
-      <li><a href="#nosotros">Nosotros</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-    <div class="header-wand">
-      <div class="wand-body"></div>
-      <div class="wand-tip"></div>
-      <div class="wand-sparkle"></div>
-    </div>
+
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="header-nav" id="headerNav">
+      <ul>
+        <li><a href="#" onclick="closeMenu()">Home</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event, 'shopDropdown')">Shop</a>
+          <ul class="dropdown-menu" id="shopDropdown">
+            <li class="dropdown-sub">
+              <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event, 'collectionsDropdown')">Collections</a>
+              <ul class="dropdown-menu" id="collectionsDropdown">
+                <li><a href="#essential" onclick="closeMenu()">Essential</a></li>
+                <li><a href="#signature" onclick="closeMenu()">Signature</a></li>
+                <li><a href="#oneofone" onclick="closeMenu()">One of One</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event, 'aboutDropdown')">About</a>
+          <ul class="dropdown-menu" id="aboutDropdown">
+            <li><a href="#philosophy" onclick="closeMenu()">The Philosophy</a></li>
+            <li><a href="#journal" onclick="closeMenu()">Journal</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
     <div class="header-actions">
       <button class="cart-btn" onclick="openCart()" aria-label="Abrir carrito">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -42,13 +66,17 @@
     </div>
   </header>
 
+  <!-- OVERLAY PARA MENÚ MÓVIL -->
+  <div class="nav-overlay" id="navOverlay" onclick="closeMenu()"></div>
+
+  <!-- HERO -->
   <section class="hero">
     <div style="background:#1a1a1a;position:absolute;inset:0;"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <div class="hero-logo">
         <div class="hero-logo-wrap">
-          <img src="assets/logo.png" alt="MAGOS CON ESTILO">
+          <img src="assets/logo-transparent.png" alt="MAGOS CON ESTILO">
           <div class="smoke smoke-1"></div>
           <div class="smoke smoke-2"></div>
           <div class="smoke smoke-3"></div>
@@ -59,7 +87,143 @@
       </div>
       <h1>Magos con Estilo</h1>
       <p>Merch premium para magos y magas. Diseños con la esencia del gremio.</p>
-      <a href="#productos" class="hero-cta">Ver Colección</a>
+      <a href="#essential" class="hero-cta">Ver Colección</a>
+    </div>
+  </section>
+
+  <!-- SHOP: ESSENTIAL -->
+  <section class="section" id="essential">
+    <div class="section-header">
+      <h2>Essential</h2>
+      <p>Los imprescindibles. Diseños esenciales para el día a día del mago.</p>
+    </div>
+    <div class="product-grid">
+      <!-- Modelo 1♠ -->
+      <div class="product-card">
+        <div class="product-card-image">
+          <img src="assets/modelo-1.jpg" alt="Modelo Magia 1♠">
+          <span class="badge">Essential</span>
+        </div>
+        <div class="product-card-info">
+          <div class="title">Modelo Magia 1♠</div>
+          <div class="price">29.99 EUR <span class="price-shipping">Envío incluido</span></div>
+          <div class="colors">
+            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
+          </div>
+          <div class="size-selector">
+            <span class="size-btn" onclick="selectSize(this)">S</span>
+            <span class="size-btn selected" onclick="selectSize(this)">M</span>
+            <span class="size-btn" onclick="selectSize(this)">L</span>
+            <span class="size-btn" onclick="selectSize(this)">XL</span>
+          </div>
+          <button class="add-btn" data-diseno="diseno-01" onclick="addToCart(this, 'Modelo Magia 1♠', '29.99', '♠')">Añadir al carrito</button>
+        </div>
+      </div>
+      <!-- Modelo 2♣ -->
+      <div class="product-card">
+        <div class="product-card-image">
+          <img src="assets/modelo-2.jpg" alt="Modelo Magia 2♣">
+          <span class="badge">Essential</span>
+        </div>
+        <div class="product-card-info">
+          <div class="title">Modelo Magia 2♣</div>
+          <div class="price">29.99 EUR <span class="price-shipping">Envío incluido</span></div>
+          <div class="colors">
+            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
+          </div>
+          <div class="size-selector">
+            <span class="size-btn" onclick="selectSize(this)">S</span>
+            <span class="size-btn selected" onclick="selectSize(this)">M</span>
+            <span class="size-btn" onclick="selectSize(this)">L</span>
+            <span class="size-btn" onclick="selectSize(this)">XL</span>
+          </div>
+          <button class="add-btn" data-diseno="diseno-02" onclick="addToCart(this, 'Modelo Magia 2♣', '29.99', '♣')">Añadir al carrito</button>
+        </div>
+      </div>
+      <!-- Modelo 3♥ -->
+      <div class="product-card">
+        <div class="product-card-image">
+          <img src="assets/modelo-3.jpg" alt="Modelo Magia 3♥">
+          <span class="badge">Essential</span>
+        </div>
+        <div class="product-card-info">
+          <div class="title">Modelo Magia 3♥</div>
+          <div class="price">29.99 EUR <span class="price-shipping">Envío incluido</span></div>
+          <div class="colors">
+            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
+          </div>
+          <div class="size-selector">
+            <span class="size-btn" onclick="selectSize(this)">S</span>
+            <span class="size-btn selected" onclick="selectSize(this)">M</span>
+            <span class="size-btn" onclick="selectSize(this)">L</span>
+            <span class="size-btn" onclick="selectSize(this)">XL</span>
+          </div>
+          <button class="add-btn" data-diseno="diseno-03" onclick="addToCart(this, 'Modelo Magia 3♥', '29.99', '♥')">Añadir al carrito</button>
+        </div>
+      </div>
+      <!-- Modelo 4♦ -->
+      <div class="product-card">
+        <div class="product-card-image">
+          <img src="assets/modelo-4.jpg" alt="Modelo Magia 4♦">
+          <span class="badge">Essential</span>
+        </div>
+        <div class="product-card-info">
+          <div class="title">Modelo Magia 4♦</div>
+          <div class="price">29.99 EUR <span class="price-shipping">Envío incluido</span></div>
+          <div class="colors">
+            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
+          </div>
+          <div class="size-selector">
+            <span class="size-btn" onclick="selectSize(this)">S</span>
+            <span class="size-btn selected" onclick="selectSize(this)">M</span>
+            <span class="size-btn" onclick="selectSize(this)">L</span>
+            <span class="size-btn" onclick="selectSize(this)">XL</span>
+          </div>
+          <button class="add-btn" data-diseno="diseno-04" onclick="addToCart(this, 'Modelo Magia 4♦', '29.99', '♦')">Añadir al carrito</button>
+        </div>
+      </div>
+      <!-- Modelo 5★ -->
+      <div class="product-card">
+        <div class="product-card-image">
+          <img src="assets/modelo-5.jpg" alt="Modelo Magia 5★">
+          <span class="badge">Essential</span>
+        </div>
+        <div class="product-card-info">
+          <div class="title">Modelo Magia 5★</div>
+          <div class="price">29.99 EUR <span class="price-shipping">Envío incluido</span></div>
+          <div class="colors">
+            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
+          </div>
+          <div class="size-selector">
+            <span class="size-btn" onclick="selectSize(this)">S</span>
+            <span class="size-btn selected" onclick="selectSize(this)">M</span>
+            <span class="size-btn" onclick="selectSize(this)">L</span>
+            <span class="size-btn" onclick="selectSize(this)">XL</span>
+          </div>
+          <button class="add-btn" data-diseno="diseno-05" onclick="addToCart(this, 'Modelo Magia 5★', '29.99', '★')">Añadir al carrito</button>
+        </div>
+      </div>
+      <!-- Modelo 6🃏 -->
+      <div class="product-card">
+        <div class="product-card-image">
+          <img src="assets/modelo-6.jpg" alt="Modelo Magia 6🃏">
+          <span class="badge">Essential</span>
+        </div>
+        <div class="product-card-info">
+          <div class="title">Modelo Magia 6🃏</div>
+          <div class="price">29.99 EUR <span class="price-shipping">Envío incluido</span></div>
+          <div class="colors">
+            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
+          </div>
+          <div class="size-selector">
+            <span class="size-btn" onclick="selectSize(this)">S</span>
+            <span class="size-btn selected" onclick="selectSize(this)">M</span>
+            <span class="size-btn" onclick="selectSize(this)">L</span>
+            <span class="size-btn" onclick="selectSize(this)">XL</span>
+          </div>
+          <button class="add-btn" data-diseno="diseno-06" onclick="addToCart(this, 'Modelo Magia 6🃏', '29.99', '🃏')">Añadir al carrito</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -164,10 +328,83 @@
     <div class="carousel-dots" id="carouselDots"></div>
   </section>
 
-  <!-- EDICIÓN ÚNICA -->
-  <section class="exclusive-section">
+  <!-- SHOP: SIGNATURE -->
+  <section class="section signature-section" id="signature">
+    <div class="section-header">
+      <h2>Signature</h2>
+      <p>Diseños de edición especial. Para el mago que deja huella.</p>
+    </div>
+    <div class="product-grid">
+      <!-- Modelo 7✦ -->
+      <div class="product-card">
+        <div class="product-card-image">
+          <img src="assets/modelo-7.jpg" alt="Modelo Magia 7✦">
+          <span class="badge badge-gold">Signature</span>
+        </div>
+        <div class="product-card-info">
+          <div class="title">Modelo Magia 7✦</div>
+          <div class="price">39.99 EUR <span class="price-shipping">Envío incluido</span></div>
+          <div class="colors">
+            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
+          </div>
+          <div class="size-selector">
+            <span class="size-btn" onclick="selectSize(this)">S</span>
+            <span class="size-btn selected" onclick="selectSize(this)">M</span>
+            <span class="size-btn" onclick="selectSize(this)">L</span>
+            <span class="size-btn" onclick="selectSize(this)">XL</span>
+          </div>
+          <button class="add-btn" data-diseno="diseno-07" onclick="addToCart(this, 'Modelo Magia 7✦', '39.99', '✦')">Añadir al carrito</button>
+        </div>
+      </div>
+      <!-- Modelo 8✧ -->
+      <div class="product-card">
+        <div class="product-card-image">
+          <img src="assets/modelo-8.jpg" alt="Modelo Magia 8✧">
+          <span class="badge badge-gold">Signature</span>
+        </div>
+        <div class="product-card-info">
+          <div class="title">Modelo Magia 8✧</div>
+          <div class="price">39.99 EUR <span class="price-shipping">Envío incluido</span></div>
+          <div class="colors">
+            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
+          </div>
+          <div class="size-selector">
+            <span class="size-btn" onclick="selectSize(this)">S</span>
+            <span class="size-btn selected" onclick="selectSize(this)">M</span>
+            <span class="size-btn" onclick="selectSize(this)">L</span>
+            <span class="size-btn" onclick="selectSize(this)">XL</span>
+          </div>
+          <button class="add-btn" data-diseno="diseno-08" onclick="addToCart(this, 'Modelo Magia 8✧', '39.99', '✧')">Añadir al carrito</button>
+        </div>
+      </div>
+      <!-- Modelo 9♤ -->
+      <div class="product-card">
+        <div class="product-card-image">
+          <img src="assets/modelo-9.jpg" alt="Modelo Magia 9♤">
+          <span class="badge badge-gold">Signature</span>
+        </div>
+        <div class="product-card-info">
+          <div class="title">Modelo Magia 9♤</div>
+          <div class="price">39.99 EUR <span class="price-shipping">Envío incluido</span></div>
+          <div class="colors">
+            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
+          </div>
+          <div class="size-selector">
+            <span class="size-btn" onclick="selectSize(this)">S</span>
+            <span class="size-btn selected" onclick="selectSize(this)">M</span>
+            <span class="size-btn" onclick="selectSize(this)">L</span>
+            <span class="size-btn" onclick="selectSize(this)">XL</span>
+          </div>
+          <button class="add-btn" data-diseno="diseno-09" onclick="addToCart(this, 'Modelo Magia 9♤', '39.99', '♤')">Añadir al carrito</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDICIÓN ÚNICA (ONE OF ONE) -->
+  <section class="exclusive-section" id="oneofone">
     <div class="exclusive-container">
-      <div class="exclusive-badge">1 en el mundo</div>
+      <div class="exclusive-badge">One of One</div>
       <div class="exclusive-grid">
         <div class="exclusive-image">
           <img src="assets/placeholder-exclusive.jpg" alt="Edición Única">
@@ -179,7 +416,7 @@
         </div>
         <div class="exclusive-info">
           <span class="exclusive-tag">Pieza Única</span>
-          <h2>Edición Limitada</h2>
+          <h2>One of One</h2>
           <p class="exclusive-desc">Una sola camiseta de este diseño existirá en el mundo. Cuando se vaya, no habrá otra. Numerada, certificada, única.</p>
           <div class="exclusive-details">
             <div class="exclusive-detail">
@@ -205,202 +442,13 @@
     </div>
   </section>
 
-  <section class="section" id="productos">
+  <!-- SHOP: REMAINING ITEMS (Colección) -->
+  <section class="section" id="shop-full">
     <div class="section-header">
       <h2>Colección 2026</h2>
       <p>Camisetas unisex 100% algodón premium. Corte cómodo para magos y magas. Solo color negro. Tallas S a XL. <strong>29.99 EUR</strong> · Envío incluido · 7-9 días laborables.</p>
     </div>
-
     <div class="product-grid">
-      <!-- Modelo 1♠ -->
-      <div class="product-card">
-        <div class="product-card-image">
-          <img src="assets/modelo-1.jpg" alt="Modelo Magia 1♠">
-          <span class="badge">Nuevo</span>
-        </div>
-        <div class="product-card-info">
-          <div class="title">Modelo Magia 1♠</div>
-          <div class="price">29.99 EUR <span class="price-shipping">Envío incluido</span></div>
-          <div class="colors">
-            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
-          </div>
-          <div class="size-selector">
-            <span class="size-btn" onclick="selectSize(this)">S</span>
-            <span class="size-btn selected" onclick="selectSize(this)">M</span>
-            <span class="size-btn" onclick="selectSize(this)">L</span>
-            <span class="size-btn" onclick="selectSize(this)">XL</span>
-          </div>
-          <button class="add-btn" data-diseno="diseno-01" onclick="addToCart(this, 'Modelo Magia 1♠', '29.99', '♠')">Añadir al carrito</button>
-        </div>
-      </div>
-      <!-- Modelo 2♣ -->
-      <div class="product-card">
-        <div class="product-card-image">
-          <img src="assets/modelo-2.jpg" alt="Modelo Magia 2♣">
-          <span class="badge">Nuevo</span>
-        </div>
-        <div class="product-card-info">
-          <div class="title">Modelo Magia 2♣</div>
-          <div class="price">29.99 EUR <span class="price-shipping">Envío incluido</span></div>
-          <div class="colors">
-            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
-          </div>
-          <div class="size-selector">
-            <span class="size-btn" onclick="selectSize(this)">S</span>
-            <span class="size-btn selected" onclick="selectSize(this)">M</span>
-            <span class="size-btn" onclick="selectSize(this)">L</span>
-            <span class="size-btn" onclick="selectSize(this)">XL</span>
-          </div>
-          <button class="add-btn" data-diseno="diseno-02" onclick="addToCart(this, 'Modelo Magia 2♣', '29.99', '♣')">Añadir al carrito</button>
-        </div>
-      </div>
-      <!-- Modelo 3♥ -->
-      <div class="product-card">
-        <div class="product-card-image">
-          <img src="assets/modelo-3.jpg" alt="Modelo Magia 3♥">
-          <span class="badge">Nuevo</span>
-        </div>
-        <div class="product-card-info">
-          <div class="title">Modelo Magia 3♥</div>
-          <div class="price">29.99 EUR <span class="price-shipping">Envío incluido</span></div>
-          <div class="colors">
-            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
-          </div>
-          <div class="size-selector">
-            <span class="size-btn" onclick="selectSize(this)">S</span>
-            <span class="size-btn selected" onclick="selectSize(this)">M</span>
-            <span class="size-btn" onclick="selectSize(this)">L</span>
-            <span class="size-btn" onclick="selectSize(this)">XL</span>
-          </div>
-          <button class="add-btn" data-diseno="diseno-03" onclick="addToCart(this, 'Modelo Magia 3♥', '29.99', '♥')">Añadir al carrito</button>
-        </div>
-      </div>
-      <!-- Modelo 4♦ -->
-      <div class="product-card">
-        <div class="product-card-image">
-          <img src="assets/modelo-4.jpg" alt="Modelo Magia 4♦">
-          <span class="badge">Nuevo</span>
-        </div>
-        <div class="product-card-info">
-          <div class="title">Modelo Magia 4♦</div>
-          <div class="price">29.99 EUR <span class="price-shipping">Envío incluido</span></div>
-          <div class="colors">
-            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
-          </div>
-          <div class="size-selector">
-            <span class="size-btn" onclick="selectSize(this)">S</span>
-            <span class="size-btn selected" onclick="selectSize(this)">M</span>
-            <span class="size-btn" onclick="selectSize(this)">L</span>
-            <span class="size-btn" onclick="selectSize(this)">XL</span>
-          </div>
-          <button class="add-btn" data-diseno="diseno-04" onclick="addToCart(this, 'Modelo Magia 4♦', '29.99', '♦')">Añadir al carrito</button>
-        </div>
-      </div>
-      <!-- Modelo 5★ -->
-      <div class="product-card">
-        <div class="product-card-image">
-          <img src="assets/modelo-5.jpg" alt="Modelo Magia 5★">
-          <span class="badge">Nuevo</span>
-        </div>
-        <div class="product-card-info">
-          <div class="title">Modelo Magia 5★</div>
-          <div class="price">29.99 EUR <span class="price-shipping">Envío incluido</span></div>
-          <div class="colors">
-            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
-          </div>
-          <div class="size-selector">
-            <span class="size-btn" onclick="selectSize(this)">S</span>
-            <span class="size-btn selected" onclick="selectSize(this)">M</span>
-            <span class="size-btn" onclick="selectSize(this)">L</span>
-            <span class="size-btn" onclick="selectSize(this)">XL</span>
-          </div>
-          <button class="add-btn" data-diseno="diseno-05" onclick="addToCart(this, 'Modelo Magia 5★', '29.99', '★')">Añadir al carrito</button>
-        </div>
-      </div>
-      <!-- Modelo 6🃏 -->
-      <div class="product-card">
-        <div class="product-card-image">
-          <img src="assets/modelo-6.jpg" alt="Modelo Magia 6🃏">
-          <span class="badge">Nuevo</span>
-        </div>
-        <div class="product-card-info">
-          <div class="title">Modelo Magia 6🃏</div>
-          <div class="price">29.99 EUR <span class="price-shipping">Envío incluido</span></div>
-          <div class="colors">
-            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
-          </div>
-          <div class="size-selector">
-            <span class="size-btn" onclick="selectSize(this)">S</span>
-            <span class="size-btn selected" onclick="selectSize(this)">M</span>
-            <span class="size-btn" onclick="selectSize(this)">L</span>
-            <span class="size-btn" onclick="selectSize(this)">XL</span>
-          </div>
-          <button class="add-btn" data-diseno="diseno-06" onclick="addToCart(this, 'Modelo Magia 6🃏', '29.99', '🃏')">Añadir al carrito</button>
-        </div>
-      </div>
-      <!-- Modelo 7✦ -->
-      <div class="product-card">
-        <div class="product-card-image">
-          <img src="assets/modelo-7.jpg" alt="Modelo Magia 7✦">
-          <span class="badge">Nuevo</span>
-        </div>
-        <div class="product-card-info">
-          <div class="title">Modelo Magia 7✦</div>
-          <div class="price">29.99 EUR <span class="price-shipping">Envío incluido</span></div>
-          <div class="colors">
-            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
-          </div>
-          <div class="size-selector">
-            <span class="size-btn" onclick="selectSize(this)">S</span>
-            <span class="size-btn selected" onclick="selectSize(this)">M</span>
-            <span class="size-btn" onclick="selectSize(this)">L</span>
-            <span class="size-btn" onclick="selectSize(this)">XL</span>
-          </div>
-          <button class="add-btn" data-diseno="diseno-07" onclick="addToCart(this, 'Modelo Magia 7✦', '29.99', '✦')">Añadir al carrito</button>
-        </div>
-      </div>
-      <!-- Modelo 8✧ -->
-      <div class="product-card">
-        <div class="product-card-image">
-          <img src="assets/modelo-8.jpg" alt="Modelo Magia 8✧">
-          <span class="badge">Nuevo</span>
-        </div>
-        <div class="product-card-info">
-          <div class="title">Modelo Magia 8✧</div>
-          <div class="price">29.99 EUR <span class="price-shipping">Envío incluido</span></div>
-          <div class="colors">
-            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
-          </div>
-          <div class="size-selector">
-            <span class="size-btn" onclick="selectSize(this)">S</span>
-            <span class="size-btn selected" onclick="selectSize(this)">M</span>
-            <span class="size-btn" onclick="selectSize(this)">L</span>
-            <span class="size-btn" onclick="selectSize(this)">XL</span>
-          </div>
-          <button class="add-btn" data-diseno="diseno-08" onclick="addToCart(this, 'Modelo Magia 8✧', '29.99', '✧')">Añadir al carrito</button>
-        </div>
-      </div>
-      <!-- Modelo 9♤ -->
-      <div class="product-card">
-        <div class="product-card-image">
-          <img src="assets/modelo-9.jpg" alt="Modelo Magia 9♤">
-          <span class="badge">Nuevo</span>
-        </div>
-        <div class="product-card-info">
-          <div class="title">Modelo Magia 9♤</div>
-          <div class="price">29.99 EUR <span class="price-shipping">Envío incluido</span></div>
-          <div class="colors">
-            <span class="color-dot black selected" data-color="Negro" onclick="selectColor(this)"></span>
-          </div>
-          <div class="size-selector">
-            <span class="size-btn" onclick="selectSize(this)">S</span>
-            <span class="size-btn selected" onclick="selectSize(this)">M</span>
-            <span class="size-btn" onclick="selectSize(this)">L</span>
-            <span class="size-btn" onclick="selectSize(this)">XL</span>
-          </div>
-          <button class="add-btn" data-diseno="diseno-09" onclick="addToCart(this, 'Modelo Magia 9♤', '29.99', '♤')">Añadir al carrito</button>
-        </div>
-      </div>
       <!-- Modelo 10♧ -->
       <div class="product-card">
         <div class="product-card-image">
@@ -467,17 +515,36 @@
     </div>
   </section>
 
+  <!-- BANNER DIVIDER -->
   <div class="banner">
     <div style="position:absolute;inset:0;background:#222;"></div>
     <div class="banner-overlay"></div>
     <div class="banner-content">
       <h2>El truco está en el estilo</h2>
       <p>Cada diseño está pensado para el mago que vive su arte.</p>
-      <a href="#contacto">Contacto</a>
+      <a href="#philosophy">The Philosophy</a>
     </div>
   </div>
 
-  <section class="section about-section" id="nosotros">
+  <!-- ABOUT: THE PHILOSOPHY -->
+  <section class="section philosophy-section" id="philosophy">
+    <div class="section-header">
+      <h2>The Philosophy</h2>
+      <p>Más que ropa. Una forma de entender la magia.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-card">
+        <img src="assets/about-magic.jpg" alt="Magia" class="about-photo">
+        <h3>La esencia</h3>
+        <p class="about-intro">La magia no es un truco. Es una forma de ver el mundo.</p>
+        <p>En Magos con Estilo creemos que el verdadero secreto no está en la mano, sino en la mirada. Cada diseño que creamos nace de esa filosofía: la ropa que llevas dice algo de ti antes de que abras la boca.</p>
+        <p>Trabajamos con algodón premium, cortes cómodos, y diseños que hablan el lenguaje del gremio. Sin estridencias. Sin logos enormes. Solo magos que se reconocen entre sí.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT: LA MARCA (About original) -->
+  <section class="section about-section" id="about-brand">
     <div class="about-grid">
       <div class="about-card" style="grid-column:1/-1;">
         <img src="assets/david-foto.jpg" alt="David Ortiz" class="about-photo">
@@ -491,12 +558,57 @@
     </div>
   </section>
 
+  <!-- JOURNAL -->
+  <section class="section journal-section" id="journal">
+    <div class="section-header">
+      <h2>Journal</h2>
+      <p>Reflexiones, historias y novedades del mundo de la magia y el estilo.</p>
+    </div>
+    <div class="journal-grid">
+      <article class="journal-card">
+        <div class="journal-card-image">
+          <div style="background:#f5f5f5;width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#ccc;">♠</div>
+        </div>
+        <div class="journal-card-content">
+          <span class="journal-date">Julio 2026</span>
+          <h3>El estilo del mago moderno</h3>
+          <p>La ropa que llevamos habla antes de que hagamos el primer movimiento. ¿Qué dice la tuya?</p>
+          <a href="#" class="journal-read">Leer más</a>
+        </div>
+      </article>
+      <article class="journal-card">
+        <div class="journal-card-image">
+          <div style="background:#1a1a1a;width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#555;">♣</div>
+        </div>
+        <div class="journal-card-content">
+          <span class="journal-date">Junio 2026</span>
+          <h3>Detrás del diseño: Essential</h3>
+          <p>Cómo nace cada diseño de nuestra colección Essential. El proceso, la inspiración y los detalles.</p>
+          <a href="#" class="journal-read">Leer más</a>
+        </div>
+      </article>
+      <article class="journal-card">
+        <div class="journal-card-image">
+          <div style="background:#f5f5f5;width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#ccc;">♥</div>
+        </div>
+        <div class="journal-card-content">
+          <span class="journal-date">Mayo 2026</span>
+          <h3>Por qué One of One</h3>
+          <p>La historia detrás de nuestra edición más exclusiva: una camiseta, un diseño, un único dueño.</p>
+          <a href="#" class="journal-read">Leer más</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
   <section class="section contact-section" id="contacto">
     <h2>Contacto</h2>
     <p>¿Preguntas? Escríbenos:</p>
     <a href="mailto:magosconestilo@neolabs.me" class="contact-btn">magosconestilo@neolabs.me</a>
   </section>
 
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-top">
       <div class="footer-legal">
@@ -532,6 +644,34 @@
     let cart = [];
     const API_URL = 'https://magos-pedidos.dortizs76.workers.dev';
 
+    // MENÚ MÓVIL
+    function toggleMenu() {
+      document.getElementById('headerNav').classList.toggle('open');
+      document.getElementById('navOverlay').classList.toggle('open');
+      document.getElementById('hamburger').classList.toggle('active');
+    }
+
+    function closeMenu() {
+      document.getElementById('headerNav').classList.remove('open');
+      document.getElementById('navOverlay').classList.remove('open');
+      document.getElementById('hamburger').classList.remove('active');
+      // Close all dropdowns
+      document.querySelectorAll('.dropdown-menu.open').forEach(m => m.classList.remove('open'));
+    }
+
+    // DROPDOWNS
+    function toggleDropdown(e, id) {
+      e.preventDefault();
+      e.stopPropagation();
+      const menu = document.getElementById(id);
+      menu.classList.toggle('open');
+      // Close sibling dropdowns
+      menu.parentElement.parentElement.querySelectorAll('.dropdown-menu').forEach(m => {
+        if (m.id !== id) m.classList.remove('open');
+      });
+    }
+
+    // CART
     function openCart() {
       document.getElementById('cartSidebar').classList.add('open');
       document.getElementById('cartOverlay').classList.add('open');
@@ -604,7 +744,6 @@
       btn.textContent = 'Procesando...';
 
       try {
-        // Enviar solo el primer item por ahora (Stripe session = 1 producto)
         const item = cart[0];
         const resp = await fetch(API_URL + '/create-checkout', {
           method: 'POST',
@@ -723,6 +862,7 @@
       });
     })();
 
+    // Smooth scroll for hash links
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', function(e) {
         e.preventDefault();
