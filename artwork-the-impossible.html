@@ -1193,7 +1193,7 @@
 
       <!-- Right — Price & Buy -->
       <div class="hero-right fade-up fade-up-3">
-        <span class="hero-price">59 €</span>
+        <span class="hero-price">39 €</span>
 
         <div class="size-selector" id="sizeSelector">
           <button class="size-btn" onclick="selectSize(this)">S</button>
@@ -1584,15 +1584,26 @@
       var cart = JSON.parse(localStorage.getItem('mce_cart') || '[]');
       cart.push({
         name: 'The Impossible',
-        price: '59',
+        price: '39',
         color: 'Black',
         size: size,
         icon: '♠',
         diseno: 'essentials-01'
       });
       localStorage.setItem('mce_cart', JSON.stringify(cart));
-      // Redirect
-      window.location.href = '/';
+      // Feedback visual
+      var btn = document.querySelector('.btn-primary');
+      var orig = btn.textContent;
+      btn.textContent = currentLang === 'es' ? '✓ Añadido' : '✓ Added';
+      btn.style.opacity = '0.6';
+      btn.style.borderColor = 'var(--gold)';
+      btn.style.color = 'var(--gold)';
+      setTimeout(function() {
+        btn.textContent = orig;
+        btn.style.opacity = '1';
+        btn.style.borderColor = '';
+        btn.style.color = '';
+      }, 1500);
     }
 
     /* =============================================
