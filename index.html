@@ -1445,6 +1445,7 @@
 
     <nav class="header-nav" id="headerNav">
       <ul>
+        <li><a href="#onetoone" onclick="closeMenu()">One to One</a></li>
         <li><a href="#essential" onclick="closeMenu()">Essentials</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event, 'galleryDropdown')">The Gallery</a>
@@ -1483,6 +1484,28 @@
       <h1 class="fade-in fade-in-3" data-i18n="hero_title">The Gallery</h1>
       <p class="fade-in fade-in-4" data-i18n="hero_sub">Where art meets fashion. A curated space of wearable artworks.</p>
       <a href="#essential" class="hero-cta fade-in fade-in-5">Explore Essentials</a>
+    </div>
+  </section>
+
+  <!-- ONE TO ONE -->
+  <section class="section" id="onetoone" style="border-bottom:1px solid var(--gray-800);padding-bottom:3rem;margin-bottom:3rem;">
+    <div class="section-header fade-in">
+      <h2 style="font-family:var(--font-display);letter-spacing:0.1em;color:var(--gold-dim);">One to One</h2>
+      <p data-i18n="onetoone_sub">Edition 1/1 — The only existing piece in the world</p>
+    </div>
+    <div class="product-grid" style="grid-template-columns:1fr;">
+      <a href="one-to-one-the-moment-before.html" class="product-card fade-in fade-in-1" style="max-width:400px;margin:0 auto;">
+        <div class="product-card-image" style="aspect-ratio:1/1;background:var(--near-black);">
+          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:var(--gold-dim);font-size:1.5rem;letter-spacing:0.15em;text-transform:uppercase;">
+            ✦ 1/1 ✦
+          </div>
+          <span class="badge" style="background:var(--gold-dim);color:var(--black);">Exclusive</span>
+        </div>
+        <div class="product-card-info" style="text-align:center;">
+          <div class="title">The Moment Before</div>
+          <div class="price">149€ <span class="price-shipping">Unique piece</span></div>
+        </div>
+      </a>
     </div>
   </section>
 
@@ -1853,6 +1876,7 @@
       'hero_title': { en: 'The Gallery', es: 'La Galería' },
       'hero_sub': { en: 'Where art meets fashion. A curated space of wearable artworks.', es: 'Donde el arte se encuentra con la moda. Un espacio curado de obras de arte vestibles.' },
       'Explore Essentials': { en: 'Explore Essentials', es: 'Explorar Essentials' },
+      'onetoone_sub': { en: 'Edition 1/1 — The only existing piece in the world', es: 'Edición 1/1 — La única pieza existente en el mundo' },
       // Section subtitles
       'essential_sub': { en: 'The essential pieces for your daily craft', es: 'Las piezas esenciales para tu arte diario' },
       'most_anticipated': { en: 'Most Anticipated', es: 'Más Esperados' },
