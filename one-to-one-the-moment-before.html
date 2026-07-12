@@ -134,9 +134,10 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
 .cart-btn:hover{opacity:1}.cart-btn .cart-count{position:absolute;top:-6px;right:-6px;width:16px;height:16px;background:var(--gold-dim);color:var(--black);font-size:.5rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600}
 @media(max-width:600px){.cart-sidebar{width:100%;right:-100%}}
 @media(max-width:1000px){
-  .hero-content{grid-template-columns:1fr;gap:3rem;padding:8rem 2rem 4rem;text-align:center}
+  .hero-content{grid-template-columns:1fr;gap:2rem;padding:7rem 0 3rem;text-align:center}
   .hero-right{border-left:none;padding-left:0;align-items:center}.hero-left{align-items:center}
-  .hero-floating-container{max-width:300px}.hero-disappear{text-align:left}
+  .hero-floating-container{max-width:100%;margin:0 0 1rem}.hero-disappear{text-align:left}
+  .hero-floating-image{border-radius:0}
   .artwork-grid{grid-template-columns:1fr;gap:3rem}.artwork-frame{margin:0 auto}
   .cert-block{padding:2.5rem 1.5rem}
   .header-nav{display:none;position:fixed;top:0;right:-280px;width:260px;height:100%;background:var(--near-black);z-index:99;padding:5rem 2rem 2rem;flex-direction:column;align-items:flex-start;gap:1.5rem;transition:right .4s;border-left:1px solid var(--gray-800)}
@@ -144,11 +145,22 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
   .nav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:98}.nav-overlay.open{display:block}
 }
 @media(max-width:600px){
-  .header{padding:1rem 1.2rem}.hero-content{padding:7rem 1.2rem 3rem}
-  .hero-floating-container{max-width:220px}.story{padding:5rem 1.2rem}
+  .header{padding:1rem 1.2rem}
+  .hero{min-height:auto;padding-top:0}
+  .hero-content{padding:5rem 0 3rem;gap:1.5rem}
+  .hero-left{padding:0}
+  .hero-floating-container{max-width:100%;margin:0;padding:0}
+  .hero-floating-image{animation:none;filter:drop-shadow(0 10px 40px rgba(0,0,0,.8));width:100%}
+  .hero-glow{display:none}
+  .hero-collection-name{font-size:clamp(2rem,8vw,3rem)}
+  .hero-title{font-size:clamp(1rem,5vw,1.5rem)}
+  .hero-right{padding:0 1.2rem 1.5rem}
+  .hero-disappear{padding:.8rem 0;margin-bottom:1rem}
+  .hero-edition{font-size:clamp(2.5rem,12vw,4rem)}
+  .story{padding:5rem 1.2rem}
   .artwork,.cert,.own{padding:4rem 1.2rem}.hall{padding:5rem 1.2rem}
   .final{padding:3rem 1.2rem;min-height:70vh}.footer{padding:2rem 1.2rem}
-  .btn-claim{padding:1rem 1.5rem;font-size:.65rem}.cert-block{padding:2rem 1rem}
+  .btn-claim{padding:.9rem 1.2rem;font-size:.6rem}.cert-block{padding:2rem 1rem}
   .hall-card{padding:2rem 1.5rem}
 }
 </style>
@@ -233,7 +245,7 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
     <div class="artwork-grid">
       <div class="reveal">
         <div class="artwork-frame">
-          <img src="assets/one-to-one-artwork.png" alt="The Moment Before" onerror="this.style.minHeight='350px';this.style.background='var(--near-black)'">
+          <img src="assets/one-to-one-hero.jpg" alt="The Moment Before" onerror="this.style.minHeight='350px';this.style.background='var(--near-black)'">
         </div>
       </div>
       <div class="reveal">
