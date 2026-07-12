@@ -110,6 +110,29 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
 .footer-logo{font-family:var(--font-display);font-size:.9rem;letter-spacing:.25em;text-transform:uppercase;color:var(--ivory);margin-bottom:.3rem}
 .footer-tagline{font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gray-600);margin-bottom:1.5rem}
 .footer-bottom{padding-top:1rem;border-top:1px solid var(--gray-900);font-size:.5rem;color:var(--gray-700)}
+.cart-sidebar{position:fixed;top:0;right:-380px;width:380px;height:100%;background:var(--near-black);z-index:200;transition:right .5s cubic-bezier(.25,.1,.25,1);display:flex;flex-direction:column;border-left:1px solid var(--gray-800)}
+.cart-sidebar.open{right:0}.cart-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:199}
+.cart-overlay.open{display:block}
+.cart-header{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 2rem;border-bottom:1px solid var(--gray-800)}
+.cart-header h3{font-family:var(--font-display);font-size:1rem;font-weight:400;color:var(--ivory)}
+.cart-close{background:0 0;border:none;color:var(--gray-500);font-size:1.5rem;cursor:pointer}
+.cart-close:hover{color:var(--ivory)}
+.cart-items{flex:1;overflow-y:auto;padding:1rem 2rem}
+.cart-item{display:flex;align-items:center;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--gray-800)}
+.cart-item-icon{width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--gold-dim)}
+.cart-item-info{flex:1}.item-name{font-size:.8rem;color:var(--ivory);font-weight:400}
+.item-details{font-size:.6rem;color:var(--gray-600);margin-top:.2rem}
+.item-price{font-size:.75rem;color:var(--gold-dim);margin-top:.2rem}
+.cart-item-remove{background:0 0;border:none;color:var(--gray-700);font-size:.6rem;cursor:pointer}
+.cart-item-remove:hover{color:var(--ivory)}
+.cart-footer{padding:1.5rem 2rem;border-top:1px solid var(--gray-800)}
+.cart-total{font-family:var(--font-display);font-size:1.2rem;color:var(--ivory);margin-bottom:1rem;text-align:right}
+.checkout-btn{width:100%;padding:1rem;background:var(--ivory);color:var(--black);border:none;font-family:var(--font-body);font-size:.65rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;cursor:pointer}
+.checkout-btn:hover{opacity:.8}.checkout-btn:disabled{opacity:.3;cursor:default}
+.cart-empty{text-align:center;color:var(--gray-600);font-size:.75rem;padding:3rem 0}
+.cart-btn{background:0 0;border:none;cursor:pointer;color:var(--ivory);opacity:.6;padding:0;display:flex;align-items:center;position:relative}
+.cart-btn:hover{opacity:1}.cart-btn .cart-count{position:absolute;top:-6px;right:-6px;width:16px;height:16px;background:var(--gold-dim);color:var(--black);font-size:.5rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600}
+@media(max-width:600px){.cart-sidebar{width:100%;right:-100%}}
 @media(max-width:1000px){
   .hero-content{grid-template-columns:1fr;gap:3rem;padding:8rem 2rem 4rem;text-align:center}
   .hero-right{border-left:none;padding-left:0;align-items:center}.hero-left{align-items:center}
@@ -143,7 +166,7 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
     </nav>
     <div class="header-actions">
       <button class="lang-toggle" id="langToggle" onclick="toggleLang()">ES</button>
-      <a href="/"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a>
+      <button class="cart-btn" onclick="openCart()" aria-label="Shopping bag"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="cart-count" id="cartCount">0</span></button>
     </div>
   </header>
   <div class="nav-overlay" id="navOverlay" onclick="closeMenu()"></div>
@@ -286,6 +309,22 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
     <div class="footer-bottom">© Magos con Estilo</div>
   </footer>
 
+  <!-- CART -->
+  <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Cart</h3>
+      <button class="cart-close" onclick="closeCart()">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">Your cart is empty</div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none;">
+      <div class="cart-total" id="cartTotal">0,00€</div>
+      <button class="checkout-btn" id="checkoutBtn" onclick="checkout()">Pay with Stripe</button>
+    </div>
+  </div>
+
 <script>
 const langData={
   'Available':{en:'Available',es:'Disponible'},'Collected':{en:'Collected',es:'Coleccionado'},
@@ -355,7 +394,7 @@ function addToCart(){
   if(localStorage.getItem('one_to_one_sold')==='true')return;
   var cart=JSON.parse(localStorage.getItem('mce_cart')||'[]');
   cart.push({name:'The Moment Before',price:'149',color:'Black',size:'One Size',icon:'✦',diseno:'onetoone-01'});
-  localStorage.setItem('mce_cart',JSON.stringify(cart));
+  localStorage.setItem('mce_cart',JSON.stringify(cart));renderCart();
   var btns=document.querySelectorAll('.btn-claim');
   btns.forEach(function(b){var o=b.textContent;b.textContent=currentLang==='es'?'✓ Añadido':'✓ Added';b.style.opacity='.6';b.style.borderColor='var(--gold)';b.style.color='var(--gold)';setTimeout(function(){b.textContent=o;b.style.opacity='1';b.style.borderColor='';b.style.color=''},1500)});
 }
@@ -392,6 +431,33 @@ function closeMenu(){
 document.querySelectorAll('a[href^="#"]').forEach(function(a){
   a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})});
 });
+
+/* ============ CART ============ */
+const API_URL='https://magos-pedidos.dortizs76.workers.dev';
+let cart=JSON.parse(localStorage.getItem('mce_cart')||'[]');
+function openCart(){document.getElementById('cartSidebar').classList.add('open');document.getElementById('cartOverlay').classList.add('open');renderCart()}
+function closeCart(){document.getElementById('cartSidebar').classList.remove('open');document.getElementById('cartOverlay').classList.remove('open')}
+function renderCart(){
+  localStorage.setItem('mce_cart',JSON.stringify(cart));
+  var c=document.getElementById('cartItems'),f=document.getElementById('cartFooter'),cnt=document.getElementById('cartCount');
+  cnt.textContent=cart.length;
+  if(cart.length===0){c.innerHTML='<div class="cart-empty">Your cart is empty</div>';f.style.display='none';return}
+  f.style.display='block';var h='',t=0;
+  cart.forEach(function(it,i){t+=parseFloat(it.price);h+='<div class="cart-item"><div class="cart-item-icon">'+it.icon+'</div><div class="cart-item-info"><div class="item-name">'+it.name+'</div><div class="item-details">Black / Size '+it.size+'</div><div class="item-price">'+it.price+'€</div></div><button class="cart-item-remove" onclick="removeFromCart('+i+')">Remove</button></div>'});
+  c.innerHTML=h;document.getElementById('cartTotal').textContent=t.toFixed(2).replace('.',',')+'€';document.getElementById('checkoutBtn').disabled=false;
+}
+function removeFromCart(i){cart.splice(i,1);renderCart()}
+async function checkout(){
+  if(cart.length===0)return;
+  var b=document.getElementById('checkoutBtn');b.disabled=true;b.textContent='Processing...';
+  try{
+    var it=cart[0],r=await fetch(API_URL+'/create-checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({diseno:it.diseno,talla:it.size,cantidad:'1'})});
+    var d=await r.json();
+    if(d.url)window.location.href=d.url;
+    else{alert('Error: '+(d.error||'Unknown'));b.disabled=false;b.textContent='Pay with Stripe'}
+  }catch(e){alert('Connection error');b.disabled=false;b.textContent='Pay with Stripe'}
+}
+renderCart();
 </script>
 </body>
 </html>
