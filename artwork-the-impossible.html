@@ -1580,28 +1580,28 @@
        ============================================= */
 
     function addToCart() {
-      const size = getSelectedSize();
-      const name = 'The Impossible';
-      const price = '59';
-      const icon = '♠';
-      const diseno = 'essentials-01';
+      var size = getSelectedSize();
+      var name = 'The Impossible';
+      var price = '59';
+      var icon = '♠';
+      var diseno = 'essentials-01';
 
-      const cart = JSON.parse(localStorage.getItem('mce_cart') || '[]');
+      var cart = JSON.parse(localStorage.getItem('mce_cart') || '[]');
       cart.push({ name: name, price: price, color: 'Black', size: size, icon: icon, diseno: diseno });
       localStorage.setItem('mce_cart', JSON.stringify(cart));
 
       // Feedback
-      const btn = document.querySelector('.btn-primary');
-      const addedText = langData['Added'] ? langData['Added'][currentLang] : 'Added';
-      const origText = btn.textContent;
-      btn.textContent = addedText;
+      var btn = document.querySelector('.btn-primary');
+      var orig = btn.textContent;
+      btn.textContent = currentLang === 'es' ? 'Añadido' : 'Added';
       btn.style.opacity = '0.6';
-      btn.style.borderColor = 'var(--gold)';
-      btn.style.color = 'var(--gold)';
       setTimeout(function() {
-        // Redirect to home with cart open
-        window.location.href = '/';
-      }, 600);
+        btn.textContent = orig;
+        btn.style.opacity = '1';
+      }, 500);
+
+      // Redirect to home
+      window.location.href = '/';
     }
 
     /* =============================================
