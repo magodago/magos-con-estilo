@@ -1668,7 +1668,7 @@
 
     function addToCart() {
       var size = getSelectedSize();
-      var cart = JSON.parse(localStorage.getItem('mce_cart') || '[]');
+      cart = JSON.parse(localStorage.getItem('mce_cart') || '[]');
       cart.push({
         name: 'The Impossible',
         price: '39',

@@ -392,7 +392,7 @@ document.querySelectorAll('.reveal').forEach(function(e){ro.observe(e)});
 
 function addToCart(){
   if(localStorage.getItem('one_to_one_sold')==='true')return;
-  var cart=JSON.parse(localStorage.getItem('mce_cart')||'[]');
+  cart=JSON.parse(localStorage.getItem('mce_cart')||'[]');
   cart.push({name:'The Moment Before',price:'149',color:'Black',size:'One Size',icon:'✦',diseno:'onetoone-01'});
   localStorage.setItem('mce_cart',JSON.stringify(cart));renderCart();
   var btns=document.querySelectorAll('.btn-claim');
