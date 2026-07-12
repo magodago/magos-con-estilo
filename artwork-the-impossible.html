@@ -1581,26 +1581,17 @@
 
     function addToCart() {
       var size = getSelectedSize();
-      var name = 'The Impossible';
-      var price = '59';
-      var icon = '♠';
-      var diseno = 'essentials-01';
-
       var cart = JSON.parse(localStorage.getItem('mce_cart') || '[]');
-      cart.push({ name: name, price: price, color: 'Black', size: size, icon: icon, diseno: diseno });
+      cart.push({
+        name: 'The Impossible',
+        price: '59',
+        color: 'Black',
+        size: size,
+        icon: '♠',
+        diseno: 'essentials-01'
+      });
       localStorage.setItem('mce_cart', JSON.stringify(cart));
-
-      // Feedback
-      var btn = document.querySelector('.btn-primary');
-      var orig = btn.textContent;
-      btn.textContent = currentLang === 'es' ? 'Añadido' : 'Added';
-      btn.style.opacity = '0.6';
-      setTimeout(function() {
-        btn.textContent = orig;
-        btn.style.opacity = '1';
-      }, 500);
-
-      // Redirect to home
+      // Redirect
       window.location.href = '/';
     }
 
