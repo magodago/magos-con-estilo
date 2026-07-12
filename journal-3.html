@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Why One of One — Journal · MAGOS CON ESTILO</title>
+  <meta name="description" content="The story behind our most exclusive edition: one t-shirt, one design, one owner.">
+  <link rel="icon" type="image/png" href="assets/logo-transparent.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #000000;
+      --near-black: #0B0B0B;
+      --white: #FFFFFF;
+      --gray-100: #F5F5F5;
+      --gray-200: #E0E0E0;
+      --gray-400: #999999;
+      --gray-500: #777777;
+      --gray-600: #555555;
+      --gray-700: #333333;
+      --gray-800: #1A1A1A;
+      --gray-900: #111111;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --transition-slow: 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+      --transition-med: 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+      --transition-fast: 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--white); text-decoration: none; transition: opacity var(--transition-fast); }
+    a:hover { opacity: 0.7; }
+
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .header-logo img { height: 32px; width: auto; }
+
+    .header-nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .header-nav a {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      transition: opacity var(--transition-fast);
+    }
+    .header-nav a:hover { opacity: 1; }
+
+    .lang-btn {
+      background: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      padding: 0.4rem 0.8rem;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all var(--transition-fast);
+    }
+    .lang-btn:hover { border-color: var(--white); }
+
+    .article-hero {
+      padding: 10rem 2.5rem 4rem;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .article-hero .back-link {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.4;
+      margin-bottom: 3rem;
+      transition: opacity var(--transition-fast);
+    }
+    .article-hero .back-link:hover { opacity: 0.8; }
+
+    .article-hero .article-number {
+      font-family: var(--font-display);
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      color: var(--gray-400);
+      margin-bottom: 1rem;
+    }
+
+    .article-hero h1 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 2.8rem;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.2rem;
+    }
+
+    .article-hero .article-date {
+      font-family: var(--font-body);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+    }
+
+    .article-divider {
+      width: 40px;
+      height: 1px;
+      background: rgba(255,255,255,0.2);
+      margin: 2rem auto;
+    }
+
+    .article-body {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 2.5rem 6rem;
+    }
+
+    .article-body p {
+      margin-bottom: 1.6rem;
+      font-size: 15px;
+      line-height: 1.9;
+      color: var(--gray-200);
+    }
+
+    .article-body p.lead {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: var(--white);
+      font-weight: 400;
+    }
+
+    .article-body h2 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 1.6rem;
+      margin: 3rem 0 1.2rem;
+      letter-spacing: -0.01em;
+    }
+
+    .article-body blockquote {
+      border-left: 2px solid var(--gray-600);
+      padding: 0.8rem 0 0.8rem 1.8rem;
+      margin: 2rem 0;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--gray-300);
+      line-height: 1.7;
+    }
+
+    .article-footer {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 3rem 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      text-align: center;
+    }
+
+    .article-footer .back-to-journal {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      transition: opacity var(--transition-fast);
+    }
+    .article-footer .back-to-journal:hover { opacity: 1; }
+
+    .footer {
+      padding: 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      text-align: center;
+    }
+    .footer-legal {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .footer-legal a {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.3;
+    }
+    .footer-legal a:hover { opacity: 0.6; }
+    .footer-bottom {
+      font-size: 11px;
+      opacity: 0.25;
+    }
+    .footer-bottom span { display: block; margin-bottom: 0.25rem; }
+
+    @media (max-width: 768px) {
+      .header { padding: 1rem 1.5rem; }
+      .header-nav ul { gap: 1.2rem; }
+      .header-nav a { font-size: 10px; }
+      .article-hero { padding: 8rem 1.5rem 3rem; }
+      .article-hero h1 { font-size: 1.8rem; }
+      .article-body { padding: 0 1.5rem 4rem; }
+      .article-footer { padding: 2rem 1.5rem; }
+      .footer { padding: 2rem 1.5rem; }
+      .footer-legal { gap: 1rem; }
+    }
+
+    @media (max-width: 480px) {
+      .header-logo img { height: 24px; }
+      .header-nav ul { gap: 0.8rem; }
+      .article-hero h1 { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <a href="index.html" class="header-logo">
+      <img src="assets/logo-transparent.png" alt="MAGOS CON ESTILO">
+    </a>
+    <nav class="header-nav">
+      <ul>
+        <li><a href="index.html#gallery" data-i18n="nav_gallery">The Gallery</a></li>
+        <li><a href="index.html#journal" data-i18n="nav_journal">Journal</a></li>
+        <li><a href="index.html#about-brand" data-i18n="nav_about">About</a></li>
+        <li><button class="lang-btn" id="langToggle" onclick="toggleLang()">ES</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="article-hero">
+    <a href="index.html#journal" class="back-link" data-i18n="back_to_journal">&larr; Back to Journal</a>
+    <div class="article-number" data-i18n="journal_article_03">Journal · 03</div>
+    <h1 data-i18n="a3_title">Why One of One</h1>
+    <div class="article-date" data-i18n="a3_date">May 2026</div>
+    <div class="article-divider"></div>
+  </section>
+
+  <article class="article-body">
+    <p class="lead" data-i18n="a3_lead">The story behind our most exclusive edition: one t-shirt, one design, one owner.</p>
+
+    <p data-i18n="a3_p1">There is a moment in every collector's life when they realize: having it is not enough. It has to be <em>the only one</em>.</p>
+
+    <p data-i18n="a3_p2">Magic has always understood this. The best tricks are not the ones everyone knows. They are the ones only one person can do. The secret that lives in a single pair of hands. That is the spirit of One of One.</p>
+
+    <h2 data-i18n="a3_h2_1">The Concept</h2>
+
+    <p data-i18n="a3_p3">One of One is not a collection. It is an anti-collection. Each piece is created once, produced once, and never repeated. When it is gone, it is gone. The design itself is archived. No reprints. No second editions. No exceptions.</p>
+
+    <blockquote data-i18n="a3_quote">
+      "In a world of mass production, the rarest luxury is knowing that what you own, no one else ever will."
+    </blockquote>
+
+    <p data-i18n="a3_p4">We wanted to create something that mirrors the essence of magic itself: ephemeral, exclusive, unforgettable. A piece that carries the same energy as a perfect performance — witnessed by a few, remembered by all, impossible to replicate.</p>
+
+    <h2 data-i18n="a3_h2_2">The Craft</h2>
+
+    <p data-i18n="a3_p5">Every One of One piece begins with a custom illustration. Not adapted from a template, not generated — drawn specifically for that single garment. The artwork is printed on the same premium heavyweight cotton as our Essentials, but with an added layer of detail, of care, of intention.</p>
+
+    <p data-i18n="a3_p6">The price — 89.99€ — reflects not the cost of materials, but the cost of uniqueness. You are not buying a t-shirt. You are buying a moment in time that will never come again.</p>
+
+    <h2 data-i18n="a3_h2_3">For Whom?</h2>
+
+    <p data-i18n="a3_p7">One of One is not for everyone. It is for the magician who understands that true artistry is not in the volume of your repertoire, but in the depth of your connection to each piece. It is for the collector who values rarity over quantity. It is for the person who knows that when something is truly one of a kind, it becomes more than an object — it becomes a story.</p>
+
+    <p data-i18n="a3_p8">And every story deserves to be told. But only once.</p>
+  </article>
+
+  <div class="article-footer">
+    <a href="index.html#journal" class="back-to-journal" data-i18n="back_to_journal">&larr; Back to Journal</a>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-legal">
+      <a href="aviso-legal.html" data-i18n="footer_legal">Aviso Legal</a>
+      <a href="privacidad.html" data-i18n="footer_privacy">Privacy Policy</a>
+      <a href="terminos.html" data-i18n="footer_terms">Terms &amp; Conditions</a>
+      <a href="cookies.html" data-i18n="footer_cookies">Cookies</a>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 MAGOS CON ESTILO. All rights reserved.</span>
+      <span data-i18n="footer_tagline">Where art meets fashion.</span>
+    </div>
+  </footer>
+
+  <script>
+    const langData = {
+      'nav_gallery': { en: 'The Gallery', es: 'The Gallery' },
+      'nav_journal': { en: 'Journal', es: 'Revista' },
+      'nav_about': { en: 'About', es: 'Sobre nosotros' },
+      'back_to_journal': { en: '\u2190 Back to Journal', es: '\u2190 Volver a Revista' },
+      'journal_article_03': { en: 'Journal \u00b7 03', es: 'Revista \u00b7 03' },
+      'a3_title': { en: 'Why One of One', es: 'Por qu\u00e9 One of One' },
+      'a3_date': { en: 'May 2026', es: 'Mayo 2026' },
+      'a3_lead': { en: 'The story behind our most exclusive edition: one t-shirt, one design, one owner.', es: 'La historia detr\u00e1s de nuestra edici\u00f3n m\u00e1s exclusiva: una camiseta, un dise\u00f1o, un due\u00f1o.' },
+      'a3_p1': { en: 'There is a moment in every collector\'s life when they realize: having it is not enough. It has to be the only one.', es: 'Hay un momento en la vida de todo coleccionista en el que se dan cuenta: tenerlo no es suficiente. Tiene que ser el \u00fanico.' },
+      'a3_p2': { en: 'Magic has always understood this. The best tricks are not the ones everyone knows. They are the ones only one person can do. The secret that lives in a single pair of hands. That is the spirit of One of One.', es: 'La magia siempre lo ha entendido. Los mejores trucos no son los que todos conocen. Son los que solo una persona puede hacer. El secreto que vive en un \u00fanico par de manos. Ese es el esp\u00edritu de One of One.' },
+      'a3_h2_1': { en: 'The Concept', es: 'El Concepto' },
+      'a3_p3': { en: 'One of One is not a collection. It is an anti-collection. Each piece is created once, produced once, and never repeated. When it is gone, it is gone. The design itself is archived. No reprints. No second editions. No exceptions.', es: 'One of One no es una colecci\u00f3n. Es una anti-colecci\u00f3n. Cada pieza se crea una vez, se produce una vez y nunca se repite. Cuando se va, se va. El dise\u00f1o mismo se archiva. Sin reimpresiones. Sin segundas ediciones. Sin excepciones.' },
+      'a3_quote': { en: '"In a world of mass production, the rarest luxury is knowing that what you own, no one else ever will."', es: '"En un mundo de producci\u00f3n en masa, el lujo m\u00e1s raro es saber que lo que posees, nadie m\u00e1s lo tendr\u00e1 jam\u00e1s."' },
+      'a3_p4': { en: 'We wanted to create something that mirrors the essence of magic itself: ephemeral, exclusive, unforgettable. A piece that carries the same energy as a perfect performance \u2014 witnessed by a few, remembered by all, impossible to replicate.', es: 'Quer\u00edamos crear algo que reflejara la esencia de la magia misma: ef\u00edmero, exclusivo, inolvidable. Una pieza que lleva la misma energ\u00eda que una actuaci\u00f3n perfecta \u2014 presenciada por pocos, recordada por todos, imposible de replicar.' },
+      'a3_h2_2': { en: 'The Craft', es: 'El Arte' },
+      'a3_p5': { en: 'Every One of One piece begins with a custom illustration. Not adapted from a template, not generated \u2014 drawn specifically for that single garment. The artwork is printed on the same premium heavyweight cotton as our Essentials, but with an added layer of detail, of care, of intention.', es: 'Cada pieza One of One comienza con una ilustraci\u00f3n personalizada. No adaptada de una plantilla, no generada \u2014 dibujada espec\u00edficamente para esa \u00fanica prenda. El dise\u00f1o se imprime en el mismo algod\u00f3n premium de alto gramaje que nuestros Essentials, pero con una capa adicional de detalle, de cuidado, de intenci\u00f3n.' },
+      'a3_p6': { en: 'The price \u2014 89.99\u20ac \u2014 reflects not the cost of materials, but the cost of uniqueness. You are not buying a t-shirt. You are buying a moment in time that will never come again.', es: 'El precio \u2014 89.99\u20ac \u2014 refleja no el coste de los materiales, sino el coste de la unicidad. No est\u00e1s comprando una camiseta. Est\u00e1s comprando un momento en el tiempo que nunca volver\u00e1.' },
+      'a3_h2_3': { en: 'For Whom?', es: '\u00bfPara Qui\u00e9n?' },
+      'a3_p7': { en: 'One of One is not for everyone. It is for the magician who understands that true artistry is not in the volume of your repertoire, but in the depth of your connection to each piece. It is for the collector who values rarity over quantity. It is for the person who knows that when something is truly one of a kind, it becomes more than an object \u2014 it becomes a story.', es: 'One of One no es para todos. Es para el mago que entiende que el verdadero arte no est\u00e1 en el volumen de tu repertorio, sino en la profundidad de tu conexi\u00f3n con cada pieza. Es para el coleccionista que valora la rareza sobre la cantidad. Es para la persona que sabe que cuando algo es verdaderamente \u00fanico, se convierte en m\u00e1s que un objeto \u2014 se convierte en una historia.' },
+      'a3_p8': { en: 'And every story deserves to be told. But only once.', es: 'Y cada historia merece ser contada. Pero solo una vez.' },
+      'footer_legal': { en: 'Legal Notice', es: 'Aviso Legal' },
+      'footer_privacy': { en: 'Privacy Policy', es: 'Pol\u00edtica de Privacidad' },
+      'footer_terms': { en: 'Terms &amp; Conditions', es: 'T\u00e9rminos y Condiciones' },
+      'footer_cookies': { en: 'Cookies', es: 'Cookies' },
+      'footer_tagline': { en: 'Where art meets fashion.', es: 'Donde el arte se encuentra con la moda.' }
+    };
+
+    function tr(key, lang) {
+      return (langData[key] && langData[key][lang]) || key;
+    }
+
+    let currentLang = localStorage.getItem('mce_lang') || 'es';
+
+    function applyLang(lang) {
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (langData[key] && langData[key][lang]) {
+          el.innerHTML = langData[key][lang];
+        }
+      });
+      document.getElementById('langToggle').textContent = lang === 'es' ? 'EN' : 'ES';
+    }
+
+    function toggleLang() {
+      currentLang = currentLang === 'es' ? 'en' : 'es';
+      localStorage.setItem('mce_lang', currentLang);
+      applyLang(currentLang);
+    }
+
+    applyLang(currentLang);
+  </script>
+</body>
+</html>

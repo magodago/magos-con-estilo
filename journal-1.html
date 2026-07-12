@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>The Modern Magician's Style — Journal · MAGOS CON ESTILO</title>
+  <meta name="description" content="The clothes we wear speak before we make the first move. A reflection on style, presence, and the art of the modern magician.">
+  <link rel="icon" type="image/png" href="assets/logo-transparent.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #000000;
+      --near-black: #0B0B0B;
+      --white: #FFFFFF;
+      --gray-100: #F5F5F5;
+      --gray-200: #E0E0E0;
+      --gray-400: #999999;
+      --gray-500: #777777;
+      --gray-600: #555555;
+      --gray-700: #333333;
+      --gray-800: #1A1A1A;
+      --gray-900: #111111;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --transition-slow: 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+      --transition-med: 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+      --transition-fast: 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    a { color: var(--white); text-decoration: none; transition: opacity var(--transition-fast); }
+    a:hover { opacity: 0.7; }
+
+    /* HEADER */
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .header-logo img {
+      height: 32px;
+      width: auto;
+    }
+
+    .header-nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .header-nav a {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      transition: opacity var(--transition-fast);
+    }
+    .header-nav a:hover { opacity: 1; }
+
+    .lang-btn {
+      background: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      padding: 0.4rem 0.8rem;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all var(--transition-fast);
+    }
+    .lang-btn:hover { border-color: var(--white); }
+
+    /* HERO - ARTICLE HEADER */
+    .article-hero {
+      padding: 10rem 2.5rem 4rem;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .article-hero .back-link {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.4;
+      margin-bottom: 3rem;
+      transition: opacity var(--transition-fast);
+    }
+    .article-hero .back-link:hover { opacity: 0.8; }
+
+    .article-hero .article-number {
+      font-family: var(--font-display);
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      color: var(--gray-400);
+      margin-bottom: 1rem;
+    }
+
+    .article-hero h1 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 2.8rem;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.2rem;
+    }
+
+    .article-hero .article-date {
+      font-family: var(--font-body);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+    }
+
+    .article-divider {
+      width: 40px;
+      height: 1px;
+      background: rgba(255,255,255,0.2);
+      margin: 2rem auto;
+    }
+
+    /* ARTICLE BODY */
+    .article-body {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 2.5rem 6rem;
+    }
+
+    .article-body p {
+      margin-bottom: 1.6rem;
+      font-size: 15px;
+      line-height: 1.9;
+      color: var(--gray-200);
+    }
+
+    .article-body p.lead {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: var(--white);
+      font-weight: 400;
+    }
+
+    .article-body h2 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 1.6rem;
+      margin: 3rem 0 1.2rem;
+      letter-spacing: -0.01em;
+    }
+
+    .article-body blockquote {
+      border-left: 2px solid var(--gray-600);
+      padding: 0.8rem 0 0.8rem 1.8rem;
+      margin: 2rem 0;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--gray-300);
+      line-height: 1.7;
+    }
+
+    .article-footer {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 3rem 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      text-align: center;
+    }
+
+    .article-footer .back-to-journal {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      transition: opacity var(--transition-fast);
+    }
+    .article-footer .back-to-journal:hover { opacity: 1; }
+
+    /* FOOTER */
+    .footer {
+      padding: 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      text-align: center;
+    }
+    .footer-legal {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .footer-legal a {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.3;
+    }
+    .footer-legal a:hover { opacity: 0.6; }
+    .footer-bottom {
+      font-size: 11px;
+      opacity: 0.25;
+    }
+    .footer-bottom span { display: block; margin-bottom: 0.25rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .header { padding: 1rem 1.5rem; }
+      .header-nav ul { gap: 1.2rem; }
+      .header-nav a { font-size: 10px; }
+      .article-hero { padding: 8rem 1.5rem 3rem; }
+      .article-hero h1 { font-size: 1.8rem; }
+      .article-body { padding: 0 1.5rem 4rem; }
+      .article-footer { padding: 2rem 1.5rem; }
+      .footer { padding: 2rem 1.5rem; }
+      .footer-legal { gap: 1rem; }
+    }
+
+    @media (max-width: 480px) {
+      .header-logo img { height: 24px; }
+      .header-nav ul { gap: 0.8rem; }
+      .article-hero h1 { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <a href="index.html" class="header-logo">
+      <img src="assets/logo-transparent.png" alt="MAGOS CON ESTILO">
+    </a>
+    <nav class="header-nav">
+      <ul>
+        <li><a href="index.html#gallery" data-i18n="nav_gallery">The Gallery</a></li>
+        <li><a href="index.html#journal" data-i18n="nav_journal">Journal</a></li>
+        <li><a href="index.html#about-brand" data-i18n="nav_about">About</a></li>
+        <li><button class="lang-btn" id="langToggle" onclick="toggleLang()">ES</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ARTICLE HERO -->
+  <section class="article-hero">
+    <a href="index.html#journal" class="back-link" data-i18n="back_to_journal">&larr; Back to Journal</a>
+    <div class="article-number" data-i18n="journal_article_01">Journal · 01</div>
+    <h1 data-i18n="a1_title">The Modern Magician's Style</h1>
+    <div class="article-date" data-i18n="a1_date">July 2026</div>
+    <div class="article-divider"></div>
+  </section>
+
+  <!-- ARTICLE BODY -->
+  <article class="article-body">
+    <p class="lead" data-i18n="a1_lead">The clothes we wear speak before we make the first move. What does yours say?</p>
+
+    <p data-i18n="a1_p1">A magician walks into a room. Before he says a word, before his hands move, before any trick begins — the audience has already made a judgement. Not about his skill. About his presence.</p>
+
+    <p data-i18n="a1_p2">In the golden age of magic, the uniform was clear: tailcoat, white gloves, top hat. It said "I am a magician. Watch me." Today, the stage has changed. The magician performs in close-up settings, in bars, at corporate events, on social media. The tailcoat no longer fits. But the need for presence has never been greater.</p>
+
+    <h2 data-i18n="a1_h2_1">The New Code</h2>
+
+    <p data-i18n="a1_p3">Luxury. Restraint. Quality. The modern magician's style is not about looking like a magician. It is about looking like someone worth watching. The difference is subtle but essential.</p>
+
+    <blockquote data-i18n="a1_quote">
+      "Style is the first trick. Before you show a single card, you have already created a world."
+    </blockquote>
+
+    <p data-i18n="a1_p4">This is what MAGOS CON ESTILO was born from. Not just to make t-shirts for magicians, but to define what a modern magician looks like. To create pieces that carry the weight of the craft without shouting it. To design for the magician who understands that the real magic is not in the deck — it is in the person holding it.</p>
+
+    <h2 data-i18n="a1_h2_2">Fabric as Presence</h2>
+
+    <p data-i18n="a1_p5">Heavyweight cotton. Clean cuts. Details that only the wearer knows are there. Every piece in our collection is designed with one principle: the garment should disappear. Not because it is invisible, but because it fits so naturally that the focus stays on you.</p>
+
+    <p data-i18n="a1_p6">A well-dressed magician commands attention without demanding it. The audience leans in. They want to see what comes next. And that — that fraction of a second of anticipation — is where magic lives.</p>
+
+    <h2 data-i18n="a1_h2_3">What Your Clothes Say</h2>
+
+    <p data-i18n="a1_p7">Every morning you choose what your audience will see before you perform. Ask yourself: does it say "I am a magician"? Or does it say "I am a person worth watching"? The answer changes everything.</p>
+
+    <p data-i18n="a1_p8">At MAGOS CON ESTILO, we believe the second one. Always.</p>
+  </article>
+
+  <!-- FOOTER -->
+  <div class="article-footer">
+    <a href="index.html#journal" class="back-to-journal" data-i18n="back_to_journal">&larr; Back to Journal</a>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-legal">
+      <a href="aviso-legal.html" data-i18n="footer_legal">Aviso Legal</a>
+      <a href="privacidad.html" data-i18n="footer_privacy">Privacy Policy</a>
+      <a href="terminos.html" data-i18n="footer_terms">Terms &amp; Conditions</a>
+      <a href="cookies.html" data-i18n="footer_cookies">Cookies</a>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 MAGOS CON ESTILO. All rights reserved.</span>
+      <span data-i18n="footer_tagline">Where art meets fashion.</span>
+    </div>
+  </footer>
+
+  <script>
+    const langData = {
+      'nav_gallery': { en: 'The Gallery', es: 'The Gallery' },
+      'nav_journal': { en: 'Journal', es: 'Revista' },
+      'nav_about': { en: 'About', es: 'Sobre nosotros' },
+      'back_to_journal': { en: '\u2190 Back to Journal', es: '\u2190 Volver a Revista' },
+      'journal_article_01': { en: 'Journal \u00b7 01', es: 'Revista \u00b7 01' },
+      'a1_title': { en: 'The Modern Magician\'s Style', es: 'El Estilo del Mago Moderno' },
+      'a1_date': { en: 'July 2026', es: 'Julio 2026' },
+      'a1_lead': { en: 'The clothes we wear speak before we make the first move. What does yours say?', es: 'La ropa que llevamos habla antes de que hagamos el primer movimiento. \u00bfQu\u00e9 dice la tuya?' },
+      'a1_p1': { en: 'A magician walks into a room. Before he says a word, before his hands move, before any trick begins \u2014 the audience has already made a judgement. Not about his skill. About his presence.', es: 'Un mago entra en una sala. Antes de que diga una palabra, antes de que sus manos se muevan, antes de que comience cualquier truco \u2014 el p\u00fablico ya ha hecho un juicio. No sobre su habilidad. Sobre su presencia.' },
+      'a1_p2': { en: 'In the golden age of magic, the uniform was clear: tailcoat, white gloves, top hat. It said "I am a magician. Watch me." Today, the stage has changed. The magician performs in close-up settings, in bars, at corporate events, on social media. The tailcoat no longer fits. But the need for presence has never been greater.', es: 'En la edad de oro de la magia, el uniforme era claro: frac, guantes blancos, chistera. Dec\u00eda "Soy un mago. M\u00edrame." Hoy, el escenario ha cambiado. El mago act\u00faa en primer\u00edsimo plano, en bares, en eventos corporativos, en redes sociales. El frac ya no encaja. Pero la necesidad de presencia nunca ha sido mayor.' },
+      'a1_h2_1': { en: 'The New Code', es: 'El Nuevo C\u00f3digo' },
+      'a1_p3': { en: 'Luxury. Restraint. Quality. The modern magician\'s style is not about looking like a magician. It is about looking like someone worth watching. The difference is subtle but essential.', es: 'Lujo. Contenci\u00f3n. Calidad. El estilo del mago moderno no consiste en parecer un mago. Se trata de parecer alguien a quien vale la pena observar. La diferencia es sutil pero esencial.' },
+      'a1_quote': { en: '"Style is the first trick. Before you show a single card, you have already created a world."', es: '"El estilo es el primer truco. Antes de mostrar una sola carta, ya has creado un mundo."' },
+      'a1_p4': { en: 'This is what MAGOS CON ESTILO was born from. Not just to make t-shirts for magicians, but to define what a modern magician looks like. To create pieces that carry the weight of the craft without shouting it. To design for the magician who understands that the real magic is not in the deck \u2014 it is in the person holding it.', es: 'De esto naci\u00f3 MAGOS CON ESTILO. No solo para hacer camisetas para magos, sino para definir c\u00f3mo se ve un mago moderno. Para crear piezas que lleven el peso del oficio sin gritarlo. Para dise\u00f1ar para el mago que entiende que la magia real no est\u00e1 en la baraja \u2014 est\u00e1 en la persona que la sostiene.' },
+      'a1_h2_2': { en: 'Fabric as Presence', es: 'La Tela como Presencia' },
+      'a1_p5': { en: 'Heavyweight cotton. Clean cuts. Details that only the wearer knows are there. Every piece in our collection is designed with one principle: the garment should disappear. Not because it is invisible, but because it fits so naturally that the focus stays on you.', es: 'Algod\u00f3n de alto gramaje. Cortes limpios. Detalles que solo el portador sabe que est\u00e1n ah\u00ed. Cada pieza de nuestra colecci\u00f3n est\u00e1 dise\u00f1ada con un principio: la prenda debe desaparecer. No porque sea invisible, sino porque se adapta tan naturalmente que el foco permanece en ti.' },
+      'a1_p6': { en: 'A well-dressed magician commands attention without demanding it. The audience leans in. They want to see what comes next. And that \u2014 that fraction of a second of anticipation \u2014 is where magic lives.', es: 'Un mago bien vestido capta la atenci\u00f3n sin exigirla. El p\u00fablico se inclina. Quieren ver qu\u00e9 viene despu\u00e9s. Y ese \u2014 esa fracci\u00f3n de segundo de anticipaci\u00f3n \u2014 es donde vive la magia.' },
+      'a1_h2_3': { en: 'What Your Clothes Say', es: 'Lo Que Dice Tu Ropa' },
+      'a1_p7': { en: 'Every morning you choose what your audience will see before you perform. Ask yourself: does it say "I am a magician"? Or does it say "I am a person worth watching"? The answer changes everything.', es: 'Cada ma\u00f1ana eliges lo que tu p\u00fablico ver\u00e1 antes de que act\u00faes. Preg\u00fantate: \u00bfdice "Soy un mago"? \u00bfO dice "Soy una persona a quien vale la pena observar"? La respuesta lo cambia todo.' },
+      'a1_p8': { en: 'At MAGOS CON ESTILO, we believe the second one. Always.', es: 'En MAGOS CON ESTILO, creemos en la segunda. Siempre.' },
+      'footer_legal': { en: 'Legal Notice', es: 'Aviso Legal' },
+      'footer_privacy': { en: 'Privacy Policy', es: 'Pol\u00edtica de Privacidad' },
+      'footer_terms': { en: 'Terms &amp; Conditions', es: 'T\u00e9rminos y Condiciones' },
+      'footer_cookies': { en: 'Cookies', es: 'Cookies' },
+      'footer_tagline': { en: 'Where art meets fashion.', es: 'Donde el arte se encuentra con la moda.' }
+    };
+
+    function tr(key, lang) {
+      return (langData[key] && langData[key][lang]) || key;
+    }
+
+    let currentLang = localStorage.getItem('mce_lang') || 'es';
+
+    function applyLang(lang) {
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (langData[key] && langData[key][lang]) {
+          el.innerHTML = langData[key][lang];
+        }
+      });
+      document.getElementById('langToggle').textContent = lang === 'es' ? 'EN' : 'ES';
+    }
+
+    function toggleLang() {
+      currentLang = currentLang === 'es' ? 'en' : 'es';
+      localStorage.setItem('mce_lang', currentLang);
+      applyLang(currentLang);
+    }
+
+    applyLang(currentLang);
+  </script>
+</body>
+</html>
