@@ -1973,12 +1973,12 @@
       translatePage(currentLang === 'es' ? 'en' : 'es');
     }
 
-    // Init language
-    translatePage(currentLang);
-
     // Load cart from localStorage (shared with product page)
     let cart = JSON.parse(localStorage.getItem('mce_cart') || '[]');
     renderCart();
+
+    // Init language
+    translatePage(currentLang);
     const API_URL = 'https://magos-pedidos.dortizs76.workers.dev';
 
     // Header scroll
