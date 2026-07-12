@@ -1599,11 +1599,9 @@
       btn.style.borderColor = 'var(--gold)';
       btn.style.color = 'var(--gold)';
       setTimeout(function() {
-        btn.textContent = origText;
-        btn.style.opacity = '1';
-        btn.style.borderColor = '';
-        btn.style.color = '';
-      }, 1200);
+        // Redirect to home with cart open
+        window.location.href = '/';
+      }, 600);
     }
 
     /* =============================================
