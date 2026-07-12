@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>THE IMPOSSIBLE — Essentials · MAGOS CON ESTILO</title>
+  <meta name="description" content="Essentials Artwork 01: The Impossible. The impossible was never outside. It has always been waiting inside you.">
+  <link rel="icon" type="image/png" href="assets/logo-inverted.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* =============================================
+       THE IMPOSSIBLE — MAGOS CON ESTILO
+       Luxury Single Product Page
+       ============================================= */
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #000000;
+      --near-black: #0A0A0A;
+      --dark: #111111;
+      --white: #FFFFFF;
+      --off-white: #F5F3EF;
+      --gold: #C8A96E;
+      --gold-dim: #A68B5E;
+      --gray-100: #E8E6E2;
+      --gray-200: #C5C3BF;
+      --gray-400: #999793;
+      --gray-500: #777572;
+      --gray-600: #555351;
+      --gray-700: #333230;
+      --gray-800: #1E1D1B;
+      --gray-900: #141312;
+      --font-display: 'Cormorant Garamond', 'Georgia', serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --transition-slow: 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+      --transition-med: 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+      --transition-fast: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--off-white);
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* =============================================
+       ANIMATIONS
+       ============================================= */
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(35px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-8px); }
+    }
+
+    @keyframes spotlightPulse {
+      0%, 100% { opacity: 0.6; }
+      50%      { opacity: 0.85; }
+    }
+
+    @keyframes goldGlow {
+      0%, 100% { opacity: 0.3; }
+      50%      { opacity: 0.6; }
+    }
+
+    @keyframes revealClip {
+      from { clip-path: inset(0 100% 0 0); }
+      to   { clip-path: inset(0 0 0 0); }
+    }
+
+    .fade-up {
+      opacity: 0;
+      animation: fadeUp 1s var(--transition-slow) forwards;
+    }
+    .fade-up-1 { animation-delay: 0.2s; }
+    .fade-up-2 { animation-delay: 0.4s; }
+    .fade-up-3 { animation-delay: 0.6s; }
+    .fade-up-4 { animation-delay: 0.8s; }
+    .fade-up-5 { animation-delay: 1.0s; }
+    .fade-up-6 { animation-delay: 1.2s; }
+    .fade-up-7 { animation-delay: 1.4s; }
+
+    .reveal-line {
+      animation: revealClip 1.2s var(--transition-slow) forwards;
+    }
+
+    /* Intersection Observer fade-up */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s var(--transition-med), transform 1s var(--transition-med);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =============================================
+       HEADER
+       ============================================= */
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 3rem;
+      background: transparent;
+      transition: background 0.5s ease;
+    }
+
+    .header.scrolled {
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .header-logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .header-logo img {
+      height: 26px;
+      width: auto;
+      display: block;
+      opacity: 0.85;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .header-nav a {
+      color: var(--off-white);
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      transition: opacity var(--transition-fast);
+    }
+
+    .header-nav a:hover { opacity: 1; }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .header-actions a {
+      color: var(--off-white);
+      opacity: 0.6;
+      transition: opacity var(--transition-fast);
+    }
+    .header-actions a:hover { opacity: 1; }
+
+    .lang-toggle {
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: none;
+      border: 1px solid var(--gray-700);
+      color: var(--off-white);
+      padding: 0.3rem 0.7rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-family: var(--font-body);
+      opacity: 0.6;
+    }
+    .lang-toggle:hover { opacity: 1; border-color: var(--off-white); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 110;
+    }
+    .hamburger span {
+      display: block;
+      width: 20px;
+      height: 1.5px;
+      background: var(--off-white);
+      margin: 5px 0;
+      transition: all var(--transition-fast);
+      border-radius: 1px;
+    }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* =============================================
+       HERO — Full Screen Museum Layout
+       ============================================= */
+
+    .hero {
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--black);
+    }
+
+    /* Theater stage background */
+    .hero-stage {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 50% 75%, rgba(30,25,20,0.6) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 30% 30%, rgba(40,35,25,0.3) 0%, transparent 50%),
+        radial-gradient(ellipse 40% 50% at 70% 30%, rgba(40,35,25,0.3) 0%, transparent 50%),
+        var(--black);
+      pointer-events: none;
+    }
+
+    /* Spotlights */
+    .hero-spotlight-1,
+    .hero-spotlight-2 {
+      position: absolute;
+      width: 120%;
+      height: 200%;
+      top: -60%;
+      left: -10%;
+      background: radial-gradient(ellipse 25% 35% at 35% 30%, rgba(200,169,110,0.04) 0%, transparent 70%);
+      pointer-events: none;
+      animation: spotlightPulse 8s ease-in-out infinite;
+    }
+    .hero-spotlight-2 {
+      left: 20%;
+      background: radial-gradient(ellipse 20% 30% at 65% 25%, rgba(200,169,110,0.03) 0%, transparent 70%);
+      animation-delay: 4s;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr 1fr;
+      align-items: center;
+      gap: 2rem;
+      width: 100%;
+      max-width: 1400px;
+      padding: 6rem 3rem 4rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Left Panel */
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .hero-collection-label {
+      font-size: 0.55rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-artwork-number {
+      font-size: 0.5rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      font-weight: 400;
+      line-height: 1.05;
+      color: var(--off-white);
+      letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+    }
+
+    .hero-quote {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--gray-500);
+      line-height: 1.6;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-subtitle {
+      font-size: 0.7rem;
+      color: var(--gray-600);
+      letter-spacing: 0.03em;
+      line-height: 1.8;
+      font-weight: 300;
+      max-width: 320px;
+    }
+
+    /* Center — Floating Shirt */
+    .hero-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-floating-container {
+      position: relative;
+      width: 100%;
+      max-width: 450px;
+      margin: 0 auto;
+    }
+
+    .hero-floating-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      animation: float 5s ease-in-out infinite;
+      filter: drop-shadow(0 20px 60px rgba(0,0,0,0.8));
+    }
+
+    /* Gold glow behind the shirt */
+    .hero-glow {
+      position: absolute;
+      width: 70%;
+      height: 70%;
+      top: 15%;
+      left: 15%;
+      background: radial-gradient(ellipse, rgba(200,169,110,0.08) 0%, transparent 70%);
+      pointer-events: none;
+      animation: goldGlow 6s ease-in-out infinite;
+    }
+
+    /* Right Panel */
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-left: 2rem;
+    }
+
+    .hero-price {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      font-weight: 400;
+      color: var(--off-white);
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-features {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-feature {
+      font-size: 0.65rem;
+      color: var(--gray-500);
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 300;
+    }
+
+    .hero-feature::before {
+      content: '';
+      width: 12px;
+      height: 1px;
+      background: var(--gray-700);
+      display: inline-block;
+    }
+
+    /* Size selector */
+    .size-selector {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .size-btn {
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--gray-700);
+      background: transparent;
+      color: var(--gray-500);
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .size-btn:hover {
+      border-color: var(--off-white);
+      color: var(--off-white);
+    }
+
+    .size-btn.selected {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* Buttons */
+    .btn-primary {
+      display: inline-block;
+      width: 100%;
+      padding: 1rem 2rem;
+      background: transparent;
+      color: var(--off-white);
+      border: 1px solid var(--off-white);
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all var(--transition-med);
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .btn-primary:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: scale(1.02);
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      width: 100%;
+      padding: 0.9rem 2rem;
+      background: transparent;
+      color: var(--gray-500);
+      border: none;
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      text-decoration: none;
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+
+    .btn-secondary:hover {
+      color: var(--off-white);
+    }
+
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      width: 100%;
+    }
+
+    /* =============================================
+       DIVIDER LINE
+       ============================================= */
+
+    .section-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent 5%, var(--gray-800) 20%, var(--gray-800) 80%, transparent 95%);
+    }
+
+    /* =============================================
+       THE STORY SECTION
+       ============================================= */
+
+    .section-story {
+      padding: 8rem 2rem;
+      max-width: 750px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .section-story-label {
+      font-size: 0.5rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-story h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      font-weight: 400;
+      color: var(--off-white);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 3rem;
+    }
+
+    .section-story p {
+      font-size: 0.95rem;
+      line-height: 2.2;
+      color: var(--gray-500);
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-story p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-story .emphasis {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--gray-400);
+    }
+
+    /* =============================================
+       THE ARTWORK SECTION — Two Columns
+       ============================================= */
+
+    .section-artwork {
+      padding: 6rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .artwork-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .artwork-image-col {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .artwork-image-frame {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .artwork-image-frame::before {
+      content: '';
+      position: absolute;
+      inset: 1rem;
+      border: 1px solid var(--gray-800);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .artwork-image-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 1.2s var(--transition-slow);
+    }
+
+    .artwork-image-frame:hover img {
+      transform: scale(1.03);
+    }
+
+    .artwork-details-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .artwork-details-title {
+      font-size: 0.5rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      font-weight: 400;
+      margin-bottom: 2rem;
+    }
+
+    .artwork-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .artwork-detail-item {
+      padding: 1.2rem 0;
+      border-bottom: 1px solid var(--gray-800);
+    }
+
+    .artwork-detail-item:nth-child(odd) {
+      border-right: 1px solid var(--gray-800);
+      padding-right: 1.5rem;
+    }
+    .artwork-detail-item:nth-child(even) {
+      padding-left: 1.5rem;
+    }
+
+    .artwork-detail-label {
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-600);
+      margin-bottom: 0.2rem;
+      font-weight: 400;
+    }
+
+    .artwork-detail-value {
+      font-size: 0.9rem;
+      color: var(--off-white);
+      font-weight: 300;
+      font-family: var(--font-display);
+    }
+
+    /* =============================================
+       MATERIALS SECTION
+       ============================================= */
+
+    .section-materials {
+      padding: 6rem 2rem;
+      background: var(--near-black);
+    }
+
+    .section-materials-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .materials-label {
+      font-size: 0.5rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      font-weight: 400;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .materials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+    }
+
+    .material-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+    }
+
+    .material-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--gray-800);
+      border-radius: 50%;
+      opacity: 0.7;
+    }
+
+    .material-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--off-white);
+      fill: none;
+      stroke-width: 1.2;
+    }
+
+    .material-name {
+      font-size: 0.75rem;
+      color: var(--off-white);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+    }
+
+    .material-desc {
+      font-size: 0.6rem;
+      color: var(--gray-600);
+      letter-spacing: 0.03em;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    /* =============================================
+       DETAILS — Carousel
+       ============================================= */
+
+    .section-details {
+      padding: 6rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .details-label {
+      font-size: 0.5rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      font-weight: 400;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 1.5rem;
+      transition: transform 0.6s var(--transition-med);
+    }
+
+    .carousel-slide {
+      min-width: calc(50% - 0.75rem);
+      aspect-ratio: 4 / 3;
+      background: var(--near-black);
+      border: 1px solid var(--gray-800);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+      transition: opacity var(--transition-med);
+    }
+
+    .carousel-slide:hover img {
+      opacity: 1;
+    }
+
+    .carousel-slide-label {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      font-weight: 300;
+    }
+
+    .carousel-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .carousel-btn {
+      background: none;
+      border: 1px solid var(--gray-700);
+      color: var(--gray-500);
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-fast);
+      font-size: 0.8rem;
+    }
+
+    .carousel-btn:hover {
+      border-color: var(--off-white);
+      color: var(--off-white);
+    }
+
+    .carousel-dots {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .carousel-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gray-700);
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition-fast);
+      padding: 0;
+    }
+
+    .carousel-dot.active {
+      background: var(--gold);
+    }
+
+    /* =============================================
+       QUOTE — Full Screen
+       ============================================= */
+
+    .section-quote {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      position: relative;
+    }
+
+    .section-quote::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, rgba(200,169,110,0.03) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .section-quote blockquote {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-quote blockquote p {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 6rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--off-white);
+      line-height: 1.2;
+      max-width: 800px;
+      letter-spacing: -0.02em;
+    }
+
+    /* =============================================
+       RECOMMENDED
+       ============================================= */
+
+    .section-recommended {
+      padding: 6rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .recommended-label {
+      font-size: 0.5rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      font-weight: 400;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .recommended-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .recommended-card {
+      display: block;
+      text-decoration: none;
+      transition: all var(--transition-med);
+    }
+
+    .recommended-card-image {
+      aspect-ratio: 3 / 4;
+      background: var(--near-black);
+      border: 1px solid var(--gray-800);
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .recommended-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1s var(--transition-slow);
+      opacity: 0.8;
+    }
+
+    .recommended-card:hover .recommended-card-image img {
+      transform: scale(1.05);
+    }
+
+    .recommended-card-number {
+      font-size: 0.5rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-600);
+      margin-bottom: 0.2rem;
+    }
+
+    .recommended-card-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--off-white);
+      font-weight: 400;
+    }
+
+    .recommended-card:hover .recommended-card-title {
+      opacity: 0.7;
+    }
+
+    .recommended-card-status {
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-600);
+      margin-top: 0.3rem;
+    }
+
+    /* =============================================
+       FOOTER
+       ============================================= */
+
+    .footer {
+      padding: 4rem 2rem 2rem;
+      border-top: 1px solid var(--gray-800);
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--off-white);
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-tagline {
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-600);
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+
+    .footer-bottom {
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--gray-900);
+      font-size: 0.55rem;
+      color: var(--gray-700);
+      letter-spacing: 0.05em;
+    }
+
+    /* =============================================
+       RESPONSIVE
+       ============================================= */
+
+    @media (max-width: 1100px) {
+      .hero-content {
+        grid-template-columns: 1fr 1.5fr 1fr;
+        padding: 6rem 2rem 4rem;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .header { padding: 1.2rem 2rem; }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 8rem 2rem 4rem;
+        text-align: center;
+      }
+
+      .hero-left { align-items: center; }
+      .hero-right {
+        align-items: center;
+        padding-left: 0;
+      }
+      .hero-subtitle { max-width: none; }
+      .hero-features { align-items: center; }
+      .hero-center { order: -1; }
+      .hero-floating-container { max-width: 300px; }
+
+      .header-nav {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: -280px;
+        width: 260px;
+        height: 100%;
+        background: var(--near-black);
+        z-index: 99;
+        padding: 5rem 2rem 2rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+        transition: right 0.4s ease;
+        border-left: 1px solid var(--gray-800);
+      }
+      .header-nav.open { display: flex; right: 0; }
+      .hamburger { display: block; }
+      .nav-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 98;
+      }
+      .nav-overlay.open { display: block; }
+
+      .artwork-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .artwork-image-frame { margin: 0 auto; }
+
+      .materials-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      .carousel-slide {
+        min-width: calc(100% - 0rem);
+      }
+
+      .recommended-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .header { padding: 1rem 1.2rem; }
+
+      .hero-content {
+        padding: 7rem 1.2rem 3rem;
+        gap: 2rem;
+      }
+      .hero-floating-container { max-width: 250px; }
+
+      .materials-grid {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+        margin: 0 auto;
+      }
+
+      .recommended-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        max-width: 350px;
+        margin: 0 auto;
+      }
+
+      .section-story { padding: 5rem 1.2rem; }
+      .section-artwork { padding: 4rem 1.2rem; }
+      .section-materials { padding: 4rem 1.2rem; }
+      .section-details { padding: 4rem 1.2rem; }
+      .section-quote { min-height: 60vh; padding: 3rem 1.2rem; }
+      .section-recommended { padding: 4rem 1.2rem; }
+
+      .size-btn { padding: 0.5rem 0.8rem; }
+      .btn-primary { padding: 0.9rem 1.5rem; }
+    }
+
+    /* =============================================
+       SCROLL PARALLAX (via JS data attributes)
+       ============================================= */
+
+    .parallax-slow {
+      will-change: transform;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =============================================
+       HEADER
+       ============================================= -->
+  <header class="header" id="header">
+    <a href="/" class="header-logo">
+      <img src="assets/logo-inverted.png" alt="MAGOS CON ESTILO">
+    </a>
+
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="header-nav" id="headerNav">
+      <a href="/" data-i18n="The Gallery">The Gallery</a>
+      <a href="/" data-i18n="Essentials">Essentials</a>
+      <a href="/" data-i18n="One of One">One of One</a>
+      <a href="/" data-i18n="Journal">Journal</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="lang-toggle" id="langToggle" onclick="toggleLang()">ES</button>
+      <a href="/" class="cart-icon" aria-label="Cart">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <div class="nav-overlay" id="navOverlay" onclick="closeMenu()"></div>
+
+  <!-- =============================================
+       HERO
+       ============================================= -->
+  <section class="hero" id="hero">
+    <div class="hero-stage"></div>
+    <div class="hero-spotlight-1"></div>
+    <div class="hero-spotlight-2"></div>
+
+    <div class="hero-content">
+      <!-- Left Info -->
+      <div class="hero-left fade-up fade-up-1">
+        <span class="hero-collection-label">Essentials</span>
+        <span class="hero-artwork-number" data-i18n="Artwork 01">Artwork 01</span>
+        <h1 class="hero-title">The<br>Impossible</h1>
+        <p class="hero-quote" data-i18n="hero_quote">"The impossible is already inside you."</p>
+        <p class="hero-subtitle" data-i18n="hero_sub">
+          A minimalist statement for those who don't perform magic…<br>
+          they live it.
+        </p>
+      </div>
+
+      <!-- Center — Floating Shirt -->
+      <div class="hero-center fade-up fade-up-2">
+        <div class="hero-floating-container">
+          <img
+            src="assets/product-hero-the-impossible.jpg"
+            alt="The Impossible — Premium T-Shirt"
+            class="hero-floating-image"
+            onerror="this.style.display='none'"
+          >
+          <div class="hero-glow"></div>
+        </div>
+      </div>
+
+      <!-- Right — Price & Buy -->
+      <div class="hero-right fade-up fade-up-3">
+        <span class="hero-price">59 €</span>
+
+        <div class="size-selector" id="sizeSelector">
+          <button class="size-btn" onclick="selectSize(this)">S</button>
+          <button class="size-btn selected" onclick="selectSize(this)">M</button>
+          <button class="size-btn" onclick="selectSize(this)">L</button>
+          <button class="size-btn" onclick="selectSize(this)">XL</button>
+        </div>
+
+        <div class="hero-features">
+          <span class="hero-feature" data-i18n="feat_cotton">Premium Heavyweight Cotton</span>
+          <span class="hero-feature" data-i18n="feat_print">DTF Fine Art Print</span>
+          <span class="hero-feature" data-i18n="feat_made">Made to order</span>
+          <span class="hero-feature" data-i18n="feat_shipping">Worldwide shipping included</span>
+          <span class="hero-feature" data-i18n="feat_edition">Exclusive Magos con Estilo Edition</span>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn-primary" onclick="addToCart()" data-i18n="btn_wear">WEAR THE IMPOSSIBLE</button>
+          <a href="#story" class="btn-secondary" data-i18n="btn_story">Read the Story</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="section-divider"></div>
+
+  <!-- =============================================
+       THE STORY
+       ============================================= -->
+  <section class="section-story" id="story">
+    <span class="section-story-label reveal">The Story</span>
+    <h2 class="reveal">The Impossible</h2>
+    <p class="reveal" data-i18n="story_p1">Some people search for impossible moments.</p>
+    <p class="reveal" data-i18n="story_p2">Others become them.</p>
+    <p class="reveal" data-i18n="story_p3">This artwork represents the only place where real magic exists.</p>
+    <p class="reveal" data-i18n="story_p4">Not in the cards.</p>
+    <p class="reveal" data-i18n="story_p5">Not in the mirror.</p>
+    <p class="reveal" data-i18n="story_p6">Inside the person wearing it.</p>
+    <p class="reveal emphasis" data-i18n="story_p7">Because the impossible was never outside.</p>
+    <p class="reveal emphasis" data-i18n="story_p8">It has always been waiting inside you.</p>
+  </section>
+
+  <!-- =============================================
+       THE ARTWORK
+       ============================================= -->
+  <section class="section-artwork" id="artwork">
+    <div class="artwork-grid">
+      <div class="artwork-image-col reveal">
+        <div class="artwork-image-frame">
+          <img
+            src="assets/artwork-the-impossible-print.png"
+            alt="The Impossible — Artwork"
+            onerror="this.alt='The Impossible — Digital Fine Art'; this.style.minHeight='300px'; this.style.background='var(--near-black)'"
+          >
+        </div>
+      </div>
+      <div class="artwork-details-col reveal">
+        <span class="artwork-details-title">Artwork</span>
+        <div class="artwork-detail-grid">
+          <div class="artwork-detail-item">
+            <span class="artwork-detail-label" data-i18n="detail_collection">Collection</span>
+            <span class="artwork-detail-value" data-i18n="essentials">Essentials</span>
+          </div>
+          <div class="artwork-detail-item">
+            <span class="artwork-detail-label" data-i18n="detail_artwork_number">Artwork Number</span>
+            <span class="artwork-detail-value">01</span>
+          </div>
+          <div class="artwork-detail-item">
+            <span class="artwork-detail-label" data-i18n="detail_technique">Technique</span>
+            <span class="artwork-detail-value" data-i18n="digital_fine_art">Digital Fine Art</span>
+          </div>
+          <div class="artwork-detail-item">
+            <span class="artwork-detail-label" data-i18n="detail_print">Print</span>
+            <span class="artwork-detail-value" data-i18n="premium_dtf">Premium DTF</span>
+          </div>
+          <div class="artwork-detail-item">
+            <span class="artwork-detail-label" data-i18n="detail_edition">Edition</span>
+            <span class="artwork-detail-value" data-i18n="open_edition">Open Edition</span>
+          </div>
+          <div class="artwork-detail-item">
+            <span class="artwork-detail-label" data-i18n="detail_artist">Artist</span>
+            <span class="artwork-detail-value">Magos con Estilo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       MATERIALS
+       ============================================= -->
+  <section class="section-materials" id="materials">
+    <div class="section-materials-inner">
+      <span class="materials-label reveal">Materials</span>
+      <div class="materials-grid">
+        <div class="material-item reveal">
+          <div class="material-icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="6" width="18" height="12" rx="1"/>
+              <line x1="7" y1="18" x2="7" y2="22"/>
+              <line x1="17" y1="18" x2="17" y2="22"/>
+              <line x1="12" y1="18" x2="12" y2="22"/>
+            </svg>
+          </div>
+          <span class="material-name" data-i18n="mat_cotton">Heavyweight Cotton</span>
+          <span class="material-desc" data-i18n="mat_cotton_desc">280 gsm premium ringspun cotton</span>
+        </div>
+        <div class="material-item reveal">
+          <div class="material-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="8"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="12" cy="12" r="1.5"/>
+            </svg>
+          </div>
+          <span class="material-name" data-i18n="mat_touch">Soft Touch</span>
+          <span class="material-desc" data-i18n="mat_touch_desc">Garment-washed for natural softness</span>
+        </div>
+        <div class="material-item reveal">
+          <div class="material-icon">
+            <svg viewBox="0 0 24 24">
+              <polygon points="12,2 15,9 22,9 16,14 18,21 12,17 6,21 8,14 2,9 9,9"/>
+            </svg>
+          </div>
+          <span class="material-name" data-i18n="mat_print">Premium Print</span>
+          <span class="material-desc" data-i18n="mat_print_desc">DTF Fine Art — vibrant, crack-resistant</span>
+        </div>
+        <div class="material-item reveal">
+          <div class="material-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+              <rect x="8" y="2" width="8" height="4" rx="1"/>
+            </svg>
+          </div>
+          <span class="material-name" data-i18n="mat_made">Made to Order</span>
+          <span class="material-desc" data-i18n="mat_made_desc">Every piece printed on demand</span>
+        </div>
+        <div class="material-item reveal">
+          <div class="material-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <span class="material-name" data-i18n="mat_spain">Designed in Spain</span>
+          <span class="material-desc" data-i18n="mat_spain_desc">Created in Toledo by Magos con Estilo</span>
+        </div>
+        <div class="material-item reveal">
+          <div class="material-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M12 7v5l3 3"/>
+            </svg>
+          </div>
+          <span class="material-name" data-i18n="mat_shipping">Worldwide Shipping</span>
+          <span class="material-desc" data-i18n="mat_shipping_desc">Free shipping — anywhere on Earth</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       DETAILS — Carousel
+       ============================================= -->
+  <section class="section-details" id="details">
+    <span class="details-label reveal">Details</span>
+    <div class="carousel-container reveal">
+      <div class="carousel-track" id="carouselTrack">
+        <div class="carousel-slide">
+          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--near-black);">
+            <div style="width:80%;height:80%;border-radius:50%;border:2px solid var(--gray-700);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:var(--gray-600);font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;">
+              Mirror Zoom
+            </div>
+          </div>
+          <span class="carousel-slide-label" data-i18n="detail_mirror">Mirror Detail</span>
+        </div>
+        <div class="carousel-slide">
+          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--near-black);">
+            <div style="width:15px;height:150px;background:var(--gray-800);border-left:3px solid var(--gold);border-right:3px solid var(--gold);opacity:0.7;"></div>
+          </div>
+          <span class="carousel-slide-label" data-i18n="detail_frame">Frame Detail</span>
+        </div>
+        <div class="carousel-slide">
+          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--near-black);">
+            <div style="font-family:var(--font-display);font-size:3rem;color:var(--gray-600);font-weight:300;letter-spacing:0.05em;">T</div>
+          </div>
+          <span class="carousel-slide-label" data-i18n="detail_typography">Typography Detail</span>
+        </div>
+        <div class="carousel-slide">
+          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--near-black);">
+            <div style="width:120px;height:120px;position:relative;">
+              <div style="position:absolute;inset:0;border:1px solid var(--gray-700);"></div>
+              <div style="position:absolute;top:5px;left:5px;right:5px;bottom:5px;background:repeating-linear-gradient(45deg, var(--gray-800) 0px, var(--gray-800) 2px, transparent 2px, transparent 4px);"></div>
+            </div>
+          </div>
+          <span class="carousel-slide-label" data-i18n="detail_print_zoom">Print Detail</span>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-nav">
+      <button class="carousel-btn" onclick="carouselPrev()" aria-label="Previous">←</button>
+      <div class="carousel-dots" id="carouselDots">
+        <button class="carousel-dot active" onclick="carouselGo(0)"></button>
+        <button class="carousel-dot" onclick="carouselGo(1)"></button>
+        <button class="carousel-dot" onclick="carouselGo(2)"></button>
+        <button class="carousel-dot" onclick="carouselGo(3)"></button>
+      </div>
+      <button class="carousel-btn" onclick="carouselNext()" aria-label="Next">→</button>
+    </div>
+  </section>
+
+  <!-- =============================================
+       QUOTE — Full Screen
+       ============================================= -->
+  <section class="section-quote" id="quote">
+    <blockquote class="reveal">
+      <p>"The impossible is already inside you."</p>
+    </blockquote>
+  </section>
+
+  <!-- =============================================
+       RECOMMENDED
+       ============================================= -->
+  <section class="section-recommended" id="related">
+    <span class="recommended-label reveal" data-i18n="recommended">Recommended</span>
+    <div class="recommended-grid">
+      <a href="artwork-the-secret.html" class="recommended-card reveal">
+        <div class="recommended-card-image">
+          <img src="assets/product-hero-the-secret.jpg" alt="The Secret" onerror="this.style.display='none'">
+        </div>
+        <span class="recommended-card-number" data-i18n="card_secret_num">The Gallery · 01</span>
+        <span class="recommended-card-title">The Secret</span>
+      </a>
+      <div class="recommended-card reveal" style="opacity:0.4;cursor:default;">
+        <div class="recommended-card-image">
+          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:var(--gray-700);font-size:2rem;">✦</div>
+        </div>
+        <span class="recommended-card-number">Essentials · 02</span>
+        <span class="recommended-card-title" data-i18n="coming_soon_1">Coming Soon</span>
+        <span class="recommended-card-status" data-i18n="status_soon">In Production</span>
+      </div>
+      <div class="recommended-card reveal" style="opacity:0.4;cursor:default;">
+        <div class="recommended-card-image">
+          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:var(--gray-700);font-size:2rem;">✦</div>
+        </div>
+        <span class="recommended-card-number">Essentials · 03</span>
+        <span class="recommended-card-title" data-i18n="coming_soon_2">Coming Soon</span>
+        <span class="recommended-card-status" data-i18n="status_soon">In Production</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       FOOTER
+       ============================================= -->
+  <footer class="footer">
+    <div class="footer-logo">Magos con Estilo</div>
+    <div class="footer-tagline" data-i18n="footer_tagline">Wear the Feeling</div>
+    <div class="footer-bottom">
+      <span>© Magos con Estilo</span>
+    </div>
+  </footer>
+
+  <!-- =============================================
+       SCRIPTS
+       ============================================= -->
+  <script>
+    /* =============================================
+       LANGUAGE ENGINE
+       ============================================= */
+
+    const langData = {
+      'The Gallery': { en: 'The Gallery', es: 'The Gallery' },
+      'Essentials': { en: 'Essentials', es: 'Essentials' },
+      'One of One': { en: 'One of One', es: 'One of One' },
+      'Journal': { en: 'Journal', es: 'Revista' },
+      'Artwork 01': { en: 'Artwork 01', es: 'Obra 01' },
+      'hero_quote': { en: '"The impossible is already inside you."', es: '"Lo imposible ya está dentro de ti."' },
+      'hero_sub': { en: 'A minimalist statement for those who don\'t perform magic…\nthey live it.', es: 'Una declaración minimalista para quienes no hacen magia…\nla viven.' },
+      'feat_cotton': { en: 'Premium Heavyweight Cotton', es: 'Algodón Premium de Alto Gramaje' },
+      'feat_print': { en: 'DTF Fine Art Print', es: 'Impresión DTF Fine Art' },
+      'feat_made': { en: 'Made to order', es: 'Hecho bajo pedido' },
+      'feat_shipping': { en: 'Worldwide shipping included', es: 'Envío mundial incluido' },
+      'feat_edition': { en: 'Exclusive Magos con Estilo Edition', es: 'Edición Exclusiva Magos con Estilo' },
+      'btn_wear': { en: 'WEAR THE IMPOSSIBLE', es: 'VISTE LO IMPOSIBLE' },
+      'btn_story': { en: 'Read the Story', es: 'Leer la Historia' },
+      'story_p1': { en: 'Some people search for impossible moments.', es: 'Algunas personas buscan momentos imposibles.' },
+      'story_p2': { en: 'Others become them.', es: 'Otras se convierten en ellos.' },
+      'story_p3': { en: 'This artwork represents the only place where real magic exists.', es: 'Esta obra representa el único lugar donde existe la magia real.' },
+      'story_p4': { en: 'Not in the cards.', es: 'No en las cartas.' },
+      'story_p5': { en: 'Not in the mirror.', es: 'No en el espejo.' },
+      'story_p6': { en: 'Inside the person wearing it.', es: 'Dentro de la persona que la viste.' },
+      'story_p7': { en: 'Because the impossible was never outside.', es: 'Porque lo imposible nunca estuvo fuera.' },
+      'story_p8': { en: 'It has always been waiting inside you.', es: 'Siempre ha estado esperando dentro de ti.' },
+      'detail_collection': { en: 'Collection', es: 'Colección' },
+      'detail_artwork_number': { en: 'Artwork Number', es: 'Número de Obra' },
+      'detail_technique': { en: 'Technique', es: 'Técnica' },
+      'detail_print': { en: 'Print', es: 'Impresión' },
+      'detail_edition': { en: 'Edition', es: 'Edición' },
+      'detail_artist': { en: 'Artist', es: 'Artista' },
+      'essentials': { en: 'Essentials', es: 'Essentials' },
+      'digital_fine_art': { en: 'Digital Fine Art', es: 'Arte Digital Fine Art' },
+      'premium_dtf': { en: 'Premium DTF', es: 'DTF Premium' },
+      'open_edition': { en: 'Open Edition', es: 'Edición Abierta' },
+      'mat_cotton': { en: 'Heavyweight Cotton', es: 'Algodón de Alto Gramaje' },
+      'mat_cotton_desc': { en: '280 gsm premium ringspun cotton', es: 'Algodón ringspun premium 280 g/m²' },
+      'mat_touch': { en: 'Soft Touch', es: 'Tacto Suave' },
+      'mat_touch_desc': { en: 'Garment-washed for natural softness', es: 'Lavado en prenda para suavidad natural' },
+      'mat_print': { en: 'Premium Print', es: 'Impresión Premium' },
+      'mat_print_desc': { en: 'DTF Fine Art — vibrant, crack-resistant', es: 'DTF Fine Art — vibrante, resistente a grietas' },
+      'mat_made': { en: 'Made to Order', es: 'Hecho a Pedido' },
+      'mat_made_desc': { en: 'Every piece printed on demand', es: 'Cada pieza impresa bajo demanda' },
+      'mat_spain': { en: 'Designed in Spain', es: 'Diseñado en España' },
+      'mat_spain_desc': { en: 'Created in Toledo by Magos con Estilo', es: 'Creado en Toledo por Magos con Estilo' },
+      'mat_shipping': { en: 'Worldwide Shipping', es: 'Envío Mundial' },
+      'mat_shipping_desc': { en: 'Free shipping — anywhere on Earth', es: 'Envío gratis — a cualquier lugar del mundo' },
+      'detail_mirror': { en: 'Mirror Detail', es: 'Detalle del Espejo' },
+      'detail_frame': { en: 'Frame Detail', es: 'Detalle del Marco' },
+      'detail_typography': { en: 'Typography Detail', es: 'Detalle Tipográfico' },
+      'detail_print_zoom': { en: 'Print Detail', es: 'Detalle de Impresión' },
+      'recommended': { en: 'Recommended', es: 'Recomendados' },
+      'card_secret_num': { en: 'The Gallery · 01', es: 'The Gallery · 01' },
+      'coming_soon_1': { en: 'Coming Soon', es: 'Próximamente' },
+      'coming_soon_2': { en: 'Coming Soon', es: 'Próximamente' },
+      'status_soon': { en: 'In Production', es: 'En Producción' },
+      'footer_tagline': { en: 'Wear the Feeling', es: 'Wear the Feeling' },
+      'Added': { en: 'Added', es: 'Añadido' }
+    };
+
+    let currentLang = localStorage.getItem('mce_lang') || 'en';
+
+    function translatePage(lang) {
+      currentLang = lang;
+      localStorage.setItem('mce_lang', lang);
+      document.documentElement.lang = lang === 'es' ? 'es' : 'en';
+      const btn = document.getElementById('langToggle');
+      if (btn) btn.textContent = lang === 'es' ? 'EN' : 'ES';
+
+      // data-i18n attributes
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        const key = el.getAttribute('data-i18n');
+        if (langData[key] && langData[key][lang]) {
+          el.textContent = langData[key][lang];
+        }
+      });
+
+      // Text walker fallback
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+      const nodesToReplace = [];
+      while (walker.nextNode()) {
+        const node = walker.currentNode;
+        const text = node.textContent.trim();
+        if (text && langData[text] && langData[text][lang]) {
+          nodesToReplace.push({ node, text: langData[text][lang] });
+        }
+      }
+      nodesToReplace.forEach(({ node, text }) => { node.textContent = text; });
+    }
+
+    function toggleLang() {
+      translatePage(currentLang === 'es' ? 'en' : 'es');
+    }
+
+    translatePage(currentLang);
+
+    /* =============================================
+       HEADER SCROLL
+       ============================================= */
+
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    /* =============================================
+       INTERSECTION OBSERVER — Reveal on scroll
+       ============================================= */
+
+    const revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      revealObserver.observe(el);
+    });
+
+    /* =============================================
+       PARALLAX
+       ============================================= */
+
+    window.addEventListener('scroll', function() {
+      const scrollY = window.scrollY;
+
+      // Hero parallax slow
+      const heroContent = document.querySelector('.hero-content');
+      if (heroContent && scrollY < window.innerHeight) {
+        heroContent.style.transform = 'translateY(' + (scrollY * 0.08) + 'px)';
+      }
+
+      // Floating image extra drift
+      const floating = document.querySelector('.hero-floating-container');
+      if (floating && scrollY < window.innerHeight) {
+        floating.style.transform = 'translateY(' + (scrollY * -0.04) + 'px)';
+      }
+    });
+
+    /* =============================================
+       SIZE SELECTOR
+       ============================================= */
+
+    function selectSize(btn) {
+      document.querySelectorAll('.size-btn').forEach(function(b) {
+        b.classList.remove('selected');
+      });
+      btn.classList.add('selected');
+    }
+
+    function getSelectedSize() {
+      const sel = document.querySelector('.size-btn.selected');
+      return sel ? sel.textContent : 'M';
+    }
+
+    /* =============================================
+       ADD TO CART
+       ============================================= */
+
+    function addToCart() {
+      const size = getSelectedSize();
+      const name = 'The Impossible';
+      const price = '59';
+      const icon = '♠';
+      const diseno = 'essentials-01';
+
+      const cart = JSON.parse(localStorage.getItem('mce_cart') || '[]');
+      cart.push({ name: name, price: price, color: 'Black', size: size, icon: icon, diseno: diseno });
+      localStorage.setItem('mce_cart', JSON.stringify(cart));
+
+      // Feedback
+      const btn = document.querySelector('.btn-primary');
+      const addedText = langData['Added'] ? langData['Added'][currentLang] : 'Added';
+      const origText = btn.textContent;
+      btn.textContent = addedText;
+      btn.style.opacity = '0.6';
+      btn.style.borderColor = 'var(--gold)';
+      btn.style.color = 'var(--gold)';
+      setTimeout(function() {
+        btn.textContent = origText;
+        btn.style.opacity = '1';
+        btn.style.borderColor = '';
+        btn.style.color = '';
+      }, 1200);
+    }
+
+    /* =============================================
+       DETAILS CAROUSEL
+       ============================================= */
+
+    let carouselIndex = 0;
+    const track = document.getElementById('carouselTrack');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const slides = document.querySelectorAll('.carousel-slide');
+
+    function updateCarousel() {
+      const slideWidth = slides[0].offsetWidth + 24; // gap
+      track.style.transform = 'translateX(-' + (carouselIndex * slideWidth) + 'px)';
+      dots.forEach(function(dot, i) {
+        dot.classList.toggle('active', i === carouselIndex);
+      });
+    }
+
+    function carouselNext() {
+      if (carouselIndex < slides.length - 1) {
+        carouselIndex++;
+        updateCarousel();
+      }
+    }
+
+    function carouselPrev() {
+      if (carouselIndex > 0) {
+        carouselIndex--;
+        updateCarousel();
+      }
+    }
+
+    function carouselGo(index) {
+      carouselIndex = index;
+      updateCarousel();
+    }
+
+    window.addEventListener('resize', updateCarousel);
+
+    /* =============================================
+       MOBILE MENU
+       ============================================= */
+
+    function toggleMenu() {
+      document.getElementById('headerNav').classList.toggle('open');
+      document.getElementById('navOverlay').classList.toggle('open');
+      document.getElementById('hamburger').classList.toggle('active');
+    }
+
+    function closeMenu() {
+      document.getElementById('headerNav').classList.remove('open');
+      document.getElementById('navOverlay').classList.remove('open');
+      document.getElementById('hamburger').classList.remove('active');
+    }
+
+    /* =============================================
+       SMOOTH SCROLL
+       ============================================= */
+
+    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
