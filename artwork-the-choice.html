@@ -998,13 +998,51 @@
 
     .discover-card {
       background: var(--black);
-      padding: 4rem 2.5rem;
+      padding: 0;
       text-align: center;
       transition: background var(--transition-med);
+      overflow: hidden;
     }
 
     .discover-card:hover {
       background: var(--near-black);
+    }
+
+    .discover-card-image {
+      width: 100%;
+      aspect-ratio: 1;
+      overflow: hidden;
+      position: relative;
+      border-bottom: 1px solid rgba(200, 169, 110, 0.06);
+    }
+
+    .discover-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .discover-card:hover .discover-card-image img {
+      transform: scale(1.03);
+    }
+
+    .discover-card-image .placeholder-visual {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--gray-900) 0%, var(--dark) 50%, var(--gray-900) 100%);
+      color: var(--gray-600);
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-style: italic;
+    }
+
+    .discover-card-body {
+      padding: 2.5rem 2rem;
     }
 
     .discover-card-artwork {
@@ -1038,20 +1076,35 @@
 
     .discover-card-link {
       display: inline-block;
-      padding: 0.6rem 1.5rem;
       font-family: var(--font-body);
       font-size: 10px;
       font-weight: 400;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--gray-400);
-      border: 1px solid rgba(200, 169, 110, 0.15);
+      color: var(--gold-dim);
       transition: all var(--transition-fast);
+      position: relative;
     }
 
-    .discover-card-link:hover {
+    .discover-card-link::after {
+      content: '→';
+      margin-left: 4px;
+      transition: transform var(--transition-fast);
+      display: inline-block;
+    }
+
+    .discover-card:hover .discover-card-link {
       color: var(--gold);
-      border-color: var(--gold);
+    }
+
+    .discover-card:hover .discover-card-link::after {
+      transform: translateX(3px);
+    }
+
+    .discover-card a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
     }
 
     .discover-card-coming-soon {
@@ -1246,16 +1299,19 @@
       }
 
       .discover-card {
-        padding: 3rem 2rem;
+        padding: 0;
+      }
+
+      .discover-card-body {
+        padding: 2rem 1.5rem;
+      }
+
+      .discover-card-image {
+        aspect-ratio: 3/4;
       }
 
       .discover-card-title {
         font-size: 22px;
-      }
-
-      .discover-card-image-mini img {
-        width: 80px !important;
-        height: 80px !important;
       }
 
       .quote-section {
@@ -1284,12 +1340,20 @@
       }
 
       .discover-card {
-        padding: 2.5rem 1.5rem;
+        padding: 0;
       }
 
-      .discover-card-image-mini img {
-        width: 64px !important;
-        height: 64px !important;
+      .discover-card-body {
+        padding: 1.5rem 1.25rem;
+      }
+
+      .discover-card-image {
+        aspect-ratio: 1;
+      }
+
+      .discover-card-image img {
+        width: 100% !important;
+        height: 100% !important;
       }
     }
 
@@ -1592,28 +1656,36 @@
     <div class="discover-label reveal">Discover More</div>
     <div class="discover-grid">
       <div class="discover-card reveal reveal-delay-1">
-        <div class="discover-card-artwork">Artwork 01</div>
-        <div class="discover-card-image-mini">
-          <img src="assets/artwork-the-secret-web.png" alt="The Secret" style="width:60px;height:60px;object-fit:contain;margin:0 auto 1rem;opacity:0.8;display:block;">
-        </div>
-        <h3 class="discover-card-title">The Secret</h3>
-        <a href="artwork-the-secret.html" class="discover-card-link">View Artwork</a>
+        <a href="artwork-the-secret.html">
+          <div class="discover-card-image">
+            <img src="assets/artwork-the-secret-web.png" alt="The Secret">
+          </div>
+          <div class="discover-card-body">
+            <div class="discover-card-artwork">Artwork 01</div>
+            <h3 class="discover-card-title">The Secret</h3>
+            <span class="discover-card-link">View Artwork</span>
+          </div>
+        </a>
       </div>
       <div class="discover-card reveal reveal-delay-2">
-        <div class="discover-card-artwork">Artwork 03</div>
-        <div class="discover-card-image-mini">
-          <div style="width:60px;height:60px;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;border:1px solid rgba(200,169,110,0.1);border-radius:2px;color:var(--gray-600);font-size:20px;">✦</div>
+        <div class="discover-card-image">
+          <div class="placeholder-visual">✦</div>
         </div>
-        <h3 class="discover-card-title">Coming Soon</h3>
-        <span class="discover-card-coming-soon">Awaiting Revelation</span>
+        <div class="discover-card-body">
+          <div class="discover-card-artwork">Artwork 03</div>
+          <h3 class="discover-card-title">Coming Soon</h3>
+          <span class="discover-card-coming-soon">Awaiting Revelation</span>
+        </div>
       </div>
       <div class="discover-card reveal reveal-delay-3">
-        <div class="discover-card-artwork">Artwork 04</div>
-        <div class="discover-card-image-mini">
-          <div style="width:60px;height:60px;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;border:1px solid rgba(200,169,110,0.1);border-radius:2px;color:var(--gray-600);font-size:20px;">✦</div>
+        <div class="discover-card-image">
+          <div class="placeholder-visual">✦</div>
         </div>
-        <h3 class="discover-card-title">Coming Soon</h3>
-        <span class="discover-card-coming-soon">Awaiting Revelation</span>
+        <div class="discover-card-body">
+          <div class="discover-card-artwork">Artwork 04</div>
+          <h3 class="discover-card-title">Coming Soon</h3>
+          <span class="discover-card-coming-soon">Awaiting Revelation</span>
+        </div>
       </div>
     </div>
   </section>
