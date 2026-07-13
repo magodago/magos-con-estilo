@@ -122,7 +122,71 @@
       height: 38px;
       width: auto;
       display: block;
-      opacity: 0.9;
+      opacity: 0.95;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      z-index: 2;
+    }
+
+    .header-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      z-index: 2;
+    }
+
+    .header-brand {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gray-200);
+      white-space: nowrap;
+    }
+
+    /* Hamburger menu */
+    .hamburger-btn {
+      display: flex;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      flex-direction: column;
+      gap: 4px;
+      width: 22px;
+    }
+
+    .hamburger-btn span {
+      display: block;
+      width: 100%;
+      height: 1.5px;
+      background: var(--gray-200);
+      transition: all var(--transition-fast);
+      border-radius: 1px;
+    }
+
+    .hamburger-btn.active span:nth-child(1) {
+      transform: translateY(5.5px) rotate(45deg);
+    }
+
+    .hamburger-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-btn.active span:nth-child(3) {
+      transform: translateY(-5.5px) rotate(-45deg);
     }
 
     .header-nav {
@@ -273,44 +337,8 @@
       font-family: var(--font-body);
     }
 
-    /* Hamburger mobile */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      gap: 4px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-      z-index: 110;
-    }
-
-    .hamburger span {
-      display: block;
-      width: 20px;
-      height: 1.5px;
-      background: var(--white);
-      border-radius: 1px;
-      transition: all 0.3s;
-    }
-
-    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
-    .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
-
-    .nav-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.5);
-      z-index: 90;
-    }
-
-    .nav-overlay.open { display: block; }
-
     /* =============================================
-       HERO
+       HEADER ACTIONS
        ============================================= */
 
     .hero {
@@ -1362,34 +1390,43 @@
     @media (max-width: 600px) {
       .header { padding: 0.8rem 1rem; }
 
-      .hamburger { display: flex; }
-
       .header-nav {
-        display: block;
+        display: none;
         position: fixed;
         top: 0;
-        right: -280px;
-        width: 260px;
-        height: 100%;
-        background: var(--near-black);
-        z-index: 100;
-        padding: 5rem 1.5rem 2rem;
-        transition: right 0.3s ease;
-        border-left: 1px solid var(--gray-800);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.97);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2.5rem;
+        z-index: 99;
       }
 
-      .header-nav.open { right: 0; }
+      .header-nav.open {
+        display: flex;
+      }
 
       .header-nav ul {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 0;
+        align-items: center;
+        gap: 1.5rem;
       }
 
       .header-nav > ul > li > a {
-        padding: 0.7rem 0;
-        font-size: 0.7rem;
-        width: 100%;
+        padding: 0.5rem 0;
+        font-size: 13px;
+        letter-spacing: 4px;
+      }
+
+      .header-center {
+        flex: 1;
+        text-align: center;
+        position: relative;
+        left: auto;
+        transform: none;
       }
 
       .dropdown-menu {
@@ -1431,44 +1468,46 @@
 
   <!-- HEADER -->
   <header class="header" id="header">
-    <a href="/" class="header-logo fade-in fade-in-1">
-      <img src="assets/logo-transparent.png" alt="MAGOS CON ESTILO">
-    </a>
-
-    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <div class="nav-overlay" id="navOverlay" onclick="closeMenu()"></div>
-
-    <nav class="header-nav" id="headerNav">
-      <ul>
-        <li><a href="#onetoone" onclick="closeMenu()">One to One</a></li>
-        <li><a href="#essential" onclick="closeMenu()">Essentials</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event, 'galleryDropdown')">The Gallery</a>
-          <ul class="dropdown-menu" id="galleryDropdown">
-            <li><a href="#gallery" onclick="closeMenu()">Collection I — The Art of Wonder</a></li>
-          </ul>
-        </li>
-        <li><a href="#oneofone" onclick="closeMenu()">One of One</a></li>
-        <li><a href="#journal" onclick="closeMenu()">Journal</a></li>
-        <li><a href="#about-brand" onclick="closeMenu()">About</a></li>
-      </ul>
-    </nav>
-
-    <div class="header-actions fade-in fade-in-1">
-      <button class="lang-btn" id="langToggle" onclick="toggleLang()" aria-label="Toggle language">ES</button>
-      <button class="cart-btn" onclick="openCart()" aria-label="Shopping bag">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <path d="M16 10a4 4 0 0 1-8 0"/>
-        </svg>
-        <span class="cart-count" id="cartCount">0</span>
+    <div class="header-left">
+      <button class="hamburger-btn" id="hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
+      <a href="/" class="header-logo fade-in fade-in-1">
+        <img src="assets/logo-transparent.png" alt="MAGOS CON ESTILO">
+      </a>
+    </div>
+    <div class="header-center">
+      <span class="header-brand">Magos con Estilo</span>
+    </div>
+    <div class="header-right">
+      <nav class="header-nav" id="headerNav">
+        <ul>
+          <li><a href="#onetoone" onclick="closeMenu()">One to One</a></li>
+          <li><a href="#essential" onclick="closeMenu()">Essentials</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event, 'galleryDropdown')">The Gallery</a>
+            <ul class="dropdown-menu" id="galleryDropdown">
+              <li><a href="#gallery" onclick="closeMenu()">Collection I — The Art of Wonder</a></li>
+            </ul>
+          </li>
+          <li><a href="#oneofone" onclick="closeMenu()">One of One</a></li>
+          <li><a href="#journal" onclick="closeMenu()">Journal</a></li>
+          <li><a href="#about-brand" onclick="closeMenu()">About</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions fade-in fade-in-1">
+        <button class="lang-btn" id="langToggle" onclick="toggleLang()" aria-label="Toggle language">ES</button>
+        <button class="cart-btn" onclick="openCart()" aria-label="Shopping bag">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -1992,13 +2031,11 @@
     // Mobile menu
     function toggleMenu() {
       document.getElementById('headerNav').classList.toggle('open');
-      document.getElementById('navOverlay').classList.toggle('open');
       document.getElementById('hamburger').classList.toggle('active');
     }
 
     function closeMenu() {
       document.getElementById('headerNav').classList.remove('open');
-      document.getElementById('navOverlay').classList.remove('open');
       document.getElementById('hamburger').classList.remove('active');
       document.querySelectorAll('.dropdown-menu.open').forEach(function(m) { m.classList.remove('open'); });
     }
