@@ -144,6 +144,37 @@
       -webkit-backdrop-filter: blur(20px);
     }
 
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      z-index: 2;
+    }
+
+    .header-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      z-index: 2;
+    }
+
+    .header-brand {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--off-white);
+      white-space: nowrap;
+    }
+
     .header-logo {
       display: flex;
       align-items: center;
@@ -156,74 +187,130 @@
       opacity: 0.95;
     }
 
-    .header-nav {
+    /* Hamburger button */
+    .hamburger-btn {
       display: flex;
-      align-items: center;
-      gap: 2.5rem;
-      list-style: none;
-    }
-
-    .header-nav a {
-      color: var(--off-white);
-      font-size: 0.65rem;
-      font-weight: 400;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      opacity: 0.6;
-      transition: opacity var(--transition-fast);
-    }
-
-    .header-nav a:hover { opacity: 1; }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .header-actions a {
-      color: var(--off-white);
-      opacity: 0.6;
-      transition: opacity var(--transition-fast);
-    }
-    .header-actions a:hover { opacity: 1; }
-
-    .lang-toggle {
-      font-size: 0.6rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      background: none;
-      border: 1px solid var(--gray-700);
-      color: var(--off-white);
-      padding: 0.3rem 0.7rem;
-      cursor: pointer;
-      transition: all var(--transition-fast);
-      font-family: var(--font-body);
-      opacity: 0.6;
-    }
-    .lang-toggle:hover { opacity: 1; border-color: var(--off-white); }
-
-    /* Hamburger */
-    .hamburger {
-      display: none;
       background: none;
       border: none;
       cursor: pointer;
       padding: 4px;
-      z-index: 110;
+      flex-direction: column;
+      gap: 4px;
+      width: 22px;
     }
-    .hamburger span {
+
+    .hamburger-btn span {
       display: block;
-      width: 20px;
+      width: 100%;
       height: 1.5px;
       background: var(--off-white);
-      margin: 5px 0;
       transition: all var(--transition-fast);
       border-radius: 1px;
     }
-    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-    .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .hamburger-btn.active span:nth-child(1) {
+      transform: translateY(5.5px) rotate(45deg);
+    }
+    .hamburger-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger-btn.active span:nth-child(3) {
+      transform: translateY(-5.5px) rotate(-45deg);
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      list-style: none;
+    }
+
+    .header-nav > ul {
+      display: flex;
+      list-style: none;
+      gap: 0;
+      align-items: center;
+    }
+
+    .header-nav > ul > li { position: relative; }
+
+    .header-nav > ul > li > a {
+      display: block;
+      color: var(--off-white);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 400;
+      text-decoration: none;
+      padding: 0.5rem 1.2rem;
+      transition: opacity var(--transition-fast);
+      opacity: 0.7;
+    }
+
+    .header-nav > ul > li > a:hover { opacity: 1; }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .lang-btn {
+      background: none;
+      border: 1px solid var(--gray-700);
+      color: var(--off-white);
+      font-family: var(--font-body);
+      font-size: 0.55rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.5rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      opacity: 0.7;
+      line-height: 1.2;
+    }
+    .lang-btn:hover { opacity: 1; border-color: var(--off-white); }
+
+    /* Dropdowns */
+    .dropdown { position: relative; }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--near-black);
+      border: 1px solid var(--gray-800);
+      min-width: 220px;
+      padding: 0.5rem 0;
+      z-index: 150;
+    }
+
+    .dropdown-menu.open { display: block; }
+
+    .dropdown-menu li { list-style: none; }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 0.5rem 1.2rem;
+      color: var(--gray-400);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      transition: all var(--transition-fast);
+    }
+
+    .dropdown-menu li a:hover { color: var(--off-white); background: var(--gray-900); }
+
+    .dropdown-toggle::after {
+      content: '▾';
+      display: inline-block;
+      margin-left: 4px;
+      font-size: 0.45rem;
+      vertical-align: middle;
+      opacity: 0.5;
+    }
 
     /* =============================================
        HERO — Full Screen Museum Layout
@@ -1186,31 +1273,45 @@
        HEADER
        ============================================= -->
   <header class="header" id="header">
-    <a href="/" class="header-logo">
-      <img src="assets/logo-inverted.png" alt="MAGOS CON ESTILO">
-    </a>
-
-    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-
-    <nav class="header-nav" id="headerNav">
-      <a href="/" data-i18n="The Gallery">The Gallery</a>
-      <a href="/" data-i18n="Essentials">Essentials</a>
-      <a href="/" data-i18n="One of One">One of One</a>
-      <a href="/" data-i18n="Journal">Journal</a>
-    </nav>
-
-    <div class="header-actions">
-      <button class="lang-toggle" id="langToggle" onclick="toggleLang()">ES</button>
-      <button class="cart-btn" onclick="openCart()" aria-label="Shopping bag">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <path d="M16 10a4 4 0 0 1-8 0"/>
-        </svg>
-        <span class="cart-count" id="cartCount">0</span>
+    <div class="header-left">
+      <button class="hamburger-btn" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
+      <a href="/" class="header-logo">
+        <img src="assets/logo-inverted.png" alt="MAGOS CON ESTILO">
+      </a>
+    </div>
+    <div class="header-center">
+      <span class="header-brand">Magos con Estilo</span>
+    </div>
+    <div class="header-right">
+      <nav class="header-nav" id="headerNav">
+        <ul>
+          <li><a href="index.html#essential" onclick="closeMenu()">Essentials</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event, 'galleryDropdown')">The Gallery</a>
+            <ul class="dropdown-menu" id="galleryDropdown">
+              <li><a href="index.html#gallery" onclick="closeMenu()">Collection I — The Art of Wonder</a></li>
+            </ul>
+          </li>
+          <li><a href="index.html#oneofone" onclick="closeMenu()">One of One</a></li>
+          <li><a href="index.html#journal" onclick="closeMenu()">Journal</a></li>
+          <li><a href="index.html#about-brand" onclick="closeMenu()">About</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="lang-btn" id="langToggle" onclick="toggleLang()" aria-label="Toggle language">ES</button>
+        <button class="cart-btn" onclick="openCart()" aria-label="Shopping bag">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -1731,6 +1832,16 @@
     }
 
     window.addEventListener('resize', updateCarousel);
+
+    function toggleDropdown(e, id) {
+      e.preventDefault();
+      e.stopPropagation();
+      var menu = document.getElementById(id);
+      menu.classList.toggle('open');
+      menu.parentElement.parentElement.querySelectorAll('.dropdown-menu').forEach(function(m) {
+        if (m.id !== id) m.classList.remove('open');
+      });
+    }
 
     /* =============================================
        MOBILE MENU
