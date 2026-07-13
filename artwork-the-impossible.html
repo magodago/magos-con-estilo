@@ -181,7 +181,7 @@
     }
 
     .header-logo img {
-      height: 26px;
+      height: 38px;
       width: auto;
       display: block;
       opacity: 0.95;
@@ -1137,7 +1137,18 @@
         border-left: 1px solid var(--gray-800);
       }
       .header-nav.open { display: flex; right: 0; }
-      .hamburger { display: block; }
+      .header-nav > ul { flex-direction: column; gap: 0; align-items: flex-start; }
+      .header-nav > ul > li { width: 100%; }
+      .dropdown-menu {
+        position: static;
+        border: none;
+        box-shadow: none;
+        padding-left: 1rem;
+        min-width: auto;
+        background: transparent;
+      }
+      .dropdown-toggle::after { float: right; }
+      .hamburger-btn { display: flex; }
       .nav-overlay {
         display: none;
         position: fixed;
