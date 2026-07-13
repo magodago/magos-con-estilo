@@ -1,0 +1,1744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>THE CHOICE — Essentials · MAGOS CON ESTILO</title>
+  <meta name="description" content="Essentials Artwork 02: The Choice. Every miracle begins with a decision.">
+  <link rel="icon" type="image/png" href="assets/logo-inverted.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@200;300;400;500;600&family=Libre+Baskerville:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    /* =============================================
+       THE CHOICE — MAGOS CON ESTILO
+       Luxury Single Product Page
+       ============================================= */
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #000000;
+      --near-black: #0A0A0A;
+      --dark: #111111;
+      --white: #FFFFFF;
+      --off-white: #F5F3EF;
+      --gold: #C8A96E;
+      --gold-dim: #A68B5E;
+      --gold-subtle: rgba(200, 169, 110, 0.15);
+      --gray-100: #E8E6E2;
+      --gray-200: #C5C3BF;
+      --gray-400: #999793;
+      --gray-500: #777572;
+      --gray-600: #555351;
+      --gray-700: #333230;
+      --gray-800: #1E1D1B;
+      --gray-900: #141312;
+      --font-display: 'Cormorant Garamond', 'Georgia', serif;
+      --font-serif: 'Libre Baskerville', 'Georgia', serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --transition-slow: 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+      --transition-med: 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+      --transition-fast: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--off-white);
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* =============================================
+       ANIMATIONS
+       ============================================= */
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(35px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-12px); }
+    }
+
+    @keyframes floatRotate {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      33%      { transform: translateY(-6px) rotate(0.5deg); }
+      66%      { transform: translateY(-10px) rotate(-0.3deg); }
+    }
+
+    @keyframes softGlow {
+      0%, 100% { opacity: 0.35; }
+      50%      { opacity: 0.65; }
+    }
+
+    @keyframes textReveal {
+      from { clip-path: inset(0 100% 0 0); }
+      to   { clip-path: inset(0 0 0 0); }
+    }
+
+    @keyframes borderPulse {
+      0%, 100% { border-color: var(--off-white); }
+      50%      { border-color: var(--gold); }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+
+    @keyframes slowZoom {
+      from { transform: scale(1.05); }
+      to   { transform: scale(1); }
+    }
+
+    @keyframes bgReveal {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes particleFloat {
+      0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-120vh) translateX(80px); opacity: 0; }
+    }
+
+    @keyframes lineGrow {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    .fade-up {
+      opacity: 0;
+      animation: fadeUp 1s var(--transition-slow) forwards;
+    }
+
+    .fade-up-1 { animation-delay: 0.2s; }
+    .fade-up-2 { animation-delay: 0.5s; }
+    .fade-up-3 { animation-delay: 0.8s; }
+    .fade-up-4 { animation-delay: 1.1s; }
+    .fade-up-5 { animation-delay: 1.4s; }
+    .fade-up-6 { animation-delay: 1.7s; }
+    .fade-up-7 { animation-delay: 2.0s; }
+    .fade-up-8 { animation-delay: 2.3s; }
+
+    /* Intersection Observer reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s var(--transition-med), transform 1s var(--transition-med);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* =============================================
+       HEADER
+       ============================================= */
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 3rem;
+      background: transparent;
+      transition: background 0.5s ease;
+    }
+
+    .header.scrolled {
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .header-logo img {
+      height: 28px;
+      width: auto;
+      opacity: 0.85;
+    }
+
+    .header-logo span {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gray-400);
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .header-nav a {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      transition: color var(--transition-fast);
+    }
+
+    .header-nav a:hover {
+      color: var(--off-white);
+    }
+
+    .header-cart {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      cursor: pointer;
+      transition: color var(--transition-fast);
+    }
+
+    .header-cart:hover {
+      color: var(--off-white);
+    }
+
+    .header-cart svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    /* =============================================
+       HERO
+       ============================================= */
+
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--black);
+    }
+
+    /* Canvas for golden particles */
+    #particle-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Library background - subtle warm light */
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      background:
+        /* Warm light ray from top-left window */
+        radial-gradient(ellipse 80% 60% at 30% 10%,
+          rgba(200, 169, 110, 0.06) 0%,
+          rgba(200, 169, 110, 0.02) 40%,
+          transparent 70%),
+        /* Subtle warm ambient */
+        radial-gradient(ellipse 100% 100% at 50% 50%,
+          rgba(40, 35, 28, 0.3) 0%,
+          transparent 70%),
+        /* Very subtle library shelf gradient on sides */
+        linear-gradient(90deg,
+          rgba(30, 25, 20, 0.6) 0%,
+          transparent 20%,
+          transparent 80%,
+          rgba(30, 25, 20, 0.6) 100%),
+        var(--black);
+    }
+
+    /* Architectural lines suggesting library shelves (very subtle) */
+    .hero-architecture {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hero-architecture::before {
+      content: '';
+      position: absolute;
+      top: 15%;
+      left: 8%;
+      right: 8%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(200, 169, 110, 0.08) 30%, rgba(200, 169, 110, 0.08) 70%, transparent 100%);
+    }
+
+    .hero-architecture::after {
+      content: '';
+      position: absolute;
+      top: 85%;
+      left: 12%;
+      right: 12%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(200, 169, 110, 0.05) 40%, rgba(200, 169, 110, 0.05) 60%, transparent 100%);
+    }
+
+    .hero-vertical-1 {
+      position: absolute;
+      top: 5%;
+      left: 15%;
+      bottom: 5%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent 0%, rgba(200, 169, 110, 0.04) 20%, rgba(200, 169, 110, 0.04) 80%, transparent 100%);
+    }
+
+    .hero-vertical-2 {
+      position: absolute;
+      top: 5%;
+      left: 22%;
+      bottom: 5%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent 0%, rgba(200, 169, 110, 0.025) 30%, rgba(200, 169, 110, 0.025) 70%, transparent 100%);
+    }
+
+    .hero-vertical-3 {
+      position: absolute;
+      top: 5%;
+      right: 22%;
+      bottom: 5%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent 0%, rgba(200, 169, 110, 0.025) 30%, rgba(200, 169, 110, 0.025) 70%, transparent 100%);
+    }
+
+    .hero-vertical-4 {
+      position: absolute;
+      top: 5%;
+      right: 15%;
+      bottom: 5%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent 0%, rgba(200, 169, 110, 0.04) 20%, rgba(200, 169, 110, 0.04) 80%, transparent 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1400px;
+      padding: 0 6rem;
+      gap: 4rem;
+    }
+
+    /* Left column */
+    .hero-left {
+      flex: 1;
+      max-width: 480px;
+    }
+
+    .hero-collection {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-artwork-number {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    .hero-title-wrapper {
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 7vw, 90px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--off-white);
+      line-height: 1.05;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-tagline {
+      font-family: var(--font-serif);
+      font-size: 15px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--gold);
+      margin-top: 1.5rem;
+      line-height: 1.6;
+      letter-spacing: 0.3px;
+    }
+
+    .hero-description {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--gray-400);
+      line-height: 1.9;
+      max-width: 400px;
+    }
+
+    .hero-description p {
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-universal-tagline {
+      font-family: var(--font-serif);
+      font-size: 12px;
+      font-style: italic;
+      color: var(--gold-dim);
+      letter-spacing: 0.5px;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(200, 169, 110, 0.12);
+      max-width: 340px;
+    }
+
+    /* Right column */
+    .hero-right {
+      flex: 1;
+      max-width: 520px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    /* Floating shirt container */
+    .hero-shirt {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+      margin-bottom: 3rem;
+      animation: floatRotate 7s ease-in-out infinite;
+    }
+
+    .hero-shirt-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 20px 60px rgba(200, 169, 110, 0.06));
+    }
+
+    /* Shirt placeholder (will be replaced when user provides real image) */
+    .hero-shirt-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, var(--gray-900) 0%, var(--dark) 50%, var(--gray-900) 100%);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray-600);
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-style: italic;
+      letter-spacing: 2px;
+      border: 1px solid rgba(200, 169, 110, 0.06);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-shirt-placeholder::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 40px,
+        rgba(200, 169, 110, 0.02) 40px,
+        rgba(200, 169, 110, 0.02) 41px
+      );
+      pointer-events: none;
+    }
+
+    .hero-shirt-placeholder span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-price {
+      font-family: var(--font-display);
+      font-size: 40px;
+      font-weight: 400;
+      color: var(--gold);
+      margin-bottom: 2rem;
+      letter-spacing: 1px;
+    }
+
+    .hero-features {
+      list-style: none;
+      margin-bottom: 2.5rem;
+      text-align: right;
+    }
+
+    .hero-features li {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--gray-400);
+      letter-spacing: 0.5px;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.6rem;
+    }
+
+    .hero-features li::before {
+      content: '';
+      display: inline-block;
+      width: 3px;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 50%;
+      opacity: 0.4;
+    }
+
+    /* Primary button */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 3rem;
+      background: transparent;
+      color: var(--off-white);
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      border: 1px solid var(--off-white);
+      cursor: pointer;
+      transition: all var(--transition-med);
+      min-width: 220px;
+    }
+
+    .btn-primary:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .btn-primary:active {
+      transform: scale(0.97);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.8rem 2rem;
+      background: transparent;
+      color: var(--gray-400);
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      border: none;
+      margin-top: 0.75rem;
+    }
+
+    .btn-secondary:hover {
+      color: var(--off-white);
+    }
+
+    .btn-secondary::after {
+      content: '→';
+      margin-left: 0.5rem;
+      transition: transform var(--transition-fast);
+    }
+
+    .btn-secondary:hover::after {
+      transform: translateX(4px);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .scroll-indicator-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: softGlow 2s ease-in-out infinite;
+    }
+
+    .scroll-indicator-label {
+      font-family: var(--font-body);
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gray-600);
+    }
+
+    /* =============================================
+       STORY SECTION
+       ============================================= */
+
+    .story {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 6rem;
+      background: var(--near-black);
+    }
+
+    .story-inner {
+      max-width: 900px;
+      text-align: center;
+    }
+
+    .story-label {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 3rem;
+    }
+
+    .story-title {
+      font-family: var(--font-display);
+      font-size: clamp(64px, 10vw, 140px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--off-white);
+      line-height: 1.05;
+      margin-bottom: 3rem;
+      letter-spacing: -1px;
+    }
+
+    .story-text {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .story-text p {
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--gray-400);
+      line-height: 2;
+      margin-bottom: 1.5rem;
+    }
+
+    .story-text p:last-child {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      font-style: italic;
+      color: var(--gold);
+      margin-top: 2.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(200, 169, 110, 0.1);
+    }
+
+    /* =============================================
+       ARTWORK SECTION (Split Screen)
+       ============================================= */
+
+    .artwork-section {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      background: var(--black);
+    }
+
+    .artwork-visual {
+      flex: 1.2;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem;
+      position: relative;
+      background: var(--near-black);
+    }
+
+    .artwork-visual-inner {
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .artwork-visual-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid rgba(200, 169, 110, 0.06);
+    }
+
+    .artwork-visual-placeholder {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: linear-gradient(160deg, var(--gray-900) 0%, var(--dark) 50%, var(--gray-900) 100%);
+      border: 1px solid rgba(200, 169, 110, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-style: italic;
+      color: var(--gray-600);
+      letter-spacing: 2px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .artwork-visual-placeholder::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 60px,
+        rgba(200, 169, 110, 0.015) 60px,
+        rgba(200, 169, 110, 0.015) 61px
+      );
+      pointer-events: none;
+    }
+
+    .artwork-visual-placeholder span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .artwork-info {
+      flex: 0.8;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 4rem 5rem 4rem 3rem;
+    }
+
+    .artwork-info-inner {
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .artwork-info-label {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 2rem;
+    }
+
+    .artwork-detail {
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .artwork-detail:last-of-type {
+      border-bottom: none;
+    }
+
+    .artwork-detail-key {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      min-width: 130px;
+      flex-shrink: 0;
+    }
+
+    .artwork-detail-value {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--off-white);
+    }
+
+    .artwork-detail-value.italic {
+      font-style: italic;
+    }
+
+    /* =============================================
+       QUOTE SECTION
+       ============================================= */
+
+    .quote-section {
+      width: 100%;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--black);
+      padding: 6rem;
+      position: relative;
+    }
+
+    .quote-text {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--off-white);
+      text-align: center;
+      max-width: 800px;
+      line-height: 1.3;
+      letter-spacing: 0.5px;
+      opacity: 0;
+      transition: opacity 2s ease;
+    }
+
+    .quote-text.visible {
+      opacity: 1;
+    }
+
+    .quote-divider {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 3rem auto 0;
+      opacity: 0;
+      transition: opacity 1.5s ease 1s;
+    }
+
+    .quote-divider.visible {
+      opacity: 0.4;
+    }
+
+    /* =============================================
+       CRAFTSMANSHIP
+       ============================================= */
+
+    .craftsmanship {
+      width: 100%;
+      padding: 8rem 6rem;
+      background: var(--near-black);
+    }
+
+    .craftsmanship-label {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .craftsmanship-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      max-width: 1200px;
+      margin: 0 auto;
+      background: rgba(200, 169, 110, 0.06);
+    }
+
+    .craftsmanship-card {
+      background: var(--near-black);
+      padding: 3.5rem 2.5rem;
+      text-align: center;
+      transition: background var(--transition-med);
+    }
+
+    .craftsmanship-card:hover {
+      background: var(--gray-900);
+    }
+
+    .craftsmanship-card-icon {
+      font-size: 28px;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      font-family: var(--font-serif);
+      font-style: italic;
+      opacity: 0.5;
+    }
+
+    .craftsmanship-card-title {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--off-white);
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.5px;
+    }
+
+    .craftsmanship-card-text {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--gray-400);
+      line-height: 1.7;
+    }
+
+    /* =============================================
+       DISCOVER MORE
+       ============================================= */
+
+    .discover {
+      width: 100%;
+      padding: 8rem 6rem;
+      background: var(--black);
+    }
+
+    .discover-label {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .discover-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      max-width: 1200px;
+      margin: 0 auto;
+      background: rgba(200, 169, 110, 0.06);
+    }
+
+    .discover-card {
+      background: var(--black);
+      padding: 4rem 2.5rem;
+      text-align: center;
+      transition: background var(--transition-med);
+    }
+
+    .discover-card:hover {
+      background: var(--near-black);
+    }
+
+    .discover-card-artwork {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 1rem;
+    }
+
+    .discover-card-title {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--off-white);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.5px;
+    }
+
+    .discover-card-coming {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray-500);
+    }
+
+    .discover-card-link {
+      display: inline-block;
+      padding: 0.6rem 1.5rem;
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      border: 1px solid rgba(200, 169, 110, 0.15);
+      transition: all var(--transition-fast);
+    }
+
+    .discover-card-link:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .discover-card-coming-soon {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray-600);
+    }
+
+    /* =============================================
+       FOOTER
+       ============================================= */
+
+    .footer {
+      width: 100%;
+      padding: 5rem 6rem 3rem;
+      background: var(--near-black);
+      border-top: 1px solid rgba(200, 169, 110, 0.06);
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.5rem;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--off-white);
+      letter-spacing: 3px;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-tagline {
+      font-family: var(--font-serif);
+      font-size: 13px;
+      font-style: italic;
+      color: var(--gold-dim);
+      letter-spacing: 1px;
+    }
+
+    .footer-divider {
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.2;
+      margin: 1rem 0;
+    }
+
+    .footer-copyright {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--gray-600);
+      letter-spacing: 1px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .footer-links a {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      transition: color var(--transition-fast);
+    }
+
+    .footer-links a:hover {
+      color: var(--off-white);
+    }
+
+    /* =============================================
+       UNIVERSAL TAGLINE BANNER
+       ============================================= */
+
+    .universal-banner {
+      width: 100%;
+      padding: 2rem;
+      text-align: center;
+      background: var(--black);
+      border-top: 1px solid rgba(200, 169, 110, 0.04);
+      border-bottom: 1px solid rgba(200, 169, 110, 0.04);
+    }
+
+    .universal-banner-text {
+      font-family: var(--font-serif);
+      font-size: 13px;
+      font-style: italic;
+      color: var(--gold-dim);
+      letter-spacing: 1px;
+    }
+
+    /* =============================================
+       RESPONSIVE
+       ============================================= */
+
+    @media (max-width: 1024px) {
+      .hero-content {
+        flex-direction: column;
+        padding: 0 3rem;
+        gap: 3rem;
+        padding-top: 8rem;
+        padding-bottom: 4rem;
+      }
+
+      .hero-left, .hero-right {
+        max-width: 100%;
+        text-align: center;
+      }
+
+      .hero-right {
+        align-items: center;
+      }
+
+      .hero-shirt {
+        max-width: 320px;
+      }
+
+      .hero-features {
+        text-align: center;
+      }
+
+      .hero-features li {
+        justify-content: center;
+      }
+
+      .hero-actions {
+        align-items: center;
+      }
+
+      .hero-description {
+        margin: 0 auto;
+      }
+
+      .hero-universal-tagline {
+        margin: 3rem auto 0;
+      }
+
+      .header {
+        padding: 1rem 1.5rem;
+      }
+
+      .header-nav {
+        display: none;
+      }
+
+      .story {
+        padding: 6rem 2rem;
+      }
+
+      .artwork-section {
+        flex-direction: column;
+      }
+
+      .artwork-visual, .artwork-info {
+        min-height: auto;
+      }
+
+      .artwork-info {
+        padding: 3rem;
+      }
+
+      .craftsmanship {
+        padding: 6rem 2rem;
+      }
+
+      .craftsmanship-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .discover {
+        padding: 6rem 2rem;
+      }
+
+      .discover-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+      }
+
+      .quote-section {
+        padding: 4rem 2rem;
+        min-height: 60vh;
+      }
+
+      .footer {
+        padding: 3rem 2rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-content {
+        padding: 0 1.5rem;
+        padding-top: 6rem;
+        padding-bottom: 3rem;
+      }
+
+      .hero-shirt {
+        max-width: 240px;
+      }
+
+      .craftsmanship-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* =============================================
+       LOADING FADE IN
+       ============================================= */
+
+    .page-wrapper {
+      opacity: 0;
+      transition: opacity 1.5s ease;
+    }
+
+    .page-wrapper.loaded {
+      opacity: 1;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="page-wrapper" id="pageWrapper">
+
+  <!-- =============================================
+       HEADER
+       ============================================= -->
+  <header class="header" id="header">
+    <a href="index.html" class="header-logo">
+      <img src="https://raw.githubusercontent.com/dortizs76/magos-con-estilo/main/assets/logo-inverted.png" alt="MAGOS CON ESTILO" onerror="this.style.display='none'">
+      <span>Magos con Estilo</span>
+    </a>
+    <nav class="header-nav">
+      <a href="index.html">Home</a>
+      <a href="artwork-the-impossible.html">Essentials</a>
+      <a href="artwork-the-secret.html">The Gallery</a>
+      <a href="one-to-one-the-moment-before.html">One to One</a>
+    </nav>
+    <div class="header-cart" id="cartButton">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <path d="M16 10a4 4 0 0 1-8 0"/>
+      </svg>
+      <span id="cartCount">0</span>
+    </div>
+  </header>
+
+  <!-- =============================================
+       HERO
+       ============================================= -->
+  <section class="hero" id="hero">
+    <!-- Canvas for golden particles -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Background effects -->
+    <div class="hero-bg"></div>
+    <div class="hero-architecture">
+      <div class="hero-vertical-1"></div>
+      <div class="hero-vertical-2"></div>
+      <div class="hero-vertical-3"></div>
+      <div class="hero-vertical-4"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-left">
+        <div class="hero-collection fade-up fade-up-1">Essentials</div>
+        <div class="hero-artwork-number fade-up fade-up-2">Artwork 02</div>
+        <div class="hero-title-wrapper fade-up fade-up-3">
+          <h1 class="hero-title">The Choice</h1>
+        </div>
+        <div class="hero-tagline fade-up fade-up-4">
+          "Every miracle begins with a decision."
+        </div>
+        <div class="hero-description fade-up fade-up-5">
+          <p>Every impossible journey starts with something invisible.</p>
+          <p>A choice.</p>
+          <p>Not everyone notices it.</p>
+          <p>Only those willing to open the unknown.</p>
+        </div>
+        <div class="hero-universal-tagline fade-up fade-up-6">
+          "Some people wear clothes. Others wear meaning."
+        </div>
+      </div>
+
+      <div class="hero-right fade-up fade-up-3">
+        <div class="hero-shirt">
+          <!-- Artwork on the t-shirt -->
+          <img src="assets/artwork-choice.jpg" alt="The Choice — T-Shirt" class="hero-shirt-image" id="shirtImage">
+        </div>
+
+        <div class="hero-price">39 €</div>
+
+        <ul class="hero-features">
+          <li>Premium Heavyweight Cotton</li>
+          <li>Fine Art DTF Print</li>
+          <li>Made to Order</li>
+          <li>Worldwide Shipping Included</li>
+          <li>Designed in Spain</li>
+        </ul>
+
+        <div class="hero-actions">
+          <button class="btn-primary" id="mainCta">
+            Make the Choice
+          </button>
+          <a href="#story" class="btn-secondary">Read the Story</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator fade-up fade-up-7">
+      <div class="scroll-indicator-label">Scroll</div>
+      <div class="scroll-indicator-line"></div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       UNIVERSAL TAGLINE BANNER
+       ============================================= -->
+  <div class="universal-banner reveal">
+    <div class="universal-banner-text">
+      "Some people wear clothes. Others wear meaning."
+    </div>
+  </div>
+
+  <!-- =============================================
+       STORY SECTION
+       ============================================= -->
+  <section class="story" id="story">
+    <div class="story-inner">
+      <div class="story-label reveal">The Story Behind</div>
+      <h2 class="story-title reveal reveal-delay-1">The Choice</h2>
+      <div class="story-text">
+        <p class="reveal reveal-delay-2">
+          Every miracle begins long before the applause.
+        </p>
+        <p class="reveal reveal-delay-2">
+          Before the impossible. Before the first movement.
+        </p>
+        <p class="reveal reveal-delay-3">
+          It begins with a decision. One envelope remains forever closed. The other changes everything.
+        </p>
+        <p class="reveal reveal-delay-4">
+          This artwork is a reminder that every extraordinary life starts with one simple choice.
+        </p>
+        <p class="reveal reveal-delay-5">
+          Every miracle begins with a decision.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       ARTWORK SECTION
+       ============================================= -->
+  <section class="artwork-section" id="artwork">
+    <div class="artwork-visual">
+      <div class="artwork-visual-inner reveal">
+        <!-- Artwork image -->
+          <img src="assets/artwork-choice.jpg" alt="The Choice — Original Artwork" class="artwork-visual-img" id="artworkImage">
+      </div>
+    </div>
+    <div class="artwork-info">
+      <div class="artwork-info-inner">
+        <div class="artwork-info-label reveal">The Artwork</div>
+        <div class="artwork-detail reveal reveal-delay-1">
+          <span class="artwork-detail-key">Collection</span>
+          <span class="artwork-detail-value italic">Essentials</span>
+        </div>
+        <div class="artwork-detail reveal reveal-delay-1">
+          <span class="artwork-detail-key">Artwork</span>
+          <span class="artwork-detail-value">02</span>
+        </div>
+        <div class="artwork-detail reveal reveal-delay-2">
+          <span class="artwork-detail-key">Title</span>
+          <span class="artwork-detail-value italic">The Choice</span>
+        </div>
+        <div class="artwork-detail reveal reveal-delay-2">
+          <span class="artwork-detail-key">Technique</span>
+          <span class="artwork-detail-value">Digital Fine Art</span>
+        </div>
+        <div class="artwork-detail reveal reveal-delay-3">
+          <span class="artwork-detail-key">Print</span>
+          <span class="artwork-detail-value">Premium DTF</span>
+        </div>
+        <div class="artwork-detail reveal reveal-delay-3">
+          <span class="artwork-detail-key">Material</span>
+          <span class="artwork-detail-value">Heavyweight Cotton</span>
+        </div>
+        <div class="artwork-detail reveal reveal-delay-4">
+          <span class="artwork-detail-key">Designed in</span>
+          <span class="artwork-detail-value">Spain</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       QUOTE SECTION
+       ============================================= -->
+  <section class="quote-section" id="quote">
+    <div>
+      <p class="quote-text" id="quoteText">
+        Every miracle begins with a decision.
+      </p>
+      <div class="quote-divider" id="quoteDivider"></div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       CRAFTSMANSHIP
+       ============================================= -->
+  <section class="craftsmanship" id="craftsmanship">
+    <div class="craftsmanship-label reveal">Craftsmanship</div>
+    <div class="craftsmanship-grid">
+      <div class="craftsmanship-card reveal reveal-delay-1">
+        <div class="craftsmanship-card-icon">✦</div>
+        <h3 class="craftsmanship-card-title">Premium Cotton</h3>
+        <p class="craftsmanship-card-text">Heavyweight 240 g/m² fabric for exceptional durability and comfort.</p>
+      </div>
+      <div class="craftsmanship-card reveal reveal-delay-2">
+        <div class="craftsmanship-card-icon">✦</div>
+        <h3 class="craftsmanship-card-title">Fine Art Print</h3>
+        <p class="craftsmanship-card-text">Premium DTF transfer with museum-grade color depth and detail.</p>
+      </div>
+      <div class="craftsmanship-card reveal reveal-delay-3">
+        <div class="craftsmanship-card-icon">✦</div>
+        <h3 class="craftsmanship-card-title">Made to Order</h3>
+        <p class="craftsmanship-card-text">Each piece is produced individually to ensure the highest quality.</p>
+      </div>
+      <div class="craftsmanship-card reveal reveal-delay-4">
+        <div class="craftsmanship-card-icon">✦</div>
+        <h3 class="craftsmanship-card-title">Worldwide Shipping</h3>
+        <p class="craftsmanship-card-text">Included in every order. Delivered to your door with care.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       DISCOVER MORE
+       ============================================= -->
+  <section class="discover" id="discover">
+    <div class="discover-label reveal">Discover More</div>
+    <div class="discover-grid">
+      <div class="discover-card reveal reveal-delay-1">
+        <div class="discover-card-artwork">Artwork 01</div>
+        <h3 class="discover-card-title">The Secret</h3>
+        <a href="artwork-the-secret.html" class="discover-card-link">View Artwork</a>
+      </div>
+      <div class="discover-card reveal reveal-delay-2">
+        <div class="discover-card-artwork">Artwork 03</div>
+        <h3 class="discover-card-title">Coming Soon</h3>
+        <span class="discover-card-coming-soon">Awaiting Revelation</span>
+      </div>
+      <div class="discover-card reveal reveal-delay-3">
+        <div class="discover-card-artwork">Artwork 04</div>
+        <h3 class="discover-card-title">Coming Soon</h3>
+        <span class="discover-card-coming-soon">Awaiting Revelation</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       FOOTER
+       ============================================= -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand reveal">Magos con Estilo</div>
+      <div class="footer-tagline reveal reveal-delay-1">Wear the Feeling</div>
+      <div class="footer-divider"></div>
+      <div class="footer-copyright reveal reveal-delay-2">© Magos con Estilo</div>
+      <div class="footer-links reveal reveal-delay-3">
+        <a href="terminos.html">Terms</a>
+        <a href="privacidad.html">Privacy</a>
+        <a href="aviso-legal.html">Legal</a>
+        <a href="cookies.html">Cookies</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  /* =============================================
+     GOLDEN PARTICLES (Canvas)
+     ============================================= */
+  (function() {
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let animationId;
+    let mouseX = 0;
+    let mouseY = 0;
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+
+    // Create particles
+    const PARTICLE_COUNT = 80;
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2 + 0.5,
+        speedX: (Math.random() - 0.5) * 0.15,
+        speedY: -Math.random() * 0.2 - 0.05,
+        opacity: Math.random() * 0.4 + 0.05,
+        opacitySpeed: (Math.random() - 0.5) * 0.005,
+        wobble: Math.random() * Math.PI * 2,
+        wobbleSpeed: Math.random() * 0.01 + 0.005,
+        wobbleAmp: Math.random() * 0.3 + 0.1
+      });
+    }
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach(p => {
+        // Update position
+        p.x += p.speedX + Math.sin(p.wobble) * p.wobbleAmp;
+        p.y += p.speedY;
+        p.opacity += p.opacitySpeed;
+        p.wobble += p.wobbleSpeed;
+
+        // Mouse interaction - gentle repulsion
+        const dx = p.x - mouseX;
+        const dy = p.y - mouseY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 150) {
+          const force = (150 - dist) / 150 * 0.3;
+          p.x += (dx / dist) * force;
+          p.y += (dy / dist) * force;
+        }
+
+        // Bounds and opacity
+        if (p.opacity > 0.5 || p.opacity < 0.02) p.opacitySpeed *= -1;
+        if (p.y < -20) { p.y = canvas.height + 20; p.x = Math.random() * canvas.width; }
+        if (p.x < -20) p.x = canvas.width + 20;
+        if (p.x > canvas.width + 20) p.x = -20;
+
+        // Draw subtle golden glow
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+
+        const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 3);
+        gradient.addColorStop(0, `rgba(200, 169, 110, ${p.opacity * 0.6})`);
+        gradient.addColorStop(0.5, `rgba(200, 169, 110, ${p.opacity * 0.2})`);
+        gradient.addColorStop(1, `rgba(200, 169, 110, 0)`);
+        ctx.fillStyle = gradient;
+        ctx.fill();
+
+        // Core dot
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 0.4, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(200, 169, 110, ${p.opacity * 0.9})`;
+        ctx.fill();
+      });
+
+      animationId = requestAnimationFrame(drawParticles);
+    }
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    drawParticles();
+  })();
+
+  /* =============================================
+     HEADER SCROLL EFFECT
+     ============================================= */
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+
+  /* =============================================
+     INTERSECTION OBSERVER (Reveal animations)
+     ============================================= */
+  const revealElements = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  revealElements.forEach(el => observer.observe(el));
+
+  /* =============================================
+     QUOTE SECTION — fade in on scroll
+     ============================================= */
+  const quoteText = document.getElementById('quoteText');
+  const quoteDivider = document.getElementById('quoteDivider');
+
+  const quoteObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        quoteText.classList.add('visible');
+        setTimeout(() => quoteDivider.classList.add('visible'), 1200);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  quoteObserver.observe(quoteText);
+
+  /* =============================================
+     PAGE LOAD FADE IN
+     ============================================= */
+  window.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('pageWrapper').classList.add('loaded');
+  });
+
+  /* =============================================
+     CART FUNCTIONALITY
+     ============================================= */
+  if (typeof cart === 'undefined') {
+    var cart = [];
+  }
+
+  function updateCartCount() {
+    const cartData = localStorage.getItem('mce_cart');
+    const currentCart = cartData ? JSON.parse(cartData) : [];
+    document.getElementById('cartCount').textContent = currentCart.length;
+  }
+
+  document.getElementById('mainCta').addEventListener('click', function() {
+    let currentCart = [];
+    const cartData = localStorage.getItem('mce_cart');
+    if (cartData) {
+      try { currentCart = JSON.parse(cartData); } catch(e) { currentCart = []; }
+    }
+
+    const item = {
+      id: 'the-choice',
+      collection: 'Essentials',
+      artwork: '02',
+      title: 'The Choice',
+      price: 39,
+      image: document.getElementById('shirtImage').src || ''
+    };
+
+    currentCart.push(item);
+    localStorage.setItem('mce_cart', JSON.stringify(currentCart));
+    updateCartCount();
+
+    // Redirect to home
+    window.location.href = 'index.html';
+  });
+
+  // Hamburger menu for mobile
+  document.getElementById('cartButton').addEventListener('click', function() {
+    window.location.href = 'index.html';
+  });
+
+  // Initialize cart count
+  updateCartCount();
+</script>
+
+</body>
+</html>
