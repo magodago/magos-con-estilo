@@ -220,6 +220,25 @@
 
     .header-nav > ul > li > a:hover { opacity: 1; }
 
+    /* Nav close button */
+    .nav-close {
+      display: none;
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: none;
+      border: none;
+      color: var(--gray-400);
+      font-size: 1.8rem;
+      cursor: pointer;
+      line-height: 1;
+      z-index: 101;
+      transition: color 0.3s;
+      padding: 0.3rem;
+      font-family: inherit;
+    }
+    .nav-close:hover { color: var(--white); }
+
     /* Dropdowns */
     .dropdown { position: relative; }
 
@@ -1409,6 +1428,8 @@
         display: flex;
       }
 
+      .nav-close { display: block; }
+
       .header-nav ul {
         flex-direction: column;
         align-items: center;
@@ -1483,6 +1504,7 @@
     </div>
     <div class="header-right">
       <nav class="header-nav" id="headerNav">
+        <button class="nav-close" onclick="closeMenu()" aria-label="Close menu">×</button>
         <ul>
           <li><a href="#onetoone" onclick="closeMenu()">One to One</a></li>
           <li><a href="#essential" onclick="closeMenu()">Essentials</a></li>

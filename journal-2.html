@@ -92,6 +92,25 @@
     }
     .header-nav a:hover { opacity: 1; }
 
+    /* Nav close button */
+    .nav-close {
+      display: none;
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: none;
+      border: none;
+      color: var(--gray-400);
+      font-size: 1.8rem;
+      cursor: pointer;
+      line-height: 1;
+      z-index: 101;
+      transition: color 0.3s;
+      padding: 0.3rem;
+      font-family: inherit;
+    }
+    .nav-close:hover { color: var(--white); }
+
     .lang-btn {
       background: none;
       border: 1px solid rgba(255,255,255,0.2);
@@ -245,6 +264,7 @@
       .header-nav { display: none; position: fixed; top: 0; right: -280px; width: 260px; height: 100%; background: var(--near-black); z-index: 99; padding: 5rem 2rem 2rem; flex-direction: column; align-items: flex-start; gap: 1.5rem; transition: right 0.4s ease; border-left: 1px solid rgba(255,255,255,0.06); }
       .header-nav.open { display: flex; right: 0; }
       .header-nav ul { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
+      .nav-close { display: block; }
       .hamburger-btn { display: flex; }
       .nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 98; }
       .nav-overlay.open { display: block; }
@@ -282,7 +302,9 @@
     </div>
     <div class="header-right">
       <nav class="header-nav">
+        <button class="nav-close" onclick="closeMenu()" aria-label="Close menu">×</button>
         <ul>
+          <li><a href="index.html" onclick="closeMenu()">Home</a></li>
           <li><a href="index.html#gallery" data-i18n="nav_gallery" onclick="closeMenu()">The Gallery</a></li>
           <li><a href="index.html#essential" onclick="closeMenu()">Essentials</a></li>
           <li><a href="index.html#journal" data-i18n="nav_journal" onclick="closeMenu()">Journal</a></li>

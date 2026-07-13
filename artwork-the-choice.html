@@ -280,6 +280,25 @@
       color: var(--off-white);
     }
 
+    /* Nav close button */
+    .nav-close {
+      display: none;
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: none;
+      border: none;
+      color: var(--gray-400);
+      font-size: 1.8rem;
+      cursor: pointer;
+      line-height: 1;
+      z-index: 101;
+      transition: color 0.3s;
+      padding: 0.3rem;
+      font-family: inherit;
+    }
+    .nav-close:hover { color: var(--off-white); }
+
     .header-cart {
       position: relative;
       display: flex;
@@ -1334,6 +1353,8 @@
         display: flex;
       }
 
+      .nav-close { display: block; }
+
       .header-nav a {
         font-size: 13px;
         letter-spacing: 4px;
@@ -1531,6 +1552,7 @@
     </div>
     <div class="header-right">
       <nav class="header-nav" id="headerNav">
+        <button class="nav-close" onclick="closeMenu()" aria-label="Close menu">×</button>
         <a href="index.html">Home</a>
         <a href="artwork-the-impossible.html">Essentials</a>
         <a href="artwork-the-secret.html">The Gallery</a>
