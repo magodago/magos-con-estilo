@@ -184,10 +184,40 @@
       -webkit-backdrop-filter: blur(20px);
     }
 
-    .header-logo {
+    .header-left {
       display: flex;
       align-items: center;
       gap: 0.75rem;
+      z-index: 2;
+    }
+
+    .header-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      z-index: 2;
+    }
+
+    .header-brand {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gray-200);
+      white-space: nowrap;
+    }
+
+    .header-logo {
+      display: flex;
+      align-items: center;
     }
 
     .header-logo img {
@@ -196,13 +226,37 @@
       opacity: 0.95;
     }
 
-    .header-logo span {
-      font-family: var(--font-body);
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--gray-200);
+    /* Hamburger menu */
+    .hamburger-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      flex-direction: column;
+      gap: 4px;
+      width: 22px;
+    }
+
+    .hamburger-btn span {
+      display: block;
+      width: 100%;
+      height: 1.5px;
+      background: var(--gray-200);
+      transition: all var(--transition-fast);
+      border-radius: 1px;
+    }
+
+    .hamburger-btn.active span:nth-child(1) {
+      transform: translateY(5.5px) rotate(45deg);
+    }
+
+    .hamburger-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-btn.active span:nth-child(3) {
+      transform: translateY(-5.5px) rotate(-45deg);
     }
 
     .header-nav {
@@ -1261,8 +1315,38 @@
         padding: 1rem 1.5rem;
       }
 
+      .hamburger-btn {
+        display: flex;
+      }
+
       .header-nav {
         display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.97);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2.5rem;
+        z-index: 99;
+      }
+
+      .header-nav.open {
+        display: flex;
+      }
+
+      .header-nav a {
+        font-size: 13px;
+        letter-spacing: 4px;
+      }
+
+      .header-center {
+        position: relative;
+        left: auto;
+        transform: none;
       }
 
       .story {
@@ -1434,24 +1518,35 @@
        HEADER
        ============================================= -->
   <header class="header" id="header">
-    <a href="index.html" class="header-logo">
-      <img src="https://raw.githubusercontent.com/dortizs76/magos-con-estilo/main/assets/logo-inverted.png" alt="MAGOS CON ESTILO" onerror="this.style.display='none'">
-      <span>Magos con Estilo</span>
-    </a>
-    <nav class="header-nav">
-      <a href="index.html">Home</a>
-      <a href="artwork-the-impossible.html">Essentials</a>
-      <a href="artwork-the-secret.html">The Gallery</a>
-      <a href="one-to-one-the-moment-before.html">One to One</a>
-    </nav>
-    <button class="cart-btn" onclick="openCart()" aria-label="Shopping bag">
-      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" style="stroke:currentColor;fill:none;stroke-width:1.5;">
-        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-        <line x1="3" y1="6" x2="21" y2="6"/>
-        <path d="M16 10a4 4 0 0 1-8 0"/>
-      </svg>
-      <span class="cart-count" id="cartCount">0</span>
-    </button>
+    <div class="header-left">
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a href="index.html" class="header-logo">
+        <img src="https://raw.githubusercontent.com/dortizs76/magos-con-estilo/main/assets/logo-inverted.png" alt="MAGOS CON ESTILO" onerror="this.style.display='none'">
+      </a>
+    </div>
+    <div class="header-center">
+      <span class="header-brand">Magos con Estilo</span>
+    </div>
+    <div class="header-right">
+      <nav class="header-nav" id="headerNav">
+        <a href="index.html">Home</a>
+        <a href="artwork-the-impossible.html">Essentials</a>
+        <a href="artwork-the-secret.html">The Gallery</a>
+        <a href="one-to-one-the-moment-before.html">One to One</a>
+      </nav>
+      <button class="cart-btn" onclick="openCart()" aria-label="Shopping bag">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" style="stroke:currentColor;fill:none;stroke-width:1.5;">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
   </header>
 
   <!-- =============================================
@@ -1867,6 +1962,29 @@
      ============================================= */
   window.addEventListener('DOMContentLoaded', () => {
     document.getElementById('pageWrapper').classList.add('loaded');
+  });
+
+  /* =============================================
+     MOBILE MENU TOGGLE
+     ============================================= */
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const headerNav = document.getElementById('headerNav');
+
+  function toggleMobileMenu() {
+    hamburgerBtn.classList.toggle('active');
+    headerNav.classList.toggle('open');
+  }
+
+  if (hamburgerBtn) {
+    hamburgerBtn.addEventListener('click', toggleMobileMenu);
+  }
+
+  // Close menu when clicking a nav link
+  headerNav.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      hamburgerBtn.classList.remove('active');
+      headerNav.classList.remove('open');
+    });
   });
 
   /* =============================================
