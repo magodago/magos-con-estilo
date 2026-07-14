@@ -31,6 +31,25 @@
       --transition-fast: 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
 
+/* LIGHT MODE */
+[data-theme="light"] {
+  --black: #FFFFFF;
+  --near-black: #F5F3EF;
+  --white: #0A0A0A;
+  --gray-100: #1A1A1A;
+  --gray-200: #333333;
+  --gray-400: #666666;
+  --gray-500: #888888;
+  --gray-600: #AAAAAA;
+  --gray-700: #CCCCCC;
+  --gray-800: #E0E0E0;
+  --gray-900: #EDEDED;
+}
+[data-theme="light"] .header.scrolled { background: rgba(255,255,255,0.9); backdrop-filter: blur(20px); }
+[data-theme="light"] .nav-overlay { background: rgba(255,255,255,0.6); }
+[data-theme="light"] .cart-overlay { background: rgba(255,255,255,0.6); }
+
+
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
     body {
@@ -282,7 +301,28 @@
       .header-nav ul { gap: 0.8rem; }
       .article-hero h1 { font-size: 1.4rem; }
     }
-  </style>
+  
+.theme-toggle {
+  background: none; border: none; cursor: pointer;
+  color: var(--off-white); opacity: 0.7;
+  padding: 0; display: flex; align-items: center;
+  transition: opacity var(--transition-fast);
+}
+.theme-toggle:hover { opacity: 1; }
+[data-theme="light"] .theme-toggle { color: var(--gray-700); }
+@keyframes bulbFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+.theme-toggle svg.bulb-icon {
+  animation: bulbFloat 3s ease-in-out infinite;
+  transition: opacity 0.3s;
+}
+[data-theme="light"] .theme-toggle svg.bulb-icon {
+  animation: bulbFloat 2.5s ease-in-out infinite;
+}
+
+</style>
 </head>
 <body>
 
@@ -309,7 +349,14 @@
           <li><a href="index.html#essential" onclick="closeMenu()">Essentials</a></li>
           <li><a href="index.html#journal" data-i18n="nav_journal" onclick="closeMenu()">Journal</a></li>
           <li><a href="index.html#about-brand" data-i18n="nav_about" onclick="closeMenu()">About</a></li>
-          <li><button class="lang-btn" id="langToggle" onclick="toggleLang()">ES</button></li>
+                    <li><button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="bulb-icon">
+              <path d="M12 2a5 5 0 0 0-3 9v5h6v-5a5 5 0 0 0-3-9z"/>
+              <line x1="9" y1="18" x2="15" y2="18"/>
+              <line x1="10.5" y1="21" x2="13.5" y2="21"/>
+            </svg>
+          </button></li>
+<li><button class="lang-btn" id="langToggle" onclick="toggleLang()">ES</button></li>
           <li><button class="cart-btn" onclick="openCart()" aria-label="Shopping bag">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
@@ -444,6 +491,24 @@
     }
 
     applyLang(currentLang);
-  </script>
+  
+  /* ============ THEME TOGGLE ============ */
+  (function() {
+    var t = localStorage.getItem('mce_theme');
+    if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    else if (!t) { /* default dark — no attr needed */ }
+  })();
+  function toggleTheme() {
+    var h = document.documentElement;
+    if (h.getAttribute('data-theme') === 'light') {
+      h.removeAttribute('data-theme');
+      localStorage.setItem('mce_theme', 'dark');
+    } else {
+      h.setAttribute('data-theme', 'light');
+      localStorage.setItem('mce_theme', 'light');
+    }
+  }
+
+</script>
 </body>
 </html>
