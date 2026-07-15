@@ -521,6 +521,21 @@
     }
     .hero-features li:last-child { border-bottom: none; }
 
+    .size-selector {
+      display: flex; gap: 0.5rem; margin-bottom: 2rem;
+      justify-content: center;
+    }
+    .size-btn {
+      width: 42px; height: 42px;
+      display: flex; align-items: center; justify-content: center;
+      background: transparent; border: 1px solid var(--gray-700);
+      color: var(--gray-400); font-size: 11px; letter-spacing: 1px;
+      cursor: pointer; transition: all var(--transition-fast);
+      font-family: var(--font-body);
+    }
+    .size-btn:hover { border-color: var(--off-white); color: var(--off-white); }
+    .size-btn.selected { border-color: var(--gold); color: var(--gold); }
+
     .btn-group { display: flex; flex-direction: column; gap: 1rem; width: 100%; max-width: 360px; }
 
     .btn-primary {
@@ -1103,8 +1118,15 @@
         </div>
       </div>
 
-      <div class="hero-price fade-up fade-up-3">59&euro;</div>
+      <div class="hero-price fade-up fade-up-3">39&euro;</div>
       <div class="hero-shipping fade-up fade-up-3">Envío incluido</div>
+
+      <div class="size-selector fade-up fade-up-4">
+        <button class="size-btn" onclick="selectSize(this)">S</button>
+        <button class="size-btn selected" onclick="selectSize(this)">M</button>
+        <button class="size-btn" onclick="selectSize(this)">L</button>
+        <button class="size-btn" onclick="selectSize(this)">XL</button>
+      </div>
 
       <ul class="hero-features fade-up fade-up-4">
         <li>Premium Heavyweight Cotton</li>
@@ -1324,6 +1346,7 @@
   });
 
   /* ---- Cart ---- */
+  var selectedSize = 'M';
   var cartItems = {};
   try {
     var stored = localStorage.getItem('mce_cart');
@@ -1354,39 +1377,52 @@
       html += '<div style="display:flex; justify-content:space-between; align-items:center; padding:0.75rem 0; border-bottom:1px solid var(--gray-800);">'
         + '<div><div style="font-size:0.8rem; color:var(--off-white);">' + item.name + '</div>'
         + '<div style="font-size:0.65rem; color:var(--gray-500);">' + item.size + '</div></div>'
-        + '<div style="font-family:var(--font-display); color:var(--gold); font-size:0.9rem;">' + item.price + '€</div>'
-        + '</div>';
+        + '<div style="display:flex; align-items:center; gap:0.75rem;">'
+        + '<span style="font-family:var(--font-display); color:var(--gold); font-size:0.9rem;">' + item.price + '€</span>'
+        + '<button onclick="removeFromCart(\'' + key + '\')" style="background:none; border:none; color:var(--gray-600); cursor:pointer; font-size:1rem; padding:0; line-height:1;">×</button>'
+        + '</div></div>';
       total += parseFloat(item.price) || 0;
     }
     container.innerHTML = html;
     document.getElementById('cartTotal').textContent = total.toFixed(2) + '€';
   }
 
+  window.selectSize = function(btn) {
+    document.querySelectorAll('.size-btn').forEach(function(b) { b.classList.remove('selected'); });
+    btn.classList.add('selected');
+    selectedSize = btn.textContent;
+  };
+
   window.addToCart = function() {
-    var name = 'The Promise';
-    var price = 59;
-    var key = 'promise';
+    var key = 'promise_' + selectedSize;
     if (cartItems[key]) {
+      // Remove from cart
       delete cartItems[key];
+      document.getElementById('cartCount').textContent = Object.keys(cartItems).length;
+      var btn = document.querySelector('.btn-primary');
+      btn.textContent = 'ADD TO COLLECTION';
+      btn.classList.remove('added');
     } else {
-      cartItems[key] = { name: name, price: price, size: 'M', quantity: 1 };
+      // Add to cart
+      cartItems[key] = { name: 'The Promise', price: 39, size: selectedSize, quantity: 1 };
+      document.getElementById('cartCount').textContent = Object.keys(cartItems).length;
+      var btn = document.querySelector('.btn-primary');
+      btn.textContent = '✓ ADDED';
+      btn.classList.add('added');
+      setTimeout(function() {
+        btn.textContent = 'ADD TO COLLECTION';
+        btn.classList.remove('added');
+      }, 2000);
     }
     saveCart();
-
-    // Visual feedback
-    var btn = document.querySelector('.btn-primary');
-    if (btn) {
-      var originalText = btn.textContent;
-      btn.textContent = cartItems[key] ? '✓ ADDED' : 'ADD TO COLLECTION';
-      btn.classList.toggle('added', !!cartItems[key]);
-      if (cartItems[key]) {
-        setTimeout(function() {
-          btn.textContent = 'ADD TO COLLECTION';
-          btn.classList.remove('added');
-        }, 2000);
-      }
-    }
     openCart();
+  };
+
+  window.removeFromCart = function(key) {
+    delete cartItems[key];
+    saveCart();
+    updateCartUI();
+    document.getElementById('cartCount').textContent = Object.keys(cartItems).length;
   };
 
   window.openCart = function() {
