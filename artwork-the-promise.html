@@ -603,71 +603,7 @@
       margin-top: 1.5rem;
     }
 
-    /* =============================================
-       THE ARTWORK — DETAIL GALLERY
-       ============================================= */
 
-    .section-artwork-detail {
-      padding: 6rem 2rem 8rem;
-      background: var(--near-black);
-    }
-
-    .section-artwork-detail .section-label {
-      text-align: center;
-      font-family: var(--font-body);
-      font-size: 10px; letter-spacing: 4px;
-      text-transform: uppercase; color: var(--gold-dim);
-      display: block; margin-bottom: 3rem;
-    }
-
-    .detail-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .detail-item {
-      position: relative;
-      overflow: hidden;
-      aspect-ratio: 4/3;
-      background: var(--black);
-      border: 1px solid var(--gray-800);
-      border-radius: 2px;
-      cursor: default;
-    }
-    .detail-item:hover img {
-      transform: scale(1.03);
-    }
-
-    .detail-item img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 1.5s cubic-bezier(0.25, 0.1, 0.25, 1);
-    }
-
-    .detail-placeholder {
-      width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      background: var(--dark);
-      color: var(--gray-600);
-      font-family: var(--font-display);
-      font-size: 0.8rem;
-      letter-spacing: 2px;
-    }
-
-    .detail-label-overlay {
-      position: absolute;
-      bottom: 1rem; left: 1rem;
-      font-family: var(--font-body);
-      font-size: 9px; letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gray-400);
-      background: rgba(0,0,0,0.7);
-      padding: 0.3rem 0.6rem;
-      border-radius: 2px;
-    }
 
     /* =============================================
        ARTWORK FRAME — Solo illustration
@@ -829,101 +765,7 @@
       margin: 0 auto;
     }
 
-    /* =============================================
-       COLLECTION CARDS
-       ============================================= */
 
-    .section-collection {
-      padding: 8rem 2rem;
-      background: var(--black);
-    }
-
-    .section-collection-label {
-      text-align: center;
-      font-family: var(--font-body);
-      font-size: 10px; letter-spacing: 4px;
-      text-transform: uppercase; color: var(--gold-dim);
-      display: block; margin-bottom: 3rem;
-    }
-
-    .collection-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .collection-card {
-      position: relative;
-      aspect-ratio: 3/4;
-      background: var(--near-black);
-      border: 1px solid var(--gray-800);
-      overflow: hidden;
-      cursor: pointer;
-      transition: all var(--transition-med);
-      display: flex; flex-direction: column;
-    }
-    .collection-card:hover {
-      border-color: var(--gold-dim);
-      transform: translateY(-4px);
-    }
-    .collection-card:hover .card-image-inner {
-      transform: scale(1.05);
-    }
-
-    .collection-card.active {
-      border-color: var(--gold);
-    }
-
-    .card-image {
-      flex: 1;
-      overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-      padding: 2rem;
-      background: var(--near-black);
-    }
-
-    .card-image-inner {
-      width: 100%; height: 100%;
-      object-fit: contain;
-      opacity: 0.85;
-      transition: transform 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
-    }
-
-    .card-placeholder {
-      font-family: var(--font-display);
-      font-size: 3rem;
-      color: var(--gray-700);
-    }
-
-    .card-info {
-      padding: 1.5rem;
-      border-top: 1px solid var(--gray-800);
-    }
-    .card-info .card-collection {
-      font-family: var(--font-body);
-      font-size: 9px; letter-spacing: 2px;
-      text-transform: uppercase; color: var(--gray-500);
-      margin-bottom: 0.25rem;
-    }
-    .card-info .card-title {
-      font-family: var(--font-script);
-      font-size: 1.3rem;
-      color: var(--off-white);
-      font-weight: 400;
-    }
-    .card-info .card-title.regular {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-size: 1rem;
-    }
-    .card-info .card-badge {
-      font-family: var(--font-body);
-      font-size: 9px; letter-spacing: 2px;
-      text-transform: uppercase; color: var(--gold);
-      margin-top: 0.25rem;
-    }
 
     /* =============================================
        PHILOSOPHY
@@ -1309,41 +1151,6 @@
 <div class="section-divider"></div>
 
 <!-- =============================================
-     THE ARTWORK — DETAIL GALLERY
-     ============================================= -->
-<section class="section-artwork-detail" id="artwork">
-  <span class="section-label reveal">The Artwork</span>
-  <div class="detail-grid reveal">
-    <div class="detail-item">
-      <div class="detail-placeholder" style="font-size:0.7rem; letter-spacing:2px; color:var(--gray-600);">
-        Envelope Detail
-      </div>
-      <span class="detail-label-overlay">Aged Envelope</span>
-    </div>
-    <div class="detail-item">
-      <div class="detail-placeholder" style="font-size:0.7rem; letter-spacing:2px; color:var(--gray-600);">
-        Wax Seal Detail
-      </div>
-      <span class="detail-label-overlay">Wax Seal</span>
-    </div>
-    <div class="detail-item">
-      <div class="detail-placeholder" style="font-size:0.7rem; letter-spacing:2px; color:var(--gray-600);">
-        Gold Dust Detail
-      </div>
-      <span class="detail-label-overlay">Gold Dust</span>
-    </div>
-    <div class="detail-item">
-      <div class="detail-placeholder" style="font-size:0.7rem; letter-spacing:2px; color:var(--gray-600);">
-        Print Texture
-      </div>
-      <span class="detail-label-overlay">Print Texture</span>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- =============================================
      QUALITY SECTIONS
      ============================================= -->
 <section class="section-quality" id="quality">
@@ -1414,48 +1221,6 @@
     <div class="inspiration-quote reveal">
       &ldquo;Some promises are made to yourself.&rdquo;
     </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- =============================================
-     COLLECTION CARDS
-     ============================================= -->
-<section class="section-collection" id="collection">
-  <span class="section-collection-label reveal">Essential Collection</span>
-  <div class="collection-grid">
-    <a href="artwork-the-secret.html" class="collection-card reveal">
-      <div class="card-image">
-        <div class="card-placeholder">✦</div>
-      </div>
-      <div class="card-info">
-        <div class="card-collection">Artwork 01</div>
-        <div class="card-title regular">The Secret</div>
-      </div>
-    </a>
-
-    <a href="artwork-the-promise.html" class="collection-card active reveal">
-      <div class="card-image">
-        <div class="card-placeholder">✦</div>
-      </div>
-      <div class="card-info">
-        <div class="card-collection">Artwork 02</div>
-        <div class="card-title">The Promise</div>
-        <div class="card-badge">Current</div>
-      </div>
-    </a>
-
-    <a href="javascript:void(0)" class="collection-card reveal" style="opacity:0.4; cursor:default;">
-      <div class="card-image">
-        <div class="card-placeholder">✦</div>
-      </div>
-      <div class="card-info">
-        <div class="card-collection">Artwork 03</div>
-        <div class="card-title regular">The Balance</div>
-        <div class="card-badge" style="color:var(--gray-600);">Coming Soon</div>
-      </div>
-    </a>
   </div>
 </section>
 
