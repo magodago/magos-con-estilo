@@ -239,115 +239,6 @@ body {
 .section-story .story-body p.em { font-style:italic; color:var(--off-white); margin-top:1rem; }
 .section-story .story-divider { width:30px; height:1px; background:var(--gray-700); margin:1.5rem auto; }
 
-/* ── THE ARTWORK ── */
-.section-artwork {
-  min-height:100vh; padding:6rem 2rem;
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  background:var(--black); position:relative; overflow:hidden;
-}
-.section-artwork .artwork-label {
-  font-size:.5rem; letter-spacing:4px; text-transform:uppercase;
-  color:var(--gold-dim); font-family:var(--font-body); margin-bottom:3rem;
-}
-.artwork-frame {
-  position:relative; max-width:700px; width:100%; aspect-ratio:1;
-  background:var(--near-black); border:1px solid var(--gray-800);
-  border-radius:4px; overflow:hidden; cursor:crosshair;
-}
-/* Artwork canvas/base */
-.artwork-visual {
-  width:100%; height:100%; position:relative;
-  display:flex; align-items:center; justify-content:center;
-  /* Placeholder gradient - replace with actual image */
-  background:radial-gradient(ellipse at 50% 50%, #111 0%, #000 70%);
-  transition:all 0.6s ease;
-}
-.artwork-visual .placeholder-text {
-  font-family:var(--font-script); font-size:2rem;
-  color:rgba(200,169,110,0.08); letter-spacing:4px; text-align:center;
-  pointer-events:none; user-select:none;
-}
-/* Interactive hotspots */
-.artwork-hotspot {
-  position:absolute; cursor:pointer;
-  transition:all 0.4s ease; z-index:3;
-}
-.hotspot-eye {
-  top:28%; left:38%; width:24%; height:20%;
-  background:radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(200,169,110,0.02) 60%, transparent 70%);
-  border:1px solid transparent;
-  transition:all 0.5s ease;
-}
-.hotspot-eye:hover {
-  border-color:rgba(200,169,110,0.15);
-  background:radial-gradient(ellipse at 50% 50%, rgba(200,169,110,0.03) 0%, transparent 60%);
-}
-.hotspot-eye::after {
-  content:'';
-  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
-  width:8%; height:8%; background:rgba(200,169,110,0.06);
-  border-radius:50%; transition:all 0.5s ease;
-}
-.hotspot-eye:hover::after { background:rgba(200,169,110,0.15); box-shadow:0 0 20px rgba(200,169,110,0.1); }
-
-.hotspot-spiral {
-  top:45%; left:22%; width:22%; height:22%;
-  border-radius:50%;
-  background:radial-gradient(circle at 50% 50%, transparent 30%, rgba(200,169,110,0.01) 50%, transparent 70%);
-  border:1px solid transparent;
-  transition:all 0.5s ease;
-}
-.hotspot-spiral:hover {
-  border-color:rgba(200,169,110,0.1);
-  background:radial-gradient(circle at 50% 50%, rgba(200,169,110,0.02) 0%, transparent 50%);
-}
-.hotspot-spiral::after {
-  content:'';
-  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
-  width:40%; height:40%;
-  border:1px solid rgba(200,169,110,0.03);
-  border-radius:50%; transition:all 0.6s ease;
-}
-.hotspot-spiral:hover::after { border-color:rgba(200,169,110,0.12); transform:translate(-50%,-50%) rotate(180deg); }
-
-.hotspot-hand {
-  bottom:15%; right:25%; width:25%; height:30%;
-  background:radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(200,169,110,0.01) 60%, transparent 80%);
-  border:1px solid transparent;
-  transition:all 0.5s ease;
-}
-.hotspot-hand:hover {
-  border-color:rgba(200,169,110,0.1);
-  background:radial-gradient(ellipse at 50% 50%, rgba(200,169,110,0.02) 0%, transparent 50%);
-}
-
-.hotspot-pendulum {
-  top:10%; right:15%; width:18%; height:25%;
-  background:linear-gradient(180deg, transparent 20%, rgba(200,169,110,0.01) 40%, transparent 70%);
-  border:1px solid transparent;
-  transition:all 0.5s ease;
-}
-.hotspot-pendulum:hover {
-  border-color:rgba(200,169,110,0.1);
-  background:linear-gradient(180deg, transparent 20%, rgba(200,169,110,0.02) 40%, transparent 70%);
-}
-
-/* Hotspot tooltips */
-.hotspot-tooltip {
-  position:absolute; pointer-events:none; z-index:5;
-  opacity:0; transition:opacity 0.4s ease;
-  font-size:.5rem; letter-spacing:2px; text-transform:uppercase;
-  color:var(--gold-dim); font-family:var(--font-body);
-}
-.hotspot-eye:hover ~ .tooltip-eye,
-.hotspot-spiral:hover ~ .tooltip-spiral,
-.hotspot-hand:hover ~ .tooltip-hand,
-.hotspot-pendulum:hover ~ .tooltip-pendulum { opacity:1; }
-.tooltip-eye { top:22%; left:38%; }
-.tooltip-spiral { top:40%; left:14%; }
-.tooltip-hand { bottom:10%; right:26%; }
-.tooltip-pendulum { top:6%; right:14%; }
-
 /* ── CRAFTSMANSHIP ── */
 .section-craft { padding:6rem 2rem; background:var(--near-black); }
 .craft-grid { max-width:1000px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:4rem; }
@@ -422,7 +313,6 @@ body {
   .header-nav ul > li { width:100%; }
   .nav-close { display:block; }
   .craft-grid { grid-template-columns:1fr; gap:2.5rem; }
-  .artwork-frame { max-width:100%; }
 }
 @media (max-width:600px) {
   .hero { padding:6rem 1.2rem 2rem; }
@@ -557,30 +447,6 @@ body {
     <p class="reveal em">la realidad cambia.</p>
     <p class="reveal">Aunque solo sea durante unos instantes.</p>
   </div>
-</section>
-
-<!-- ── THE ARTWORK ── -->
-<section class="section-artwork reveal" id="artwork">
-  <p class="artwork-label">The Artwork</p>
-  <div class="artwork-frame">
-    <div class="artwork-visual">
-      <span class="placeholder-text">The<br>Hypnotist</span>
-
-      <!-- Hotspots -->
-      <div class="artwork-hotspot hotspot-eye" title="The Eye"></div>
-      <span class="hotspot-tooltip tooltip-eye">● The Eye</span>
-
-      <div class="artwork-hotspot hotspot-spiral" title="The Spiral"></div>
-      <span class="hotspot-tooltip tooltip-spiral">● The Spiral</span>
-
-      <div class="artwork-hotspot hotspot-hand" title="The Hand"></div>
-      <span class="hotspot-tooltip tooltip-hand">● The Hand</span>
-
-      <div class="artwork-hotspot hotspot-pendulum" title="The Pendulum"></div>
-      <span class="hotspot-tooltip tooltip-pendulum">● The Pendulum</span>
-    </div>
-  </div>
-  <p style="font-size:.5rem;color:var(--gray-600);letter-spacing:2px;text-transform:uppercase;margin-top:2rem;">Pass your cursor over the details</p>
 </section>
 
 <!-- ── CRAFTSMANSHIP ── -->
