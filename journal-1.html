@@ -170,6 +170,13 @@
       font-family: inherit;
     }
     .nav-close:hover { color: var(--white); }
+    .dropdown { position: relative; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: var(--near-black); border: 1px solid var(--gray-800); min-width: 220px; padding: 0.5rem 0; z-index: 150; }
+    .dropdown-menu.open { display: block; }
+    .dropdown-menu li { list-style: none; }
+    .dropdown-menu li a { display: block; padding: 0.5rem 1.2rem; color: var(--gray-400); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; text-decoration: none; transition: all var(--transition-fast); }
+    .dropdown-menu li a:hover { color: var(--off-white); background: var(--gray-900); }
+    .dropdown-toggle::after { content: '▾'; display: inline-block; margin-left: 4px; font-size: 0.45rem; vertical-align: middle; opacity: 0.5; }
 
     .lang-btn {
       background: none;
@@ -352,38 +359,47 @@
 <body>
 
   <!-- HEADER -->
-  <header class="header">
+  <header class="header" id="header">
     <div class="header-left">
       <button class="hamburger-btn" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
-      <a href="index.html" class="header-logo">
-        <img src="assets/logo-transparent.png" alt="MAGOS CON ESTILO">
-      </a>
+      <a href="index.html" class="header-logo"><img src="assets/logo-inverted.png" alt="MAGOS CON ESTILO"></a>
     </div>
-    <div class="header-center">
-      <span class="header-brand">Magos con Estilo</span>
-    </div>
+    <div class="header-center"><span class="header-brand">Magos con Estilo</span></div>
     <div class="header-right">
-      <nav class="header-nav">
+      <nav class="header-nav" id="headerNav">
         <button class="nav-close" onclick="closeMenu()" aria-label="Close menu">×</button>
         <ul>
           <li><a href="index.html" onclick="closeMenu()">Home</a></li>
-          <li><a href="index.html#gallery" data-i18n="nav_gallery" onclick="closeMenu()">The Gallery</a></li>
           <li><a href="index.html#essential" onclick="closeMenu()">Essentials</a></li>
-          <li><a href="index.html#journal" data-i18n="nav_journal" onclick="closeMenu()">Journal</a></li>
-          <li><a href="index.html#about-brand" data-i18n="nav_about" onclick="closeMenu()">About</a></li>
-          <li><button class="lang-btn" id="langToggle" onclick="toggleLang()">ES</button></li>
-          <li><button class="cart-btn" onclick="openCart()" aria-label="Shopping bag">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-              <line x1="3" y1="6" x2="21" y2="6"/>
-              <path d="M16 10a4 4 0 0 1-8 0"/>
-            </svg>
-            <span class="cart-count" id="cartCount">0</span>
-          </button></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event, 'galleryDropdown')">The Gallery</a>
+            <ul class="dropdown-menu" id="galleryDropdown">
+              <li><a href="index.html#gallery" onclick="closeMenu()">Collection I — The Art of Wonder</a></li>
+            </ul>
+          </li>
+          <li><a href="index.html#oneofone" onclick="closeMenu()">One of One</a></li>
+          <li><a href="index.html#journal" onclick="closeMenu()">Journal</a></li>
+          <li><a href="index.html#about-brand" onclick="closeMenu()">About</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="lang-btn" id="langToggle" onclick="toggleLang()">ES</button>
+        <button class="cart-btn" onclick="openCart()" aria-label="Shopping bag">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="nav-overlay" id="navOverlay" onclick="closeMenu()"></div>
+
+  <!-- HERO -->
         </ul>
       </nav>
     </div>
@@ -449,6 +465,8 @@
   </footer>
 
   <script>
+function toggleDropdown(e, id) { e.preventDefault(); e.stopPropagation(); document.getElementById(id).classList.toggle("open"); }
+document.addEventListener("click", function() { document.querySelectorAll(".dropdown-menu.open").forEach(function(m) { m.classList.remove("open"); }); });
     const langData = {
       'nav_gallery': { en: 'The Gallery', es: 'The Gallery' },
       'nav_journal': { en: 'Journal', es: 'Revista' },

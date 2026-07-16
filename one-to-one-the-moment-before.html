@@ -29,7 +29,7 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
 .header-center{position:absolute;left:50%;transform:translateX(-50%);z-index:1}
 .header-right{display:flex;align-items:center;gap:1rem;z-index:2}
 .header-brand{font-family:var(--font-body);font-size:11px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--gray-200);white-space:nowrap}
-.header-nav{display:flex;gap:0;list-style:none}.header-nav>ul{display:flex;list-style:none;gap:0;align-items:center}.header-nav>ul>li{position:relative}.header-nav>ul>li>a{display:block;color:var(--ivory);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;padding:.5rem 1.2rem;opacity:.5;transition:opacity .3s}.header-nav>ul>li>a:hover{opacity:1}.nav-close{display:none;position:absolute;top:1.2rem;right:1.2rem;background:none;border:none;color:var(--gray-500);font-size:1.8rem;cursor:pointer;line-height:1;z-index:101;transition:color .3s;padding:.3rem;font-family:inherit}.nav-close:hover{color:var(--ivory)}
+.header-nav{display:flex;gap:0;list-style:none}.header-nav>ul{display:flex;list-style:none;gap:0;align-items:center}.header-nav>ul>li{position:relative}.header-nav>ul>li>a{display:block;color:var(--ivory);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;padding:.5rem 1.2rem;opacity:.5;transition:opacity .3s}.header-nav>ul>li>a:hover{opacity:1}.nav-close{display:none;position:absolute;top:1.2rem;right:1.2rem;background:none;border:none;color:var(--gray-500);font-size:1.8rem;cursor:pointer;line-height:1;z-index:101;transition:color .3s;padding:.3rem;font-family:inherit}.nav-close:hover{color:var(--ivory)}.dropdown{position:relative}.dropdown-menu{display:none;position:absolute;top:100%;left:0;background:var(--near-black);border:1px solid var(--gray-800);min-width:220px;padding:.5rem 0;z-index:150}.dropdown-menu.open{display:block}.dropdown-menu li{list-style:none}.dropdown-menu li a{display:block;padding:.5rem 1.2rem;color:var(--gray-400);font-size:.65rem;text-transform:uppercase;letter-spacing:.12em;text-decoration:none;transition:all .3s}.dropdown-menu li a:hover{color:var(--ivory);background:var(--gray-900)}.dropdown-toggle::after{content:'▾';display:inline-block;margin-left:4px;font-size:.45rem;vertical-align:middle;opacity:.5}
 .header-actions{display:flex;gap:1.5rem;align-items:center}.header-actions a{color:var(--ivory);opacity:.5}.header-actions a:hover{opacity:1}
 .lang-toggle{font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;background:0 0;border:1px solid var(--gray-700);color:var(--ivory);padding:.25rem .6rem;cursor:pointer;transition:all .3s;font-family:var(--font-body);opacity:.5}.lang-toggle:hover{opacity:1;border-color:var(--ivory)}
 .hamburger{display:flex;background:0 0;border:none;cursor:pointer;padding:4px;z-index:110;flex-direction:column;gap:4px;width:22px}.hamburger span{display:block;width:20px;height:1.5px;background:var(--ivory);margin:5px 0;transition:all .3s;border-radius:1px}
@@ -173,7 +173,7 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
 
   <header class="header" id="header">
     <div class="header-left">
-      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <button class="hamburger-btn" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
         <span></span>
         <span></span>
         <span></span>
@@ -188,14 +188,20 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
         <button class="nav-close" onclick="closeMenu()" aria-label="Close menu">×</button>
         <ul>
           <li><a href="index.html" onclick="closeMenu()">Home</a></li>
-          <li><a href="index.html#gallery" onclick="closeMenu()">The Gallery</a></li>
-          <li><a href="one-to-one-the-moment-before.html" onclick="closeMenu()">One to One</a></li>
           <li><a href="index.html#essential" onclick="closeMenu()">Essentials</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event, 'galleryDropdown')">The Gallery</a>
+            <ul class="dropdown-menu" id="galleryDropdown">
+              <li><a href="index.html#gallery" onclick="closeMenu()">Collection I — The Art of Wonder</a></li>
+            </ul>
+          </li>
+          <li><a href="index.html#oneofone" onclick="closeMenu()">One of One</a></li>
           <li><a href="index.html#journal" onclick="closeMenu()">Journal</a></li>
+          <li><a href="index.html#about-brand" onclick="closeMenu()">About</a></li>
         </ul>
       </nav>
       <div class="header-actions">
-        <button class="lang-toggle" id="langToggle" onclick="toggleLang()">ES</button>
+        <button class="lang-btn" id="langToggle" onclick="toggleLang()">ES</button>
         <button class="cart-btn" onclick="openCart()" aria-label="Shopping bag"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="cart-count" id="cartCount">0</span></button>
       </div>
     </div>
@@ -357,6 +363,12 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
   </div>
 
 <script>
+function toggleMenu(){document.getElementById('headerNav').classList.toggle('open');document.getElementById('navOverlay').classList.toggle('open');document.getElementById('hamburger').classList.toggle('active');}
+function closeMenu(){document.getElementById('headerNav').classList.remove('open');document.getElementById('navOverlay').classList.remove('open');document.getElementById('hamburger').classList.remove('active');}
+window.addEventListener('scroll',function(){document.getElementById('header').classList.toggle('scrolled',window.scrollY>50);});
+function toggleDropdown(e,id){e.preventDefault();e.stopPropagation();document.getElementById(id).classList.toggle('open');}
+document.addEventListener('click',function(){document.querySelectorAll('.dropdown-menu.open').forEach(function(m){m.classList.remove('open');});});
+var lang='es';function toggleLang(){lang=lang==='es'?'en':'es';document.querySelector('.lang-btn').textContent=lang.toUpperCase();}
 const langData={
   'Available':{en:'Available',es:'Disponible'},'Collected':{en:'Collected',es:'Coleccionado'},
   'd1':{en:'This artwork disappears forever.',es:'Esta obra desaparece para siempre.'},

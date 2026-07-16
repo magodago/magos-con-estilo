@@ -298,6 +298,8 @@
       font-family: inherit;
     }
     .nav-close:hover { color: var(--off-white); }
+    .nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 98; }
+    .nav-overlay.open { display: block; }
 
     .header-cart {
       position: relative;
@@ -1538,13 +1540,13 @@
        ============================================= -->
   <header class="header" id="header">
     <div class="header-left">
-      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu">
+      <button class="hamburger-btn" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
       <a href="index.html" class="header-logo">
-        <img src="https://raw.githubusercontent.com/dortizs76/magos-con-estilo/main/assets/logo-inverted.png" alt="MAGOS CON ESTILO" onerror="this.style.display='none'">
+        <img src="assets/logo-inverted.png" alt="MAGOS CON ESTILO">
       </a>
     </div>
     <div class="header-center">
@@ -1553,21 +1555,34 @@
     <div class="header-right">
       <nav class="header-nav" id="headerNav">
         <button class="nav-close" onclick="closeMenu()" aria-label="Close menu">×</button>
-        <a href="index.html">Home</a>
-        <a href="artwork-the-impossible.html">Essentials</a>
-        <a href="artwork-the-secret.html">The Gallery</a>
-        <a href="one-to-one-the-moment-before.html">One to One</a>
+        <ul>
+          <li><a href="index.html" onclick="closeMenu()">Home</a></li>
+          <li><a href="index.html#essential" onclick="closeMenu()">Essentials</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event, 'galleryDropdown')">The Gallery</a>
+            <ul class="dropdown-menu" id="galleryDropdown">
+              <li><a href="index.html#gallery" onclick="closeMenu()">Collection I — The Art of Wonder</a></li>
+            </ul>
+          </li>
+          <li><a href="index.html#oneofone" onclick="closeMenu()">One of One</a></li>
+          <li><a href="index.html#journal" onclick="closeMenu()">Journal</a></li>
+          <li><a href="index.html#about-brand" onclick="closeMenu()">About</a></li>
+        </ul>
       </nav>
-      <button class="cart-btn" onclick="openCart()" aria-label="Shopping bag">
-        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" style="stroke:currentColor;fill:none;stroke-width:1.5;">
-          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <path d="M16 10a4 4 0 0 1-8 0"/>
-        </svg>
-        <span class="cart-count" id="cartCount">0</span>
-      </button>
+      <div class="header-actions">
+        <button class="lang-btn" id="langToggle" onclick="toggleLang()" aria-label="Toggle language">ES</button>
+        <button class="cart-btn" onclick="openCart()" aria-label="Shopping bag">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
     </div>
   </header>
+  <div class="nav-overlay" id="navOverlay" onclick="closeMenu()"></div>
 
   <!-- =============================================
        HERO
@@ -1840,6 +1855,15 @@
 </div>
 
 <script>
+  /* Header functions */
+  function toggleMenu() { document.getElementById('headerNav').classList.toggle('open'); document.getElementById('navOverlay').classList.toggle('open'); document.getElementById('hamburger').classList.toggle('active'); }
+  function closeMenu() { document.getElementById('headerNav').classList.remove('open'); document.getElementById('navOverlay').classList.remove('open'); document.getElementById('hamburger').classList.remove('active'); }
+  window.addEventListener('scroll',function(){document.getElementById('header').classList.toggle('scrolled',window.scrollY>50);});
+  function toggleDropdown(e, id) { e.preventDefault(); e.stopPropagation(); document.getElementById(id).classList.toggle('open'); }
+  document.addEventListener('click', function() { document.querySelectorAll('.dropdown-menu.open').forEach(function(m) { m.classList.remove('open'); }); });
+  var lang = 'es';
+  function toggleLang() { lang = lang === 'es' ? 'en' : 'es'; document.querySelector('.lang-btn').textContent = lang.toUpperCase(); }
+
   /* =============================================
      GOLDEN PARTICLES (Canvas)
      ============================================= */

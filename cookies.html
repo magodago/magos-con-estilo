@@ -5,16 +5,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Política de Cookies — MAGOS CON ESTILO</title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    body{background:#000;color:#F5F3EF;font-family:'Inter',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    :root{--black:#000;--near-black:#0A0A0A;--off-white:#F5F3EF;--gold:#C8A96E;--gold-dim:#A68B5E;--gray-200:#C5C3BF;--gray-400:#999793;--gray-500:#777572;--gray-600:#555351;--gray-700:#333230;--gray-800:#1E1D1B;--font-display:'Playfair Display',Georgia,serif;--font-body:'Inter',sans-serif;--transition-fast:.3s}
+    .header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2.5rem;background:transparent;transition:background .4s}
+    .header.scrolled{background:rgba(0,0,0,0.85);backdrop-filter:blur(20px)}
+    .header-left{display:flex;align-items:center;gap:.75rem;z-index:2}
+    .header-center{position:absolute;left:50%;transform:translateX(-50%);z-index:1}
+    .header-right{display:flex;align-items:center;gap:1rem;z-index:2}
+    .header-brand{font-family:var(--font-body);font-size:11px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--gray-200);white-space:nowrap}
+    .header-logo img{height:38px;width:auto;display:block;opacity:.95}
+    .hamburger-btn{display:flex;background:none;border:none;cursor:pointer;padding:4px;flex-direction:column;gap:4px;width:22px}
+    .hamburger-btn span{display:block;width:100%;height:1.5px;background:var(--gray-200);transition:all var(--transition-fast);border-radius:1px}
+    .hamburger-btn.active span:nth-child(1){transform:translateY(5.5px)rotate(45deg)}
+    .hamburger-btn.active span:nth-child(2){opacity:0}
+    .hamburger-btn.active span:nth-child(3){transform:translateY(-5.5px)rotate(-45deg)}
+    .header-nav ul{display:flex;list-style:none;gap:1.5rem}
+    .header-nav a{text-decoration:none;color:var(--gray-200);font-size:10px;letter-spacing:2px;text-transform:uppercase;transition:color var(--transition-fast)}
+    .header-nav a:hover{color:var(--off-white)}
+    .nav-close{display:none;position:absolute;top:1.2rem;right:1.2rem;background:none;border:none;color:var(--gray-400);font-size:1.8rem;cursor:pointer;line-height:1;z-index:101;transition:color .3s;padding:.3rem;font-family:inherit}
+    .nav-close:hover{color:var(--white)}
+    .header-actions{display:flex;align-items:center;gap:.75rem}
+    .lang-btn,.cart-btn{background:none;border:none;color:var(--gray-200);cursor:pointer;padding:4px;transition:color var(--transition-fast);font-size:10px;font-family:var(--font-body)}
+    .lang-btn:hover,.cart-btn:hover{color:var(--off-white)}
+    .cart-btn{position:relative}
+    .cart-btn svg{width:18px;height:18px;display:block;opacity:.85}
+    .cart-count{position:absolute;top:-4px;right:-6px;background:var(--gold);color:#000;font-size:8px;font-weight:600;width:14px;height:14px;border-radius:50%;display:flex;align-items:center;justify-content:center;display:none}
+    .nav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:98}
+    .nav-overlay.open{display:block}
+    .section{padding-top:6rem}
+    @media(max-width:1024px){
+      .hamburger-btn{display:flex}
+      .header-nav{display:none;position:fixed;top:0;right:-280px;width:260px;height:100%;background:var(--near-black);z-index:99;padding:5rem 2rem 2rem;flex-direction:column;align-items:flex-start;gap:1.5rem;transition:right .4s;border-left:1px solid var(--gray-800)}
+      .header-nav.open{display:flex;right:0}
+      .header-nav ul{flex-direction:column;gap:0;align-items:flex-start}
+      .header-nav ul>li{width:100%}
+      .nav-close{display:block}
+      .header{padding:1rem 1.2rem}
+    }
+  </style>
 </head>
 <body>
   <div class="top-bar">Colección 2026</div>
-  <header class="header">
-    <a href="/" class="header-logo"><img src="assets/logo.png" alt="MAGOS CON ESTILO"></a>
-    <ul class="header-nav">
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="index.html#productos">Tienda</a></li>
-    </ul>
+  <header class="header" id="header">
+    <div class="header-left">
+      <button class="hamburger-btn" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="index.html" class="header-logo"><img src="assets/logo-inverted.png" alt="MAGOS CON ESTILO"></a>
+    </div>
+    <div class="header-center"><span class="header-brand">Magos con Estilo</span></div>
+    <div class="header-right">
+      <nav class="header-nav" id="headerNav">
+        <button class="nav-close" onclick="closeMenu()" aria-label="Close menu">×</button>
+        <ul>
+          <li><a href="index.html" onclick="closeMenu()">Home</a></li>
+          <li><a href="index.html#essential" onclick="closeMenu()">Essentials</a></li>
+          <li><a href="index.html#gallery" onclick="closeMenu()">The Gallery</a></li>
+          <li><a href="index.html#oneofone" onclick="closeMenu()">One of One</a></li>
+          <li><a href="index.html#journal" onclick="closeMenu()">Journal</a></li>
+          <li><a href="index.html#about-brand" onclick="closeMenu()">About</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="lang-btn" id="langToggle" onclick="toggleLang()">ES</button>
+        <button class="cart-btn" onclick="openCart()" aria-label="Cart">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
   </header>
+  <div class="nav-overlay" id="navOverlay" onclick="closeMenu()"></div>
   <section class="section" style="max-width:720px;margin:3rem auto;padding:2rem;">
     <h1>Política de Cookies</h1>
     <p style="margin-top:1.5rem;color:#666;line-height:1.8;font-size:0.85rem;">
@@ -27,5 +90,10 @@
   <footer class="footer">
     <div class="footer-bottom"><p>© 2026 Magos con Estilo.</p></div>
   </footer>
-</body>
+<script>
+function toggleMenu(){document.getElementById('headerNav').classList.toggle('open');document.getElementById('navOverlay').classList.toggle('open');document.getElementById('hamburger').classList.toggle('active');}
+function closeMenu(){document.getElementById('headerNav').classList.remove('open');document.getElementById('navOverlay').classList.remove('open');document.getElementById('hamburger').classList.remove('active');}
+window.addEventListener('scroll',function(){document.getElementById('header').classList.toggle('scrolled',window.scrollY>50);});
+var lang='es';function toggleLang(){lang=lang==='es'?'en':'es';document.querySelector('.lang-btn').textContent=lang.toUpperCase();}
+</script>
 </html>
