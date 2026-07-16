@@ -296,12 +296,19 @@ body{
 }
 .emblem-canvas{
   position:relative;width:100%;max-width:600px;aspect-ratio:1;
-  margin:0 auto;cursor:crosshair;
+  margin:0 auto;
 }
-.emblem-symbol{
-  width:100%;height:100%;position:relative;
-  display:flex;align-items:center;justify-content:center;
+.emblem-frame{
+  position:relative;width:100%;height:100%;
+  background:var(--near-black);
+  border:1px solid var(--gray-800);border-radius:4px;
+  overflow:hidden;cursor:crosshair;display:flex;align-items:center;justify-content:center;
 }
+.emblem-frame-bg{
+  position:absolute;inset:10%;z-index:0;
+  background:radial-gradient(ellipse at 50% 50%, rgba(200,169,110,0.015) 0%, transparent 70%);
+}
+.emblem-artwork-img{position:relative;z-index:1;max-width:85%;max-height:85%;object-fit:contain;opacity:0.92;}
 .emblem-letter{
   position:absolute;font-family:var(--font-display);
   font-size:clamp(6rem,15vw,10rem);color:var(--off-white);
@@ -605,12 +612,14 @@ body{
 <section class="section-emblem" id="emblem">
   <p class="emblem-label reveal">The Emblem</p>
   <div class="emblem-canvas reveal">
-    <div class="emblem-symbol">
-      <span class="emblem-letter emblem-m">M</span>
+    <div class="emblem-frame">
+      <div class="emblem-frame-bg"></div>
+      <img class="emblem-artwork-img" src="assets/emblem-artwork.jpg?v=2" alt="The Emblem artwork">
+      <div class="emblem-letter emblem-m">M</div>
       <span class="emblem-desc emblem-desc-m">Magicians<span>Porque todo empieza con un mago.</span></span>
-      <span class="emblem-letter emblem-c">C</span>
+      <div class="emblem-letter emblem-c">C</div>
       <span class="emblem-desc emblem-desc-c">Community<span>Porque la magia nunca crece sola.</span></span>
-      <span class="emblem-letter emblem-e">E</span>
+      <div class="emblem-letter emblem-e">E</div>
       <span class="emblem-desc emblem-desc-e">Elegance<span>Porque nuestro arte merece presentarse con estilo.</span></span>
       <div class="emblem-figure"></div>
       <span class="emblem-desc emblem-desc-fig">The Magician<span>Sin rostro. Porque somos todos.</span></span>
