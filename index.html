@@ -374,7 +374,13 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at center, #111 0%, #000 70%);
+      background: url('assets/hero-home.jpg?v=2') center/cover no-repeat;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
     }
 
     .hero-content {
