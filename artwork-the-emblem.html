@@ -365,13 +365,10 @@ body{
 .community-label{font-family:var(--font-body);font-size:.5rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold-dim);margin-bottom:1rem;}
 .community-title{font-family:var(--font-script);font-size:clamp(2rem,5vw,4rem);color:var(--off-white);font-weight:400;letter-spacing:2px;margin-bottom:1rem;}
 .community-sub{font-family:var(--font-body);font-size:.65rem;color:var(--gray-500);letter-spacing:1px;max-width:500px;margin:0 auto 3rem;line-height:1.8;}
-.community-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
-.community-card{aspect-ratio:3/4;background:var(--near-black);border:1px solid var(--gray-800);border-radius:4px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:1.5rem;position:relative;transition:border-color var(--transition-fast);}
-.community-card:hover{border-color:var(--gray-600);}
-.community-card-icon{width:40px;height:40px;border:1px solid var(--gray-700);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;}
-.community-card-icon svg{width:16px;height:16px;stroke:var(--gray-400);fill:none;stroke-width:1.2;}
-.community-card-title{font-family:var(--font-display);font-size:.75rem;color:var(--off-white);font-weight:400;letter-spacing:1px;margin-bottom:.3rem;}
-.community-card-desc{font-size:.5rem;color:var(--gray-500);letter-spacing:1px;text-transform:uppercase;}
+.community-list{max-width:600px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem 2rem;}
+.community-item{font-family:var(--font-script);font-size:clamp(1.4rem,3vw,2rem);color:var(--off-white);font-weight:400;letter-spacing:1px;position:relative;opacity:0.85;transition:opacity var(--transition-fast);}
+.community-item:hover{opacity:1;}
+.community-dot{color:var(--gold-dim);opacity:0.3;font-size:.4rem;align-self:center;}
 
 /* ── RECOMMENDED ── */
 .section-recommended{padding:5rem 2rem;background:var(--black);}
@@ -443,7 +440,7 @@ body{
   .header-nav ul > li{width:100%;}
   .nav-close{display:block;}
   .craft-grid{grid-template-columns:1fr;gap:2.5rem;}
-  .rec-grid,.community-grid{grid-template-columns:1fr;max-width:380px;}
+  .rec-grid{grid-template-columns:1fr;max-width:380px;}
   .hero-props{display:none;}
   .hero-seats{height:40%;}
 }
@@ -658,37 +655,18 @@ body{
   <p class="community-label reveal">Community</p>
   <h2 class="community-title reveal">One emblem. Thousands of stories.</h2>
   <p class="community-sub reveal">Cada actuación es distinta. Cada personalidad también. Pero cuando compartimos escenario… todos hablamos el mismo idioma.</p>
-  <div class="community-grid reveal">
-    <div class="community-card">
-      <div class="community-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M5 21 Q5 15 12 15 Q19 15 19 21"/></svg></div>
-      <p class="community-card-title">Cartomago</p>
-      <p class="community-card-desc">Cartas</p>
-    </div>
-    <div class="community-card">
-      <div class="community-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22 Q4 14 12 14 Q20 14 20 22"/></svg></div>
-      <p class="community-card-title">Mago Infantil</p>
-      <p class="community-card-desc">Familia</p>
-    </div>
-    <div class="community-card">
-      <div class="community-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3 L12 6 M12 18 L12 21 M3 12 L6 12 M18 12 L21 12"/></svg></div>
-      <p class="community-card-title">Mentalista</p>
-      <p class="community-card-desc">Mente</p>
-    </div>
-    <div class="community-card">
-      <div class="community-card-icon"><svg viewBox="0 0 24 24"><path d="M8 2 L8 22 M16 2 L16 22 M2 8 L22 8 M2 16 L22 16"/><circle cx="12" cy="12" r="5" fill="none"/></svg></div>
-      <p class="community-card-title">Escapista</p>
-      <p class="community-card-desc">Libertad</p>
-    </div>
-    <div class="community-card">
-      <div class="community-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="10" cy="10" r="2"/><circle cx="14" cy="14" r="2"/></svg></div>
-      <p class="community-card-title">Mago de Salón</p>
-      <p class="community-card-desc">Cercanía</p>
-    </div>
-    <div class="community-card">
-      <div class="community-card-icon"><svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M10 2 L14 2 L16 8 L8 8 Z"/></svg></div>
-      <p class="community-card-title">Ilusionista</p>
-      <p class="community-card-desc">Escenario</p>
-    </div>
+  <div class="community-list reveal">
+    <span class="community-item">Cartomago</span>
+    <span class="community-dot">✦</span>
+    <span class="community-item">Mago Infantil</span>
+    <span class="community-dot">✦</span>
+    <span class="community-item">Mentalista</span>
+    <span class="community-dot">✦</span>
+    <span class="community-item">Escapista</span>
+    <span class="community-dot">✦</span>
+    <span class="community-item">Mago de Salón</span>
+    <span class="community-dot">✦</span>
+    <span class="community-item">Ilusionista</span>
   </div>
 </section>
 
