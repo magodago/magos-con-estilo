@@ -708,7 +708,9 @@ function addToCart(){
 function removeFromCart(i){cart.splice(i,1);localStorage.setItem('mce_cart',JSON.stringify(cart));renderCart();}
 function openCart(){document.getElementById('cartOverlay').classList.add('open');document.getElementById('cartSidebar').classList.add('open');}
 function closeCart(){document.getElementById('cartOverlay').classList.remove('open');document.getElementById('cartSidebar').classList.remove('open');}
-function checkout(){alert('Checkout: '+JSON.stringify(cart));}
+async function checkout() {
+  alert('La obra The Thought estara disponible muy pronto. Escribenos a magosconestilo@neolabs.me y te avisamos en cuanto salga.');
+}
 renderCart();
 
 var selectedSize='S';
