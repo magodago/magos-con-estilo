@@ -2119,7 +2119,13 @@
       var card = btn.closest('.product-card-info');
       var selectedSize = card ? card.querySelector('.size-btn.selected') : null;
       var size = selectedSize ? selectedSize.textContent : 'M';
-      var diseno = btn.getAttribute('data-diseno') || 'diseno-01';
+      var diseno = btn.getAttribute('data-diseno');
+    if (!diseno) {
+      var tarjeta = btn.closest('.product-card, .card, article, .obra') || document;
+      var enlace = tarjeta.querySelector('a[href^="artwork-"], a[href^="one-to-one"]');
+      if (enlace) diseno = (enlace.getAttribute('href') || '').replace('.html', '');
+    }
+    diseno = diseno || 'impossible';
 
       cart.push({ name: name, price: price.toString(), color: 'Black', size: size, icon: icon, diseno: diseno });
       renderCart();

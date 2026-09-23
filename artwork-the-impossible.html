@@ -1809,7 +1809,7 @@
         color: 'Black',
         size: size,
         icon: '♠',
-        diseno: 'essentials-01'
+        diseno: 'impossible'
       });
       localStorage.setItem('mce_cart', JSON.stringify(cart));
       renderCart();
@@ -1965,7 +1965,7 @@
         var resp = await fetch(API_URL + '/create-checkout', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ diseno: item.diseno, talla: item.size, cantidad: '1' })
+          body: JSON.stringify({ diseno: 'impossible', talla: item.size, cantidad: '1' })
         });
         var data = await resp.json();
         if (data.url) { window.location.href = data.url; }

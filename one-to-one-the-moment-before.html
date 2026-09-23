@@ -436,7 +436,7 @@ document.querySelectorAll('.reveal').forEach(function(e){ro.observe(e)});
 function addToCart(){
   if(localStorage.getItem('one_to_one_sold')==='true')return;
   cart=JSON.parse(localStorage.getItem('mce_cart')||'[]');
-  cart.push({name:'The Moment Before',price:'149',color:'Black',size:'One Size',icon:'✦',diseno:'onetoone-01'});
+  cart.push({name:'The Moment Before',price:'149',color:'Black',size:'One Size',icon:'✦',diseno: 'onetoone'});
   localStorage.setItem('mce_cart',JSON.stringify(cart));renderCart();
   var btns=document.querySelectorAll('.btn-claim');
   btns.forEach(function(b){var o=b.textContent;b.textContent=currentLang==='es'?'✓ Añadido':'✓ Added';b.style.opacity='.6';b.style.borderColor='var(--gold)';b.style.color='var(--gold)';setTimeout(function(){b.textContent=o;b.style.opacity='1';b.style.borderColor='';b.style.color=''},1500)});
@@ -494,7 +494,7 @@ async function checkout(){
   if(cart.length===0)return;
   var b=document.getElementById('checkoutBtn');b.disabled=true;b.textContent='Processing...';
   try{
-    var it=cart[0],r=await fetch(API_URL+'/create-checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({diseno:it.diseno,talla:it.size,cantidad:'1'})});
+    var it=cart[0],r=await fetch(API_URL+'/create-checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({diseno: 'onetoone',talla:it.size,cantidad:'1'})});
     var d=await r.json();
     if(d.url)window.location.href=d.url;
     else{alert('Error: '+(d.error||'Unknown'));b.disabled=false;b.textContent='Pay with Stripe'}

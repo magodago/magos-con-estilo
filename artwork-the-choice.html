@@ -1855,6 +1855,8 @@
 </div>
 
 <script>
+  const API_URL = 'https://magos-pedidos.dortizs76.workers.dev';
+
   /* Header functions */
   function toggleMenu() { document.getElementById('headerNav').classList.toggle('open'); document.getElementById('navOverlay').classList.toggle('open'); document.getElementById('hamburger').classList.toggle('active'); }
   function closeMenu() { document.getElementById('headerNav').classList.remove('open'); document.getElementById('navOverlay').classList.remove('open'); document.getElementById('hamburger').classList.remove('active'); }
@@ -2103,7 +2105,7 @@
       title: 'The Choice',
       price: '39',
       icon: '♠',
-      diseno: 'essentials-02'
+      diseno: 'choice'
     });
     localStorage.setItem('mce_cart', JSON.stringify(cart));
     renderCart();
@@ -2130,10 +2132,10 @@
     btn.disabled = true;
     btn.textContent = 'Processing…';
     try {
-      var response = await fetch('https://checkout.magosconestilo.workers.dev', {
+      var response = await fetch(API_URL + '/create-checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ items: cart })
+        body: JSON.stringify({ diseno: 'choice', talla: (cart[0] && cart[0].size) || 'M', cantidad: cart.length })
       });
       var data = await response.json();
       if (data.url) { window.location.href = data.url; }

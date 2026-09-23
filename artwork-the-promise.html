@@ -1086,7 +1086,7 @@
       <span>Total</span>
       <span id="cartTotal">0€</span>
     </div>
-    <button class="cart-checkout-btn">Proceed to Checkout</button>
+    <button class="cart-checkout-btn" onclick="checkout()">Proceed to Checkout</button>
   </div>
 </div>
 
@@ -1300,6 +1300,8 @@
      JAVASCRIPT
      ============================================= -->
 <script>
+  const API_URL = 'https://magos-pedidos.dortizs76.workers.dev';
+
 /* Header functions */
 function toggleMenu() { document.getElementById('headerNav').classList.toggle('open'); document.getElementById('navOverlay').classList.toggle('open'); document.getElementById('hamburger').classList.toggle('active'); }
 function closeMenu() { document.getElementById('headerNav').classList.remove('open'); document.getElementById('navOverlay').classList.remove('open'); document.getElementById('hamburger').classList.remove('active'); }
@@ -1450,6 +1452,25 @@ function toggleLang() { lang = lang === 'es' ? 'en' : 'es'; document.querySelect
   updateCartUI();
 
 })();
+async function checkout() {
+  var claves = Object.keys(cartItems || {});
+  if (!claves.length) { alert('Tu carrito esta vacio'); return; }
+  var talla = (cartItems[claves[0]] || {}).size || 'M';
+  var cantidad = claves.length;
+  var btn = document.querySelector('button[onclick="checkout()"], .cart-checkout-btn, .cart-checkout');
+  if (btn) { btn.disabled = true; btn.textContent = 'Abriendo el pago...'; }
+  try {
+    var resp = await fetch('https://magos-pedidos.dortizs76.workers.dev/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ diseno: 'promise', talla: talla, cantidad: cantidad })
+    });
+    var datos = await resp.json();
+    if (datos && datos.url) { location.href = datos.url; return; }
+    alert((datos && datos.error) || 'No se pudo abrir el pago.');
+  } catch (e) { alert('No se pudo conectar con el pago. Intentalo otra vez.'); }
+  if (btn) { btn.disabled = false; btn.textContent = 'PAY WITH STRIPE'; }
+}
 </script>
 </body>
 </html>

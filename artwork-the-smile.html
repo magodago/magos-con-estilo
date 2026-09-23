@@ -839,6 +839,8 @@ body {
 </footer>
 
 <script>
+  const API_URL = 'https://magos-pedidos.dortizs76.workers.dev';
+
 function toggleDropdown(e, id) { e.preventDefault(); e.stopPropagation(); document.getElementById(id).classList.toggle("open"); }
 document.addEventListener("click", function() { document.querySelectorAll(".dropdown-menu.open").forEach(function(m) { m.classList.remove("open"); }); });
 // ── MOBILE MENU ──
@@ -920,7 +922,25 @@ function removeFromCart(index) {
 
 function openCart() { document.getElementById('cartOverlay').classList.add('open'); document.getElementById('cartSidebar').classList.add('open'); }
 function closeCart() { document.getElementById('cartOverlay').classList.remove('open'); document.getElementById('cartSidebar').classList.remove('open'); }
-function checkout() { alert('Checkout: ' + JSON.stringify(cart)); }
+async function checkout() {
+  var claves = Object.keys(cartItems || {});
+  if (!claves.length) { alert('Tu carrito esta vacio'); return; }
+  var talla = (cartItems[claves[0]] || {}).size || 'M';
+  var cantidad = claves.length;
+  var btn = document.querySelector('button[onclick="checkout()"], .cart-checkout-btn, .cart-checkout');
+  if (btn) { btn.disabled = true; btn.textContent = 'Abriendo el pago...'; }
+  try {
+    var resp = await fetch('https://magos-pedidos.dortizs76.workers.dev/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ diseno: 'smile', talla: talla, cantidad: cantidad })
+    });
+    var datos = await resp.json();
+    if (datos && datos.url) { location.href = datos.url; return; }
+    alert((datos && datos.error) || 'No se pudo abrir el pago.');
+  } catch (e) { alert('No se pudo conectar con el pago. Intentalo otra vez.'); }
+  if (btn) { btn.disabled = false; btn.textContent = 'PAY WITH STRIPE'; }
+}
 renderCart();
 
 // ── SIZE SELECTOR ──
